@@ -43,7 +43,6 @@ export default {
                 })
         },
         deleteNote(noteId) {
-
             noteService.remove(noteId)
                 .then(() => {
                     const idx = this.notes.findIndex(note => note.id === noteId)

@@ -10,6 +10,12 @@
     margin-top: 10px;
 }
 
+
+.note > h2{
+    margin-block-start: 10px;
+    margin-inline-start: 10px;
+}
+
 .note>p {
     font-size: 1.2em;
     padding: 10px 10px 0 10px;
@@ -48,4 +54,8 @@
 
 .action:hover {
     background: #eee5;
+}
+
+.done{
+    text-decoration: line-through;
 }
