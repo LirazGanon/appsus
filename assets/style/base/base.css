@@ -3,7 +3,7 @@
 }
 
 html {
-  
+  font-family: roberto, sans-serif;
 }
 
 body {
@@ -50,4 +50,3 @@ nav a {
 .debug * {
   outline: 1px solid gold
 }
-

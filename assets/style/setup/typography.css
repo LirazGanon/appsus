@@ -1,2 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Edu+VIC+WA+NT+Beginner&display=swap');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
+
+@font-face {
+    font-family: roberto;
+    src: url('../fonts/Roboto-Regular.ttf');
+}
+@font-face {
+    font-family: roberto-bold;
+    src: url('../fonts/Roboto-Bold.ttf');
+}
+@font-face {
+    font-family: roberto-black;
+    src: url('../fonts/Roboto-Black.ttf');
+}

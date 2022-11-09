@@ -1,4 +1,5 @@
 export default {
+    props:['note'],
     template: `
 <section>
 <div class="actions">
@@ -12,10 +13,8 @@ export default {
             <img src="../../../assets/img/envelope.png" alt="" />
         </div>
         <div class="action color-note">
-            <img src="../../../assets/img/paint.png" alt="" />
+            <img src="../../../assets/img/paint.png"/>
             
-       
-        
         </div>
         <div class="action edit-note">
             <img src="../../../assets/img/pin.png" alt="" />
@@ -26,13 +25,13 @@ export default {
     data() {
         return {
             pickColor: false,
-
         }
     },
     methods: {
         deleteNote() {
             this.$emit('deleteNote')
         }
+       
     },
     computed: {
     },
