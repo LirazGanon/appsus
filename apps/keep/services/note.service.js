@@ -10,6 +10,7 @@ export const noteService = {
     query,
     get,
     addTodo,
+    deleteTodo,
     getEmptyNote,
     remove,
     save
@@ -49,7 +50,15 @@ function getEmptyNote(type = 'note-txt') {
 function addTodo(noteId, todo) {
     return get(noteId).then(note => {
         console.log(note);
-        note.info.todos.push({ txt: todo, isDone: null })
+        note.info.todos.push({ txt: todo, isDone: null, id: utilService.makeId() })
+        return note
+    }).then(note => storageService.put(NOTE_KEY, note))
+}
+
+function deleteTodo(noteId, todoId) {
+    return get(noteId).then(note => {
+        const idx = note.info.todos.findIndex(todo => todo.id === todoId)
+        note.info.todos.splice(idx, 1)
         return note
     }).then(note => storageService.put(NOTE_KEY, note))
 }
