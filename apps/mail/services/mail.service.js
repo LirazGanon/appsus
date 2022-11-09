@@ -1,7 +1,15 @@
-import { utilService } from '../../../util.service.js'
-import { storageService } from '../../../async-storage.service.js'
+import { utilService } from '../../../services/util.service.js'
+import { storageService } from '../../../services/async-storage.service.js'
 
 const MAIL_KEY = 'mailDB'
+
+const loggedInUser = {
+    email: 'lirazganon@gmail.com',
+    fullName: 'Liraz Ganon'
+}
+
+const defaultMails = _getDefaultMails()
+
 _createMails()
 
 export const mailService = {
@@ -17,7 +25,7 @@ function query() {
     return storageService.query(MAIL_KEY)
 }
 
-function get(mailId){
+function get(mailId) {
     return storageService.get(MAIL_KEY, mailId)
 }
 
@@ -26,42 +34,78 @@ function remove(mailId) {
 }
 
 function save(mail) {
-    if(mail.id){
+    if (mail.id) {
         return storageService.put(MAIL_KEY, mail)
     } else {
         return storageService.post(MAIL_KEY, mail)
     }
 }
 
-function getEmptyMail(title='', to = 0) {
-    return { id: '', title, to}
+function getEmptyMail() {
+    return {
+        id: '',
+        subject: '',
+        body: '',
+        isRead: false,
+        sentAt: '',
+        from: 'your-mail@someting.com',
+        to: 'recived-mail@someting.com'
+    }
 }
 
 
 function getNextMailId(mailId) {
     return storageService.query(MAIL_KEY)
-        .then(mails =>{
-            var idx  = mails.findIndex(mail => mail.id === mailId)
-            if (idx === mails.length-1) idx = -1
-            return mails[idx+1].id
+        .then(mails => {
+            var idx = mails.findIndex(mail => mail.id === mailId)
+            if (idx === mails.length - 1) idx = -1
+            return mails[idx + 1].id
         })
 }
 
 function _createMails() {
-    let mails = utilService.loadFromStorage(MAIL_KEY)
+    let mails = query()
     if (!mails || !mails.length) {
-        mails = []
-        mails.push(_createMail('Audu Mea', 300))
-        mails.push(_createMail('Fiak Ibasa', 120))
-        mails.push(_createMail('Subali Pesha', 100))
-        mails.push(_createMail('Mitsu Bashi', 150))
+        mails = defaultMails
         utilService.saveToStorage(MAIL_KEY, mails)
     }
     return mails
 }
 
-function _createMail(title, to = 250) {
-    const mail = getEmptyMail(title, to)
-    mail.id = utilService.makeId() 
-    return mail
+function _getDefaultMails() {
+    return [
+        {
+            id: utilService.makeId(),
+            subject: 'Shir Musery replied to your comment',
+            body: 'Thanks for your support Liraz',
+            isRead: false,
+            sentAt: Date.now() - utilService.getRandomInt(0, 1000000),
+            from: 'messages-noreply@linkedin.com',
+            to: 'lirazganon@gmail.com'
+        },
+        {
+            id: utilService.makeId(),
+            subject: 'Yaniv Weinshtein RSVPed to Who\'s in Control? on Wed, November 16',
+            body: '11 helpers are going to this Meetup',
+            isRead: false,
+            sentAt: Date.now() - utilService.getRandomInt(0, 1000000),
+            from: 'info@meetup.com',
+            to: 'lirazganon@gmail.com'
+        },
+        {
+            id: utilService.makeId(),
+            subject: 'The fastest way to get feedback on your code',
+            body: `
+        The best way to get feedback.\n
+        Quick, quality feedback is one of the key ingredients of top-performing teams.\n
+        With CodeSandbox, you get a live development environment for every PR. Besides shortening the code review cycle, this makes it easier than ever to get feedback from designers, managers and marketers\n `,
+            isRead: false,
+            sentAt: Date.now() - utilService.getRandomInt(0, 1000000),
+            from: 'info@meetup.com',
+            to: 'lirazganon@gmail.com'
+        },
+
+
+    ]
 }
+

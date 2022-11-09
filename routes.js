@@ -3,7 +3,7 @@ import aboutPage from './views/app-about.cmp.js'
 
 import noteApp from './views/note-app.cmp.js'
 import emailApp from './views/app-email.cmp.js'
-import emailDetails from './views/app-details.cmp.js'
+import emailDetails from './views/app-email-details.cmp.js'
 
 const { createRouter, createWebHashHistory } = VueRouter
 
