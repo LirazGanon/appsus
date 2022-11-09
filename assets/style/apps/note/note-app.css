@@ -1,6 +1,29 @@
 .notes-list {
     margin-block-start: 20px;
-    column-count: 4;
+    column-count: 1;
     column-gap: 10px;
+    row-gap: 20px;
     padding: 10px;
+    min-height: 75vh;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (min-width: 600px) {
+    .notes-list {
+        column-count: 2;
+    }
+}
+
+@media (min-width: 900px) {
+    .notes-list {
+        column-count: 3;
+    }
+}
+
+@media (min-width: 1200px) {
+    .notes-list {
+        column-count: 4;
+    }
 }

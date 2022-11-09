@@ -1,42 +1,35 @@
-.note{
-    max-width: 250px;
+.note {
     min-width: 150px;
-    width: minmax(100px,250px);
+    width: minmax(100px, 250px);
     background: var(--updates);
     break-inside: avoid;
     border-radius: 13px;
     overflow: hidden;
+    margin-top: 10px;
 }
 
-.note>p{
+.note>p {
+    font-size: 1.2em;
     padding: 10px 10px 0 10px;
-   line-break: anywhere;
+    line-break: anywhere;
 }
 
-.actions{
+.actions {
     display: flex;
     flex-direction: row-reverse;
-    background:#eee5;
+    background: #eee5;
 }
 
-.action{
-    height: 25px;
-    width: 25px;
+.action {
+    height: 36px;
+    width: 36px;
     cursor: pointer;
     border-radius: 50%;
     padding: 5px;
     transition: .5s;
 }
 
-.delete-note{
-    height: 25px;
-    width: 25px;
-    cursor: pointer;
-    border-radius: 50%;
-    padding: 5px;
-    transition: .5s;
-}
 
-.action:hover{
-background:#eee5;
+.action:hover {
+    background: #eee5;
 }
