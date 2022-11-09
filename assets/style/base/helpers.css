@@ -1,28 +1,32 @@
 /* flex helpers */
 
 .flex {
-  display: flex;
+    display: flex;
 }
 
-.flex.flex-column{
+.flex.flex-column {
     flex-direction: column;
 }
 
-.flex.justify-center{
+.flex.justify-center {
     justify-content: center;
 }
 
-.flex.justify-between{
+.flex.justify-between {
     justify-content: space-between;
 }
 
-.flex.align-center{
+.flex.align-center {
     align-items: center;
 }
 
-.flex.center{
+.flex.center {
     align-items: center;
     justify-content: center;
+}
+
+.flex .grow {
+    flex: 1;
 }
 
 /* text helpers */
@@ -112,5 +116,3 @@
 .fa.fa-promotion::before {
     content: "\f02b";
 }
-
-

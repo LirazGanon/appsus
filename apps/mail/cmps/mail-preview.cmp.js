@@ -1,12 +1,16 @@
 export default {
     props: ['mail'],
     template:/*html*/ `
-        <article class="mail-preview flex" :class="{read:mail.isRead}">
+        <article @click="view(mail.id)" class="mail-preview flex" :class="{read:mail.isRead}">
             <h2>{{ shortedSubject }}</h2>
             <h3>{{ shortedBody}} </h3>
             <h3>{{ formattedTime}} </h3>
         </article>
-    `,
+    `,methods: {
+        view(mailId){
+            this.$emit('viewMail', mailId)
+        }
+    },
     computed: {
         formattedTime() {
             return new Intl.DateTimeFormat('en-US').format(this.mail.sentAt)
