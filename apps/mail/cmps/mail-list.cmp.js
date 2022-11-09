@@ -8,8 +8,8 @@ export default {
                 <li v-for="mail in mails" :key="mail.id">
                     <mail-preview :mail="mail"/>
                     <section class="actions">
-                        <router-link :to="'/email/' + mail.id">Details</router-link> |
-                        <router-link :to="'/email/edit/' + mail.id">Edit</router-link> |
+                        <router-link :to="'/mail/' + mail.id">Details</router-link> |
+                        <router-link :to="'/mail/edit/' + mail.id">Edit</router-link> |
                         <button @click="remove(mail.id)">x</button>
                     </section>
                 </li>

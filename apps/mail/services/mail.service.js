@@ -8,8 +8,6 @@ const loggedInUser = {
     fullName: 'Liraz Ganon'
 }
 
-const defaultMails = _getDefaultMails()
-
 _createMails()
 
 export const mailService = {
@@ -67,7 +65,7 @@ function _createMails() {
     return query()
         .then(mails => {
             if (!mails || !mails.length) {
-                mails = defaultMails
+                mails = _getDefaultMails()
                 utilService.saveToStorage(MAIL_KEY, mails)
             }
             return mails
@@ -98,10 +96,10 @@ function _getDefaultMails() {
             id: utilService.makeId(),
             subject: 'The fastest way to get feedback on your code',
             body: `
-        The best way to get feedback.\n
-        Quick, quality feedback is one of the key ingredients of top-performing teams.\n
-        With CodeSandbox, you get a live development environment for every PR. Besides shortening the code review cycle, this makes it easier than ever to get feedback from designers, managers and marketers\n `,
-            isRead: false,
+            The best way to get feedback.\n
+            Quick, quality feedback is one of the key ingredients of top-performing teams.\n
+            With CodeSandbox, you get a live development environment for every PR. Besides shortening the code review cycle, this makes it easier than ever to get feedback from designers, managers and marketers\n `,
+            isRead: true,
             sentAt: Date.now() - utilService.getRandomInt(0, 1000000),
             from: 'info@meetup.com',
             to: 'lirazganon@gmail.com'

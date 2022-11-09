@@ -14,11 +14,11 @@ export default {
                 <br />
                 <br />
                 
-                <router-link to="/email">email</router-link>
+                <router-link to="/mail">mail</router-link>
                 <br />
                 <br />
                 
-                <!-- <router-link :to="'/email/' + 'id'">dits</router-link> -->
+                <!-- <router-link :to="'/mail/' + 'id'">dits</router-link> -->
 
             </nav>
         </header>
