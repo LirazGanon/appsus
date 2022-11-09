@@ -6,7 +6,8 @@ export default {
 <section class="note">
     <p>{{ note.info.txt }}</p>
     <note-actions 
-        @deleteNote="deleteNote">
+        @deleteNote="deleteNote"
+        :note="note">
 <!-- <pre>{{note}}</pre> -->
 </section>
 `,

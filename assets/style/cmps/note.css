@@ -5,6 +5,8 @@
     break-inside: avoid;
     border-radius: 13px;
     overflow: hidden;
+}
+.note:not(:first-child){
     margin-top: 10px;
 }
 
@@ -13,6 +15,20 @@
     padding: 10px 10px 0 10px;
     line-break: anywhere;
 }
+
+.img-placeholder{
+    height: 250px;
+    background: #eee;
+    margin-inline:20px ;
+    margin-block-end: 15px;
+    border-radius: 13px;
+}
+
+
+
+
+
+
 
 .actions {
     display: flex;
