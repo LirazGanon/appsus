@@ -2,7 +2,8 @@ export default {
     template: `
         <header class="app-header">
             <router-link to="/">
-            <img src="assets/img/mail-logo.png" alt="">
+            <img src="assets/img/main-logo.png" alt="">
+
             </router-link> 
             
             <nav>
