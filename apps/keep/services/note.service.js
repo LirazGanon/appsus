@@ -1,7 +1,10 @@
 import { utilService } from "../../../services/util.service.js";
-import { storageService } from "../../../services/async-storage.service";
+import { storageService } from "../../../services/async-storage.service.js";
+
+import notesJson from '../data/notes.json' assert {type: 'json'}
 
 const NOTE_KEY = 'noteDB'
+_crateNotes()
 
 export const noteService = {
     query,
@@ -10,7 +13,7 @@ export const noteService = {
     save
 }
 
-function query(){
+function query() {
     return storageService.query(NOTE_KEY)
 }
 
@@ -30,6 +33,12 @@ function save(note) {
 }
 
 
-function _crateNotes(){
-    
+function _crateNotes() {
+    let notes = query()
+    if (!notes || !notes.length) {
+        notes = notesJson
+        utilService.saveToStorage(NOTE_KEY,notes)
+    }
+    return notes
 }
+

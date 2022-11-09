@@ -2,6 +2,10 @@
   background-color: var(--clr5);
   color: var(--secondary-clr1);
   padding: 1em;
+  height: 15vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
 }
 
 @media(max-width: 720px) {
@@ -10,3 +14,8 @@
     color: var(--secondary-clr2);
   }
 }
+
+.app-header img{
+  height: 100%;
+}
+
