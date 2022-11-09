@@ -2,7 +2,7 @@ export default {
     template: `
         <header class="app-header">
             <router-link to="/">
-                <h1>AppSus</h1>
+            <img src="assets/img/mail-logo.png" alt="">
             </router-link> 
             
             <nav>

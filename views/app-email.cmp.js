@@ -1,18 +1,18 @@
 export default {
-template:/*html*/ `
+    template:/*html*/ `
 <section>
-<img src="assets/img/mail-logo.png" alt="">
-email
+    <img src="assets/img/mail-logo.png" alt="">
+    email
 </section>
 `,
-data() {
-return {
-}
-},
-methods: {
-},
-computed: {
-},
-components: {
-}
+    data() {
+        return {
+        }
+    },
+    methods: {
+    },
+    computed: {
+    },
+    components: {
+    }
 }
