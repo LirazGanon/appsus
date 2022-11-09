@@ -9,6 +9,7 @@ _crateNotes()
 export const noteService = {
     query,
     get,
+    getEmptyNote,
     remove,
     save
 }
@@ -26,19 +27,32 @@ function remove(noteId) {
 }
 
 function save(note) {
+
     return note.id ?
         storageService.put(NOTE_KEY, note)
         :
         storageService.post(NOTE_KEY, note)
 }
 
+function getEmptyNote(type = 'note-txt') {
+    return {
+        id: '',
+        type,
+        isPinned: false,
+        info: {
+            txt: ''
+        }
+    }
+}
 
 function _crateNotes() {
-    let notes = query()
-    if (!notes || !notes.length) {
-        notes = notesJson
-        utilService.saveToStorage(NOTE_KEY,notes)
-    }
-    return notes
+    return query().then(notes => {
+        console.log('notes:', notes)
+        if (!notes || !notes.length) {
+            notes = notesJson
+            utilService.saveToStorage(NOTE_KEY, notes)
+        }
+        return notes
+    })
 }
 

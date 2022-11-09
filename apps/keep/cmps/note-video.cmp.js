@@ -3,14 +3,17 @@ export default {
 template: `
 <section>
     <h2>VIDEO!</h2>
+
 <pre>{{note}}</pre>
 </section>
 `,
 data() {
 return {
+    
 }
 },
 methods: {
+    
 },
 computed: {
 },

@@ -3,6 +3,7 @@ export default {
 template: `
 <section>
     <h2>IMG!</h2>
+
 <pre>{{note}}</pre>
 </section>
 `,
@@ -11,6 +12,7 @@ return {
 }
 },
 methods: {
+  
 },
 computed: {
 },

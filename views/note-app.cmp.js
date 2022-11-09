@@ -1,12 +1,12 @@
 import { noteService } from "../apps/keep/services/note.service.js"
 
 import noteTxt from "../apps/keep/cmps/note-txt.cmp.js"
-import noteImg from "../apps/keep/cmps/note-img.cmp.js"
-import noteVideo from "../apps/keep/cmps/note-video.cmp.js"
-import noteTodos from "../apps/keep/cmps/note-todos.cmp.js"
+// import noteImg from "../apps/keep/cmps/note-img.cmp.js"
+// import noteVideo from "../apps/keep/cmps/note-video.cmp.js"
+// import noteTodos from "../apps/keep/cmps/note-todos.cmp.js"
 
-import addNote from "../apps/keep/cmps/note.add.cmp.js"
-
+import noteAdd from "../apps/keep/cmps/note.add.cmp.js"
+import { eventBus, showErrorMsg, showSuccessMsg } from "../../../services/event-bus.service.js"
 //TODO:fix the img
 {/* <img src="assets/img/note-logo.png" alt="" /> */ }
 
@@ -14,9 +14,11 @@ export default {
     template:/*html*/ `
 	<section class="main-content">
 
-    <add-note />
+    <note-add @addNote="add"/>
 
-      <component :is="note.type" v-for="note in notes" :note="note" />
+      <component :is="note.type" v-for="note in notes" :note="note" @delete="deleteNote" > 
+     
+     </component>
 
 	</section>
 	`,
@@ -27,21 +29,34 @@ export default {
     },
     created() {
         noteService.query()
-            .then(notes => {
-                console.log('notes:', notes)
-                this.notes = notes
-            })
+            .then(notes => this.notes = notes)
     },
     methods: {
-
+        add(note){
+            noteService.save(note)
+                .then(note=>{
+                     this.notes.push(note)
+                     showSuccessMsg('note added!')
+            })
+        },
+        deleteNote(noteId){
+            
+           noteService.remove(noteId)
+                .then(()=> {
+                    const idx = this.notes.findIndex(note => note.id === noteId)
+                    this.notes.splice(idx,1)
+                    showSuccessMsg(`Note deleted`)
+                    
+                })
+        }
     },
     computed: {
     },
     components: {
         noteTxt,
-        noteImg,
-        noteVideo,
-        noteTodos,
-        addNote
+        // noteImg,
+        // noteVideo,
+        // noteTodos,
+        noteAdd
     }
 }

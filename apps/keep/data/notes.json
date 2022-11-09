@@ -9,7 +9,7 @@
     },
     {
      "id": "n102",
-     "type": "note-img",
+     "type": "note-txt",
      "info": {
      "url": "http://some-img/me",
      "title": "Bobi and Me"
@@ -20,7 +20,7 @@
     },
     {
      "id": "n103",
-     "type": "note-todos",
+     "type": "note-txt",
      "info": {
      "label": "Get my stuff together",
      "todos": [

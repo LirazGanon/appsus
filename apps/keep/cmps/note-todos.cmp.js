@@ -3,6 +3,7 @@ export default {
 template: `
 <section>
     <h2>TODO!</h2>
+    
 <pre>{{note}}</pre>
 </section>
 `,

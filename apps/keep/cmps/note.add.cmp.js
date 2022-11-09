@@ -1,3 +1,5 @@
+import { noteService } from "../services/note.service.js";
+
 
 
 export default {
@@ -5,56 +7,40 @@ export default {
 <section>
 
 
-    <component>
+    <!-- <component>
 
-    </component>
+    </component> -->
     <form @submit.prevent="addNote">
-        <input v-model="info.txt" type="type"/>
-        <input @change="previewFile" type="file" />
-        <input @change="saveURL" type="text" placeholder="enter video URL..." />
+        <input v-model="noteToEdit.info.txt" type="type"/>
+
         <button>submit</button>
     </form>
-    <img class="img" v-if="info.img" :src="info.img" alt=""  />
-    <iframe v-if="info.videoURL" :src="info.videoURL" ></iframe>
+
 
 </section>
 `,
     data() {
         return {
-            info: {
-                txt: '',
-                img: null,
-                videoURL: null
-            }
+            noteToEdit: noteService.getEmptyNote()
         }
+    },
+    created(){
+        console.log(this.noteToEdit);
     },
     methods: {
         addNote() {
-            console.log('this.txt:', this.info)
+            this.$emit('addNote',this.noteToEdit)
         },
-        previewFile(ev) {
-            //    const {name,type} = ev.target.files[0]
-            //    console.log(ev.target.files[0]);
-            //    console.log(name);
-            //    console.log(type);
-            //    console.log('variable:', name.toDataURL(type))
-            //         this.info.img = name.toDataURL(type)
-
-            var reader = new FileReader();
-            reader.onload = function (e) {
-                this.info.img = e.target.result
-            }
-            reader.readAsDataURL(ev.target.files[0])
-        },
-        saveURL(ev) {
-            let url = ev.target.value
-            let newUrl = url.match(/(http:|https:)?(\/\/)?(www\.)?(youtube.com|youtu.be)\/(watch|embed)?(\?v=|\/)?(\S+)?/)
-            newUrl[5] = '/embed'
-            newUrl.splice(0,1)
-            newUrl = newUrl.join('')
-            console.log(newUrl)
-            this.info.videoURL = newUrl
-        }
+       
+        // saveURL(ev) {
+        //     let url = ev.target.value
+        //     let newUrl = url.match(/(http:|https:)?(\/\/)?(www\.)?(youtube.com|youtu.be)\/(watch|embed)?(\?v=|\/)?(\S+)?/)
+        //     newUrl[5] = '/embed'
+        //     newUrl.splice(0,1)
+        //     newUrl = newUrl.join('')
+        //     console.log(newUrl)
+        //     this.info.videoURL = newUrl
+        // }
 
     },
     computed: {
