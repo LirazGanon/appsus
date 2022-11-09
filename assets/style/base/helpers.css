@@ -97,3 +97,20 @@
     content: "\f15b";
 }
 
+.fa.fa-social::before {
+    content: "\f0c0";
+}
+
+.fa.fa-update::before {
+    content: "\f06a";
+}
+
+.fa.fa-forum::before {
+    content: "\f086";
+}
+
+.fa.fa-promotion::before {
+    content: "\f02b";
+}
+
+
