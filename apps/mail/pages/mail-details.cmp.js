@@ -1,6 +1,6 @@
 
 import { mailService } from "../services/mail.service.js"
-import { showErrorMsg } from "../../../services/event-bus.service.js"
+import { showErrorMsg, showSuccessMsg } from "../../../services/event-bus.service.js"
 
 export default {
     template:/*html*/`
@@ -45,11 +45,11 @@ export default {
             console.log(this.mail)
             mailService.save(this.mail)
             .then(() => {
-                showSuccessMsg(`Mail ${mailId} deleted`)
+                showSuccessMsg(`Mail ${this.mailId} read`)
             })
             .catch(err =>{
                 console.log('OOPS', err)
-                showErrorMsg('Cannot remove mail')
+                showErrorMsg('Cannot read mail')
             })
         }
     },

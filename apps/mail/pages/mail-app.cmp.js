@@ -5,7 +5,7 @@ import mailFilter from '../cmps/mail-filter.cmp.js'
 import mailList from '../cmps/mail-list.cmp.js'
 
 export default {
-    name:'mail-preview',
+    name:'mail-app',
     template:/*html*/ `
 	<section class="mail-app">
 	  <img src="assets/img/mail-logo.png" alt="" />

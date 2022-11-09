@@ -5,11 +5,12 @@ export default {
     template:/*html*/ `
         <section class="mail-list">
             <ul>
-                <li v-for="mail in mails" :key="mail.id">
+                <li class="flex" v-for="mail in mails" :key="mail.id">
+                <input type="checkbox" name="check-email">
+                <i class="fa-regular fa-star"></i> 
                     <mail-preview :mail="mail"/>
                     <section class="actions">
                         <router-link :to="'/mail/' + mail.id">Details</router-link> |
-                        <router-link :to="'/mail/edit/' + mail.id">Edit</router-link> |
                         <button @click="remove(mail.id)">x</button>
                     </section>
                 </li>

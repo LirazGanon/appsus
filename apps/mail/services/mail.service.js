@@ -93,10 +93,9 @@ function _getDefaultMails() {
         {
             id: utilService.makeId(),
             subject: 'The fastest way to get feedback on your code',
-            body: `
-            The best way to get feedback.\n
-            Quick, quality feedback is one of the key ingredients of top-performing teams.\n
-            With CodeSandbox, you get a live development environment for every PR. Besides shortening the code review cycle, this makes it easier than ever to get feedback from designers, managers and marketers\n `,
+            body: `The best way to get feedback.
+            Quick, quality feedback is one of the key ingredients of top-performing teams.
+            With CodeSandbox, you get a live development environment for every PR. Besides shortening the code review cycle, this makes it easier than ever to get feedback from designers, managers and marketers`,
             isRead: true,
             sentAt: Date.now() - utilService.getRandomInt(0, 1000000),
             from: 'info@meetup.com',
