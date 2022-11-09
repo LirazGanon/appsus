@@ -7,10 +7,10 @@ export default {
 <section>
 
 
-    <!-- <component>
+    <!-- <component></component> -->
 
-    </component> -->
-    <form @submit.prevent="addNote">
+    
+    <form @submit.prevent="addNote" class="add-note flex center">
         <input v-model="noteToEdit.info.txt" type="type"/>
 
         <button>submit</button>
@@ -29,7 +29,9 @@ export default {
     },
     methods: {
         addNote() {
-            this.$emit('addNote',this.noteToEdit)
+            const note = JSON.parse(JSON.stringify(this.noteToEdit))
+            this.$emit('addNote',note)
+            this.noteToEdit = noteService.getEmptyNote()
         },
        
         // saveURL(ev) {

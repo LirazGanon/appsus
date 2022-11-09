@@ -1,0 +1,6 @@
+.notes-list {
+    margin-block-start: 20px;
+    column-count: 4;
+    column-gap: 10px;
+    padding: 10px;
+}

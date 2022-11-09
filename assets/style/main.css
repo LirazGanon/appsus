@@ -17,4 +17,9 @@
 
 /* Apps */
 @import 'apps/mail/mail-app.css';
+
+
+
 @import 'apps/note/note-app.css';
+@import 'cmps/note-add.css';
+@import 'cmps/note-txt.css';

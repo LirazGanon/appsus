@@ -15,7 +15,7 @@ export const noteService = {
 }
 
 function query() {
-    return storageService.query(NOTE_KEY)
+    return storageService.query(NOTE_KEY) || null
 }
 
 function get(noteId) {
@@ -46,13 +46,12 @@ function getEmptyNote(type = 'note-txt') {
 }
 
 function _crateNotes() {
-    return query().then(notes => {
-        console.log('notes:', notes)
-        if (!notes || !notes.length) {
-            notes = notesJson
-            utilService.saveToStorage(NOTE_KEY, notes)
-        }
-        return notes
-    })
+    let notes = utilService.loadFromStorage(NOTE_KEY)
+    console.log('notes:', notes)
+    if (!notes || !notes.length) {
+        notes = notesJson
+        utilService.saveToStorage(NOTE_KEY, notes)
+    }
+    return notes
 }
 

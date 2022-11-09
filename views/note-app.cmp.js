@@ -14,11 +14,10 @@ export default {
     template:/*html*/ `
 	<section class="main-content">
 
-    <note-add @addNote="add"/>
-
-      <component :is="note.type" v-for="note in notes" :note="note" @delete="deleteNote" > 
-     
-     </component>
+        <note-add @addNote="add"/>
+        <section class="notes-list">
+            <component :is="note.type" v-for="note in notes" :note="note" @delete="deleteNote" />  
+        </section>
 
 	</section>
 	`,
@@ -32,21 +31,21 @@ export default {
             .then(notes => this.notes = notes)
     },
     methods: {
-        add(note){
+        add(note) {
             noteService.save(note)
-                .then(note=>{
-                     this.notes.push(note)
-                     showSuccessMsg('note added!')
-            })
+                .then(note => {
+                    this.notes.push(note)
+                    showSuccessMsg('note added!')
+                })
         },
-        deleteNote(noteId){
-            
-           noteService.remove(noteId)
-                .then(()=> {
+        deleteNote(noteId) {
+
+            noteService.remove(noteId)
+                .then(() => {
                     const idx = this.notes.findIndex(note => note.id === noteId)
-                    this.notes.splice(idx,1)
+                    this.notes.splice(idx, 1)
                     showSuccessMsg(`Note deleted`)
-                    
+
                 })
         }
     },

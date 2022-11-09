@@ -1,0 +1,18 @@
+.add-note{
+    background: var(--add-mail);
+}
+
+.add-note>*{
+    border: none;
+    height: 2.5rem;
+    margin-block: 10px;
+}
+
+.add-note>input{
+    border-radius: 13px 0 0 13px;
+    outline: none;
+}
+
+.add-note>button{
+    border-radius: 0 13px 13px 0;
+}

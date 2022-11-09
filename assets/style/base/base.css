@@ -41,8 +41,7 @@ object {
 }
 
 /* tap targets: */
-nav a,
-button {
+nav a {
   min-width: 48px;
   min-height: 48px;
 }
