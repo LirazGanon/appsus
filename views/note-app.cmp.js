@@ -3,7 +3,7 @@ import { noteService } from "../apps/keep/services/note.service.js"
 import noteTxt from "../apps/keep/cmps/note-txt.cmp.js"
 import noteImg from "../apps/keep/cmps/note-img.cmp.js"
 // import noteVideo from "../apps/keep/cmps/note-video.cmp.js"
-// import noteTodos from "../apps/keep/cmps/note-todos.cmp.js"
+import noteTodos from "../apps/keep/cmps/note-todos.cmp.js"
 
 import noteAdd from "../apps/keep/cmps/note.add.cmp.js"
 import { eventBus, showErrorMsg, showSuccessMsg } from "../../../services/event-bus.service.js"
@@ -59,7 +59,7 @@ export default {
         noteTxt,
         noteImg,
         // noteVideo,
-        // noteTodos,
+        noteTodos,
         noteAdd
     }
 }

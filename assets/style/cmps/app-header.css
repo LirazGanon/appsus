@@ -8,6 +8,30 @@
   justify-content: space-between;
 }
 
+/* .grid-menu {
+  height: 48px;
+  width: 48px;
+  border-radius: 6px;
+  background: var(--add-mail);
+  position: relative;
+}
+
+.dot {
+  height: 8px;
+  width: 8px;
+  border-radius: 2px;
+  background: #eee;
+  position: absolute;
+  top: calc(50% + var(--i) * 14px);
+  left: calc(50% + var(--j) * 14px);
+  transform: translate(-50%, -50%);
+  transition: .5s;
+}
+
+.grid-menu.active>*{
+  width: 8px;
+} */
+
 @media(max-width: 720px) {
   .app-header {
     background-color: var(--clr3);
@@ -15,7 +39,6 @@
   }
 }
 
-.app-header img{
+.app-header img {
   height: 100%;
 }
-

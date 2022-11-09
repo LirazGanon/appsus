@@ -6,18 +6,23 @@ export default {
 
             </router-link> 
             
+            <!-- <div class="grid-menu">
+                <span class="dot" style="--i:-1;--j:-1"></span>
+                <span class="dot" style="--i:-1;--j:0"></span>
+                <span class="dot" style="--i:-1;--j:1"></span>
+                <span class="dot" style="--i:0;--j:-1"></span>
+                <span class="dot" style="--i:0;--j:0"></span>
+                <span class="dot" style="--i:0;--j:1"></span>
+                <span class="dot" style="--i:1;--j:-1"></span>
+                <span class="dot" style="--i:1;--j:0"></span>
+                <span class="dot" style="--i:1;--j:1"></span>
+            </div> -->
+
             <nav>
                 <router-link to="/about">About</router-link>
-                <br />
-                <br />
                 <router-link to="/note">notes</router-link>
-                <br />
-                <br />
-                
                 <router-link to="/mail">mail</router-link>
-                <br />
-                <br />
-                
+           
                 <!-- <router-link :to="'/mail/' + 'id'">dits</router-link> -->
 
             </nav>
