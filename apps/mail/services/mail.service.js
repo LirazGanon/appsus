@@ -64,12 +64,14 @@ function getNextMailId(mailId) {
 }
 
 function _createMails() {
-    let mails = query()
-    if (!mails || !mails.length) {
-        mails = defaultMails
-        utilService.saveToStorage(MAIL_KEY, mails)
-    }
-    return mails
+    return query()
+        .then(mails => {
+            if (!mails || !mails.length) {
+                mails = defaultMails
+                utilService.saveToStorage(MAIL_KEY, mails)
+            }
+            return mails
+        })
 }
 
 function _getDefaultMails() {
