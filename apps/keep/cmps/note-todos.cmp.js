@@ -1,9 +1,9 @@
 export default {
-    props: ['info'],
+    props: ['note'],
 template: `
 <section>
     <h2>TODO!</h2>
-<pre>{{info}}</pre>
+<pre>{{note}}</pre>
 </section>
 `,
 data() {

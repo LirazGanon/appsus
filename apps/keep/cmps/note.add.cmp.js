@@ -1,8 +1,13 @@
+
+
 export default {
     template: `
 <section>
 
 
+    <component>
+
+    </component>
     <form @submit.prevent="addNote">
         <input v-model="info.txt" type="type"/>
         <input @change="previewFile" type="file" />
@@ -10,7 +15,7 @@ export default {
         <button>submit</button>
     </form>
     <img class="img" v-if="info.img" :src="info.img" alt=""  />
-    
+    <iframe v-if="info.videoURL" :src="info.videoURL" ></iframe>
 
 </section>
 `,
@@ -43,12 +48,12 @@ export default {
         },
         saveURL(ev) {
             let url = ev.target.value
-            let newUrl = url.match(/(http:|https:)?(\/\/)?(www\.)?(youtube.com|youtu.be)\/(watch|embed)?(\?v=|\/)?(\S+)?/);
+            let newUrl = url.match(/(http:|https:)?(\/\/)?(www\.)?(youtube.com|youtu.be)\/(watch|embed)?(\?v=|\/)?(\S+)?/)
             newUrl[5] = '/embed'
             newUrl.splice(0,1)
             newUrl = newUrl.join('')
-            this
-            console.log(newUrl);
+            console.log(newUrl)
+            this.info.videoURL = newUrl
         }
 
     },
