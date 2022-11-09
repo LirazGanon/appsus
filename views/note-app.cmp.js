@@ -20,7 +20,8 @@ export default {
                 v-for="note in notes"
                 :note="note"
                 :is="note.type"
-                @delete="deleteNote" />  
+                @delete="deleteNote"
+                @add="addTodo" />  
         </section>
 
 	</section>
@@ -50,6 +51,15 @@ export default {
                     showSuccessMsg(`Note deleted`)
 
                 })
+        },
+        addTodo(noteId, todo) {
+            noteService.addTodo(noteId, todo)
+                .then(note => {
+                    const idx = this.notes.findIndex(note => note.id === noteId)
+                    this.notes[idx] = note
+                })
+            console.log('noteId:', noteId)
+            console.log('todo:', todo)
         }
     },
     computed: {

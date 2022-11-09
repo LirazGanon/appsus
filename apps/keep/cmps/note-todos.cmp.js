@@ -16,6 +16,10 @@ export default {
             <p :class="{done:todo.doneAt}">{{todo.txt}}</p>
         </li>
     </ul>
+    <form @submit.prevent="addTodo">
+        <input type="text" v-model="todo"/>
+        <button>add</button>
+    </form>
         <note-actions 
         @delete="deleteNote" />
        
@@ -25,11 +29,17 @@ export default {
 `,
     data() {
         return {
+            todo: null
         }
     },
     methods: {
         deleteNote() {
             this.$emit('delete', this.note.id)
+        },
+        addTodo() {
+            if (!this.todo) return
+            this.$emit('add',this.note.id,this.todo)
+            this.todo = ''
         }
     },
     computed: {
