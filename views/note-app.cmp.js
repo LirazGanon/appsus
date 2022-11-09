@@ -6,7 +6,7 @@ import noteImg from "../apps/keep/cmps/note-img.cmp.js"
 import noteTodos from "../apps/keep/cmps/note-todos.cmp.js"
 
 import noteAdd from "../apps/keep/cmps/note.add.cmp.js"
-import { eventBus, showErrorMsg, showSuccessMsg } from "../../../services/event-bus.service.js"
+import { eventBus, showErrorMsg, showSuccessMsg } from "../services/event-bus.service.js"
 //TODO:fix the img
 {/* <img src="assets/img/note-logo.png" alt="" /> */ }
 
