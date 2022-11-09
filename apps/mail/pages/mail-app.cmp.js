@@ -11,7 +11,7 @@ export default {
 	  <img src="assets/img/mail-logo.png" alt="" />
 	  <mail-filter @filter="setFilter" />
 	  <router-link to="/mail/edit">Send a new mail</router-link>
-	  <mail-list v-if="mails" @remove="removeMail" :mails="mailsToShow" />
+	  <mail-list v-if="mails" @remove="removeMail" :mails="mailsToShow" @viewMail="showMail"/>
 	</section>
 	`,
     data(){
@@ -45,6 +45,10 @@ export default {
         },
         setFilter(filterBy){
             this.filterBy = filterBy
+        },
+        showMail(mailId){
+            console.log(mailId)
+            this.$router.push('/mail/' + mailId)
         }
     },
     computed: {
