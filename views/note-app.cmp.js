@@ -1,11 +1,23 @@
 import { noteService } from "../apps/keep/services/note.service.js"
 
+import noteTxt  from "../apps/keep/cmps/note-txt.cmp.js"
+import noteImg  from "../apps/keep/cmps/note-img.cmp.js"
+import noteVideo  from "../apps/keep/cmps/note-video.cmp.js"
+import noteTodos  from "../apps/keep/cmps/note-todos.cmp.js"
+
+import addNote from "../apps/keep/cmps/add-note.cmp.js"
+
+//TODO:fix the img
+{/* <img src="assets/img/note-logo.png" alt="" /> */}
 
 export default {
     template:/*html*/ `
 	<section class="main-content">
-	  <img src="assets/img/note-logo.png" alt="" />
-      note
+
+    <add-note />
+
+      <component :is="note.type" v-for="note in notes" :info="note" />
+
 	</section>
 	`,
     data() {
@@ -26,5 +38,10 @@ export default {
     computed: {
     },
     components: {
+        noteTxt,
+        noteImg,
+        noteVideo,
+        noteTodos,
+        addNote
     }
 }
