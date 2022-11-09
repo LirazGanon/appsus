@@ -1,8 +1,14 @@
 export const utilService = {
     makeId,
     saveToStorage,
-    getRandomInt
+    getRandomInt,
+    loadFromStorage
 
+}
+
+function loadFromStorage(key) {
+    let data = localStorage.getItem(key)
+    return (data) ? JSON.parse(data) : undefined
 }
 
 function saveToStorage(key, value) {

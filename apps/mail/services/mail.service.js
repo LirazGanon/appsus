@@ -62,15 +62,13 @@ function getNextMailId(mailId) {
 }
 
 function _createMails() {
-    return query()
-        .then(mails => {
+    let mails = utilService.loadFromStorage(MAIL_KEY)
             if (!mails || !mails.length) {
                 mails = _getDefaultMails()
                 utilService.saveToStorage(MAIL_KEY, mails)
             }
-            return mails
-        })
-}
+        return mails
+    }
 
 function _getDefaultMails() {
     return [
