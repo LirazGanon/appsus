@@ -1,3 +1,15 @@
+/* spacing */
+.clean-space{
+    margin: 0;
+    padding: 0;
+}
+.text-overflow{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
 /* flex helpers */
 
 .flex {
@@ -28,6 +40,12 @@
 .flex .grow {
     flex: 1;
 }
+.flex .grow2 {
+    flex: 2;
+}
+.flex .grow3 {
+    flex: 3;
+}
 
 /* text helpers */
 
@@ -42,6 +60,7 @@
     margin: 0;
     list-style-type: none;
 }
+
 
 /* font awesome */
 

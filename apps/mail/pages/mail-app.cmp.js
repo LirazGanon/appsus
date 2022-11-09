@@ -7,7 +7,7 @@ import mailList from '../cmps/mail-list.cmp.js'
 export default {
     name:'mail-app',
     template:/*html*/ `
-	<section class="mail-app">
+	<section class="mail-app main-content">
 	  <img src="assets/img/mail-logo.png" alt="" />
 	  <mail-filter @filter="setFilter" />
 	  <router-link to="/mail/edit">Send a new mail</router-link>
