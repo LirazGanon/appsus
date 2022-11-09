@@ -9,6 +9,7 @@ _crateNotes()
 export const noteService = {
     query,
     get,
+    addTodo,
     getEmptyNote,
     remove,
     save
@@ -43,6 +44,14 @@ function getEmptyNote(type = 'note-txt') {
             txt: ''
         }
     }
+}
+
+function addTodo(noteId, todo) {
+    return get(noteId).then(note => {
+        console.log(note);
+        note.info.todos.push({ txt: todo, isDone: null })
+        return note
+    }).then(note => storageService.put(NOTE_KEY, note))
 }
 
 function _crateNotes() {

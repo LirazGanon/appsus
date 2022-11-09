@@ -1,5 +1,4 @@
 export default {
-    props:['note'],
     template: `
 <section>
 <div class="actions">
@@ -29,7 +28,7 @@ export default {
     },
     methods: {
         deleteNote() {
-            this.$emit('deleteNote')
+            this.$emit('delete')
         }
        
     },

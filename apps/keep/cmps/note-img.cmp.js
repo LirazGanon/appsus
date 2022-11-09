@@ -6,14 +6,14 @@ export default {
 template: `
 <section class="note">
     <h2 class="title">{{note.info.title}}</h2>
-    <h2>{{note.info.url}}</h2>
     <div className="img-placeholder">
+        <h2>{{note.info.url}}</h2>
         <img :src="note.info.url" alt="" />
     </div>
     <!-- <pre>{{note}}</pre> -->
     <note-actions 
-        @deleteNote="deleteNote"
-        :note="note">
+        @delete="deleteNote" />
+        
 </section>
 `,
 data() {
@@ -21,7 +21,9 @@ return {
 }
 },
 methods: {
-  
+    deleteNote(){
+        this.$emit('delete',this.note.id)
+    }
 },
 computed: {
 },
