@@ -8,7 +8,6 @@ export default {
         </article>
     `,methods: {
         view(mailId){
-            console.log(mailId)
             this.$emit('viewMail', mailId)
         }
     },

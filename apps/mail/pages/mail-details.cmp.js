@@ -42,7 +42,6 @@ export default {
         },
         markAsRead(){
             this.mail.isRead = true
-            console.log(this.mail)
             mailService.save(this.mail)
             .then(() => {
                 showSuccessMsg(`Mail ${this.mailId} read`)

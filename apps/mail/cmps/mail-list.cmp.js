@@ -21,7 +21,6 @@ export default {
         remove(mailId){
             this.$emit('remove', mailId)
         }, view(mailId){
-            console.log(mailId)
             this.$emit('viewMail', mailId)
         },
     },

@@ -47,7 +47,6 @@ export default {
             this.filterBy = filterBy
         },
         showMail(mailId){
-            console.log(mailId)
             this.$router.push('/mail/' + mailId)
         }
     },
