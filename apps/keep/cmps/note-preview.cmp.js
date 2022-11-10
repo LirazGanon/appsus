@@ -1,7 +1,7 @@
 
 import noteTxt from "../cmps/note-txt.cmp.js"
 import noteImg from "../cmps/note-img.cmp.js"
-// import noteVideo from "../apps/keep/cmps/note-video.cmp.js"
+import noteVideo from "../cmps/note-video.cmp.js"
 import noteTodos from "../cmps/note-todos.cmp.js"
 
 
@@ -42,6 +42,7 @@ export default {
         noteTxt,
         noteImg,
         noteTodos,
+        noteVideo,
         noteActions
 
     }

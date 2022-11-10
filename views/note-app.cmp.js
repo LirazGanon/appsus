@@ -4,6 +4,7 @@ import { noteService } from "../apps/keep/services/note.service.js"
 
 import noteAddTxt from "../apps/keep/cmps/note-add-txt.cmp.js"
 import noteAddImg from "../apps/keep/cmps/note-add-img.cmp.js"
+import noteAddVideo from "../apps/keep/cmps/note-add-video.cmp.js"
 
 
 import noteList from "../apps/keep/cmps/note-list.cmp.js"
@@ -18,6 +19,7 @@ export default {
     <note-filter @filter="filter"/>
     <note-add-txt @addNote="add"/>
     <note-add-img @addNote="add"/>
+    <note-add-video @addNote="add"/>
         <note-list
              v-if="notes" 
              :notes="notesToShow"
@@ -87,6 +89,7 @@ export default {
     components: {
         noteFilter,
         noteAddTxt,
+        noteAddVideo,
         noteList,
         noteAddImg
     }

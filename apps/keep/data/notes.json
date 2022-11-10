@@ -59,5 +59,14 @@
      { "txt": "Coding power", "doneAt": 187111111,"id": "n251" }
      ]
      }
+    },
+    {
+     "id": "n103",
+     "type": "note-video",
+     "info": {
+     "title": "jQuery",
+     "url": "https://www.youtube.com/embed/QhQ4m5g2fhA"
+
+     }
     }
  ]

@@ -33,8 +33,8 @@ hi
             console.log('this.note:', this.note)
         },
         onFileChange(e) {
-            const file = e.target.files[0];
-            this.note.info.url = URL.createObjectURL(file);
+            const file = e.target.files[0]
+            this.note.info.url = URL.createObjectURL(file)
           }
     },
     computed: {

@@ -1,22 +1,19 @@
 export default {
     props: ['note'],
-template: `
-<section>
-    <h2>VIDEO!</h2>
-
-<pre>{{note}}</pre>
-</section>
+    template: `
+    <h2>{{ note.info.title}}</h2>
+    <iframe :src="note.info.url" frameborder="0"></iframe>
 `,
-data() {
-return {
-    
-}
-},
-methods: {
-    
-},
-computed: {
-},
-components: {
-}
+    data() {
+        return {
+
+        }
+    },
+    methods: {
+
+    },
+    computed: {
+    },
+    components: {
+    }
 }
