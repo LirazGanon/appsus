@@ -16,14 +16,29 @@ import noteFilter from "../apps/keep/cmps/note.filter.cmp.js"
 export default {
     template:/*html*/ `
 	<section class="main-content">
-    <note-filter @filter="filter"/>
-    <note-add-txt @addNote="add"/>
-    <note-add-img @addNote="add"/>
-    <note-add-video @addNote="add"/>
+
+        
+        <note-filter @filter="filter" />
+        <note-add-txt @addNote="add"/>
+        <note-add-img @addNote="add"/>
+        <note-add-video @addNote="add"/>
+
+
+        <section>
+        <span>Pinned</span>
         <note-list
-             v-if="notes" 
-             :notes="notesToShow"
-             @delete="deleteNote" />
+            v-if="notes" 
+            :notes="notesToShow"
+            @delete="deleteNote" />
+        </section>
+
+        <section>
+        <span>unPinned</span>
+        <note-list
+            v-if="notes" 
+            :notes="notesToShowNonPinned"
+            @delete="deleteNote" />
+        </section>
 
 	</section>
 	`,
@@ -33,7 +48,8 @@ export default {
             filterBy: {
                 title: '',
                 type: ''
-            }
+            },
+            addType: 1
         }
     },
     created() {
@@ -83,8 +99,21 @@ export default {
     computed: {
         notesToShow() {
             const regex = new RegExp(this.filterBy.title, 'i')
-            return this.notes.filter(note => regex.test(note.info.title) && note.type.includes(this.filterBy.type))
-        }
+            return this.notes.filter(note =>
+                regex.test(note.info.title)
+                && note.type.includes(this.filterBy.type)
+                && note.isPinned 
+            )
+        },
+        notesToShowNonPinned() {
+            const regex = new RegExp(this.filterBy.title, 'i')
+            return this.notes.filter(note =>
+                regex.test(note.info.title)
+                && note.type.includes(this.filterBy.type)
+                && !note.isPinned
+            )
+        },
+
     },
     components: {
         noteFilter,

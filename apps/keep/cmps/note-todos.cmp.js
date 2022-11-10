@@ -8,45 +8,51 @@ export default {
     <ul>
         <li class="flex" v-for="todo in notDoneTodos" :v-if="todo.doneAt" @click="setDone(todo.id)">
             <p :class="{done:todo.doneAt}">{{todo.txt}}</p>
-            <button @click="deleteTodo(todo.id)">x</button>
+            <button @click="deleteTodo">x</button>
         </li>
     </ul>
+    <pre>{{ newNote }}</pre>
     <ul>
         <li class="flex" v-for="todo in doneTodos" :v-if="todo.doneAt">
             <p :class="{done:todo.doneAt}">{{todo.txt}}</p>
-            <button @click="deleteTodo(todo.id)">x</button>
+            <input type="checkbox" />
+            <button @click="deleteTodo">x</button>
         </li>
     </ul>
-    <form @submit.prevent="addTodo">
+    <form @submit.prevent="addTodo" v-model="todo.txt">
         <input type="text" v-model="todo"/>
         <button>add</button>
     </form>
     
        
-        <!-- <pre>{{info}}</pre> -->
 
 </section>
 `,
     data() {
         return {
-            todo: null
+            newNote: this.note,
+            todo: {
+                txt: '',
+                doneAt: null,
+            }
         }
     },
     methods: {
 
         addTodo() {
-            if (!this.todo) return
-            this.$emit('add',this.note.id,this.todo)
+            if (!this.todo.txt) return
+            // this.newNote
+            // this.$emit('add',this.note.id,this.todo)
             this.todo = ''
         },
-        deleteTodo(todoId){
-            this.$emit('deleteTodo',this.note.id,todoId)
+        deleteTodo(todoId) {
+            this.$emit('deleteTodo', this.note.id, todoId)
         },
-        setDone(todoId){
-            console.log('todoId:',this.note.id, todoId)
-            this.$emit('todoDone',this.note.id,todoId)
+        setDone(todoId) {
+            console.log('todoId:', this.note.id, todoId)
+            this.$emit('todoDone', this.note.id, todoId)
         }
-        
+
     },
     computed: {
         doneTodos() {
@@ -55,9 +61,17 @@ export default {
         notDoneTodos() {
             return this.note.info.todos.filter(todo => !todo.doneAt)
         },
+        currNote() {
+            return this.newNote
+        }
 
     },
     components: {
-        
+
+    },
+    watch: {
+        currNote() {
+            console.log(this.newNote);
+        }
     }
 }
