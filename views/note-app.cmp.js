@@ -21,7 +21,8 @@ export default {
                 :note="note"
                 :is="note.type"
                 @delete="deleteNote"
-                @add="addTodo" />  
+                @add="addTodo" 
+                @deleteTodo="deleteTodo"/>  
         </section>
 
 	</section>
@@ -60,6 +61,15 @@ export default {
                 })
             console.log('noteId:', noteId)
             console.log('todo:', todo)
+        },
+        deleteTodo(noteId,todoId){
+            noteService.deleteTodo(noteId,todoId)
+                .then(note=>{
+                    const idx = this.notes.findIndex(note => note.id === noteId)
+                    this.notes[idx] = note
+                })
+            console.log('noteId:', noteId)
+            console.log('todoId:', todoId)
         }
     },
     computed: {

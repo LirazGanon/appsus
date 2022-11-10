@@ -7,13 +7,15 @@ export default {
     <h2>{{note.info.label}}</h2>
     
     <ul>
-        <li v-for="todo in notDoneTodos" :v-if="todo.doneAt">
+        <li class="flex" v-for="todo in notDoneTodos" :v-if="todo.doneAt">
             <p :class="{done:todo.doneAt}">{{todo.txt}}</p>
+            <button @click="deleteTodo(todo.id)">x</button>
         </li>
     </ul>
     <ul>
-        <li v-for="todo in doneTodos" :v-if="todo.doneAt">
+        <li class="flex" v-for="todo in doneTodos" :v-if="todo.doneAt">
             <p :class="{done:todo.doneAt}">{{todo.txt}}</p>
+            <button @click="deleteTodo(todo.id)">x</button>
         </li>
     </ul>
     <form @submit.prevent="addTodo">
@@ -40,7 +42,11 @@ export default {
             if (!this.todo) return
             this.$emit('add',this.note.id,this.todo)
             this.todo = ''
+        },
+        deleteTodo(todoId){
+            this.$emit('deleteTodo',this.note.id,todoId)
         }
+        
     },
     computed: {
         doneTodos() {
