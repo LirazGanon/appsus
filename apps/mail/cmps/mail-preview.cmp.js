@@ -41,7 +41,7 @@ export default {
                 return new Date(timeStamp).toLocaleDateString("en-US", options);
             }
             const date = new Date(timeStamp);
-            return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+            return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false })
         },
         shortedSubject() {
             const str = this.mail.subject
