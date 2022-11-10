@@ -6,6 +6,9 @@
     "info": {
       "title": "Fullstack Me Baby!",
       "txt": "Fullstack Me Baby!"
+    },
+    "style": {
+      "backgroundColor":"#0dd"
     }
   },
   {
@@ -16,6 +19,9 @@
       "title": "Fullstack Me Baby!",
 
       "txt": "Don't forget to get lunch!"
+    },
+    "style": {
+      "backgroundColor":"#d0d"
     }
   },
   {
@@ -26,6 +32,9 @@
       "title": "Fullstack Me Baby!",
 
       "txt": "Delete eventBus MSG"
+    },
+    "style": {
+      "backgroundColor":"#00d"
     }
   },
   {
@@ -36,6 +45,9 @@
       "title": "Fullstack Me Baby!",
 
       "txt": "pick up Bobi 16:00"
+    },
+    "style": {
+      "backgroundColor":"#d0d"
     }
   },
   {
@@ -47,7 +59,7 @@
       "title": "Bobi and Me"
     },
     "style": {
-      "backgroundColor": "#00d"
+      "backgroundColor": "#dd0"
     }
   },
   {
@@ -60,6 +72,9 @@
         { "txt": "Driving liscence", "doneAt": null},
         { "txt": "Coding power", "doneAt": 187111111}
       ]
+    },
+    "style": {
+      "backgroundColor":"#00d"
     }
   },
   {
@@ -69,6 +84,9 @@
     "info": {
       "title": "jQuery",
       "url": "https://www.youtube.com/embed/QhQ4m5g2fhA"
+    },
+    "style" :{
+      "backgroundColor":"#00d"
     }
   }
 ]

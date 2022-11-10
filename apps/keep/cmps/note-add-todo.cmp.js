@@ -19,6 +19,9 @@ hi
                             id:'x'+ this.noteId++ 
                         }
                     ]
+                },
+                style: {
+                    backgroundColor: "#878"
                 }
             },
             noteId: 101

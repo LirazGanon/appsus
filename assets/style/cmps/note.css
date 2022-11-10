@@ -1,7 +1,6 @@
 .note {
     min-width: 150px;
     width: minmax(100px, 250px);
-    background: var(--updates);
     break-inside: avoid;
     border-radius: 13px;
     overflow: hidden;

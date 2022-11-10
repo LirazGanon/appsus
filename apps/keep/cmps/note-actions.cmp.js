@@ -1,3 +1,5 @@
+import chooseColor from './choose-color.cmp.js'
+
 export default {
     name: 'note-actions',
     props: ['id'],
@@ -17,12 +19,12 @@ export default {
             <img src="assets/img/envelope.png" alt="" />
         </div>
         <div class="action color-note">
-            <img src="assets/img/paint.png"/>
-            
+            <img src="assets/img/paint.png" @click="pickColor = !pickColor"/>
         </div>
-        <div class="action edit-note">
+        <div class="action pin-note">
             <img src="assets/img/pin.png" alt="" />
         </div>
+        <choose-color v-if="pickColor" @setColor="setColor">
     </div>
 </section>
 `,
@@ -34,11 +36,17 @@ export default {
     methods: {
         deleteNote() {
             this.$emit('delete')
+        },
+        setColor(theme){
+            console.log('theme:', theme)
+            this.pickColor = false
         }
 
     },
     computed: {
+        
     },
     components: {
+        chooseColor
     }
 }
