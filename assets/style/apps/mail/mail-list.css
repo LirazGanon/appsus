@@ -8,6 +8,26 @@ article.mail-preview .fade {
     opacity: 0.4;
 }
 
+.content {
+    display: flex;
+    align-items: center;
+    width: 0;
+    flex-grow: 1;
+}
+
+.title {
+    white-space: nowrap;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+}
+
+.desc {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow-x: hidden;
+    color: #5f6368;
+    font-weight: initial;
+}
 
 
 .read {
@@ -41,9 +61,11 @@ article.mail-preview {
     z-index: 2;
     cursor: pointer;
 }
+
 .mail-list li:hover .fade {
     opacity: 1;
 }
+
 .mail-list .actions {
     display: none;
     right: 0;

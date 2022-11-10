@@ -14,7 +14,6 @@ export default {
     <mail-nav @setCompose="isComposing = !isComposing" />
     <section class="main-content">
     <mail-header />  <!-- TODO -->
-        <!-- <img src="assets/img/mail-logo.png" alt="" /> -->
         <mail-filter @filter="setFilter" />
         <tab-filter @tabFilter="setTabFilter" :unread="unreadCount" />
         <!--<router-link to="/mail/edit">Send a new mail</router-link>-->

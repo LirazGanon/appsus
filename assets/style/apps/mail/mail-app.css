@@ -4,12 +4,12 @@
 }
 
 .app-nav {
-    flex-basis: 10%;
+    flex-basis: 250px;
     background-color: var(--nav-bg);
+    height: 100vh;
 }
 
 
 .main-content {
-
-    max-width: 90%;
+    flex: 1;
 }

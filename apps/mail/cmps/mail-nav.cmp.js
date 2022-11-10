@@ -2,6 +2,11 @@ export default {
     name: 'mail-nav',
     template:/*html*/ `
         <section class="app-nav">
+        <section class="logo-container flex" >
+        <i class="fa-solid fa-bars"></i>
+        <img src="assets/img/mail-logo.png" class="mail-logo" />
+         <p>Amail</p>
+        </section>
         <button @click="composed" class="composed"><i class="fa-solid fa-pencil"></i>&nbsp Compose</button>
         <ul class="clean-list">
             <li>

@@ -32,6 +32,3 @@ export function showSuccessMsg(txt) {
 export function showErrorMsg(txt) {
     showUserMsg({txt, type: 'error'})
 }
-export function setUnreadObject(cb) {
-  cb()
-}

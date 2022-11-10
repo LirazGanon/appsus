@@ -6,10 +6,12 @@ export default {
         <input type="checkbox" name="check-email" class="fade" @click.stop @input="checked(mail)" :checked="mail.isChecked">
         <i class="fa-regular fa-star fade"></i>
      
-        <h3 class="grow clean-space text-overflow">{{ senderName }}</h3>
-        <h3 class="grow2 clean-space text-overflow">{{ mail.subject }}</h3>
-        <h3 class="grow3 clean-space text-overflow">{{ mail.body}} </h3>
-        <h3 class="grow clean-space sentAt">{{ formattedTime}} </h3>
+        <h3 class="clean-space">{{ senderName }}</h3>
+        <section class="content">
+            <h3 class="title clean-space">{{ mail.subject }}</h3>
+            <h3 class="desc clean-space">{{ mail.body}} </h3>
+        </section>
+        <h3 class="clean-space sentAt">{{ formattedTime}} </h3>
 
             <section class="actions grow" :class="{read:mail.isRead}">
             <button @click.stop="removeMail(mail.id)"><i class="fa-regular fa-trash-can"></i></button>
