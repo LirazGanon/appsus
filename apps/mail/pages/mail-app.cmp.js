@@ -79,6 +79,7 @@ export default {
         },
         addMail(mail) {
             this.mails.unshift(mail)
+            this.isComposing = false
             this.updateReadCount(mail)
         },
         updateReadCount(mail) {
