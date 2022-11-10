@@ -3,7 +3,7 @@
 A brief description of what this project does and who it's for
 
 
-![Logo](https://i.ibb.co/nDm8x9B/9ad8a8faee984b7988bf44020cfaefaa.png)
+![Logo](https://lirazganon.github.io/appsus/assets/img/main-logo.png)
 
 
 ## Tech Stack
