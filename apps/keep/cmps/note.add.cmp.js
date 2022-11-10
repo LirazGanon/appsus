@@ -11,8 +11,11 @@ export default {
 
     
     <form @submit.prevent="addNote" class="add-note flex center">
-        <input v-model="noteToEdit.info.txt" type="type"/>
+        <input v-model="noteToEdit.info.txt" :type="search"/>
+       <label>
+           <input type="file" @change="changeNoteType">
 
+       </label>
         <button>submit</button>
     </form>
 
@@ -24,16 +27,20 @@ export default {
             noteToEdit: noteService.getEmptyNote()
         }
     },
-    created(){
+    created() {
         console.log(this.noteToEdit);
     },
     methods: {
         addNote() {
             const note = JSON.parse(JSON.stringify(this.noteToEdit))
-            this.$emit('addNote',note)
+            this.$emit('addNote', note)
             this.noteToEdit = noteService.getEmptyNote()
         },
-       
+        changeNoteType(ev) {
+            this.noteToEdit.type = "note-img"
+            // this.noteToEdit.info.url = 
+        }
+
         // saveURL(ev) {
         //     let url = ev.target.value
         //     let newUrl = url.match(/(http:|https:)?(\/\/)?(www\.)?(youtube.com|youtu.be)\/(watch|embed)?(\?v=|\/)?(\S+)?/)

@@ -39,10 +39,11 @@ function save(note) {
 function getEmptyNote(type = 'note-txt') {
     return {
         id: '',
-        type,
+        type: 'note-txt',
         isPinned: false,
         info: {
-            txt: ''
+            txt: '',
+            
         }
     }
 }

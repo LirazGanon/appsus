@@ -1,4 +1,3 @@
-import noteActions from './note-actions.cmp.js'
 
 
 export default {
@@ -11,8 +10,7 @@ template: `
         <img :src="note.info.url" alt="" />
     </div>
     <!-- <pre>{{note}}</pre> -->
-    <note-actions 
-        @delete="deleteNote" />
+
         
 </section>
 `,
@@ -28,6 +26,5 @@ methods: {
 computed: {
 },
 components: {
-    noteActions
 }
 }

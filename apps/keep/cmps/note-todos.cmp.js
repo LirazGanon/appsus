@@ -1,13 +1,12 @@
-import noteActions from './note-actions.cmp.js'
 
 export default {
     props: ['note'],
     template: `
-<section class="note">
+<section>
     <h2>{{note.info.label}}</h2>
     
     <ul>
-        <li class="flex" v-for="todo in notDoneTodos" :v-if="todo.doneAt">
+        <li class="flex" v-for="todo in notDoneTodos" :v-if="todo.doneAt" @click="setDone(todo.id)">
             <p :class="{done:todo.doneAt}">{{todo.txt}}</p>
             <button @click="deleteTodo(todo.id)">x</button>
         </li>
@@ -22,8 +21,7 @@ export default {
         <input type="text" v-model="todo"/>
         <button>add</button>
     </form>
-        <note-actions 
-        @delete="deleteNote" />
+    
        
         <!-- <pre>{{info}}</pre> -->
 
@@ -35,9 +33,7 @@ export default {
         }
     },
     methods: {
-        deleteNote() {
-            this.$emit('delete', this.note.id)
-        },
+
         addTodo() {
             if (!this.todo) return
             this.$emit('add',this.note.id,this.todo)
@@ -45,6 +41,10 @@ export default {
         },
         deleteTodo(todoId){
             this.$emit('deleteTodo',this.note.id,todoId)
+        },
+        setDone(todoId){
+            console.log('todoId:',this.note.id, todoId)
+            this.$emit('todoDone',this.note.id,todoId)
         }
         
     },
@@ -58,6 +58,6 @@ export default {
 
     },
     components: {
-        noteActions
+        
     }
 }

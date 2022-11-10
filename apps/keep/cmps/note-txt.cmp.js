@@ -1,13 +1,13 @@
-import noteActions from './note-actions.cmp.js'
+
+import { noteService } from "../services/note.service.js"
+
 
 export default {
     props: ['note'],
     template: `
 <section class="note">
     <p>{{ note.info.txt }}</p>
-    <note-actions 
-        @delete="deleteNote"
-        />
+    
 <!-- <pre>{{note}}</pre> -->
 </section>
 `,
@@ -24,6 +24,5 @@ export default {
     computed: {
     },
     components: {
-        noteActions
     }
 }

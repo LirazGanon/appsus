@@ -1,4 +1,4 @@
-.notes-list {
+.note-list {
     margin-block-start: 20px;
     column-count: 1;
     column-gap: 10px;
@@ -10,19 +10,24 @@
 }
 
 @media (min-width: 600px) {
-    .notes-list {
+    .note-list {
         column-count: 2;
     }
 }
 
 @media (min-width: 900px) {
-    .notes-list {
+    .note-list {
         column-count: 3;
     }
 }
 
 @media (min-width: 1200px) {
-    .notes-list {
+    .note-list {
         column-count: 4;
+    }
+}
+@media (min-width: 1600px) {
+    .note-list {
+        column-count: 5;
     }
 }

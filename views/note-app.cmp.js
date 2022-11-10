@@ -1,29 +1,22 @@
+import { eventBus, showErrorMsg, showSuccessMsg } from "../services/event-bus.service.js"
 import { noteService } from "../apps/keep/services/note.service.js"
 
-import noteTxt from "../apps/keep/cmps/note-txt.cmp.js"
-import noteImg from "../apps/keep/cmps/note-img.cmp.js"
-// import noteVideo from "../apps/keep/cmps/note-video.cmp.js"
-import noteTodos from "../apps/keep/cmps/note-todos.cmp.js"
 
+import noteList from "../apps/keep/cmps/note-list.cmp.js"
 import noteAdd from "../apps/keep/cmps/note.add.cmp.js"
-import { eventBus, showErrorMsg, showSuccessMsg } from "../services/event-bus.service.js"
+
 //TODO:fix the img
 {/* <img src="assets/img/note-logo.png" alt="" /> */ }
 
 export default {
     template:/*html*/ `
-	<section class="main-content">
+	< class="main-content">
 
         <note-add @addNote="add"/>
-        <section class="notes-list">
-            <component
-                v-for="note in notes"
-                :note="note"
-                :is="note.type"
-                @delete="deleteNote"
-                @add="addTodo" 
-                @deleteTodo="deleteTodo"/>  
-        </section>
+        <note-list
+             v-if="notes" 
+             :notes="notes"
+             @delete="deleteNote" />
 
 	</section>
 	`,
@@ -62,9 +55,9 @@ export default {
             console.log('noteId:', noteId)
             console.log('todo:', todo)
         },
-        deleteTodo(noteId,todoId){
-            noteService.deleteTodo(noteId,todoId)
-                .then(note=>{
+        deleteTodo(noteId, todoId) {
+            noteService.deleteTodo(noteId, todoId)
+                .then(note => {
                     const idx = this.notes.findIndex(note => note.id === noteId)
                     this.notes[idx] = note
                 })
@@ -75,10 +68,9 @@ export default {
     computed: {
     },
     components: {
-        noteTxt,
-        noteImg,
+
         // noteVideo,
-        noteTodos,
-        noteAdd
+        noteAdd,
+        noteList
     }
 }
