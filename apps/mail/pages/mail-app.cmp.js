@@ -99,9 +99,6 @@ export default {
         setFilter(filterBy) {
             this.filterBy.subject = filterBy.subject
         },
-        setFilter(val) {
-            this.filterByCat= val
-        },
         setTabFilter(filterBy) {
             this.filterBy.type = filterBy
         },
