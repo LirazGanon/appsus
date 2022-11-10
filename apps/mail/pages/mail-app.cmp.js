@@ -5,19 +5,30 @@ import mailFilter from '../cmps/mail-filter.cmp.js'
 import mailList from '../cmps/mail-list.cmp.js'
 import tabFilter from '../cmps/mail-tab-filter.cmp.js'
 import mailCompose from '../cmps/mail-compose.cmp.js'
+import mailNav from '../cmps/mail-nav.cmp.js'
 
 export default {
     name: 'mail-app',
     template:/*html*/ `
-	<section class="mail-app main-content">
-	  <!-- <img src="assets/img/mail-logo.png" alt="" /> -->
-	  <mail-filter @filter="setFilter" />
-      <tab-filter @tabFilter="setTabFilter" :unread="unreadCount"/>
-	   <!--<router-link to="/mail/edit">Send a new mail</router-link>-->
-    <button @click="isComposing = !isComposing">Compose</button>
-	  <mail-list v-if="mails" @remove="removeMail" :mails="mailsToShow" @viewMail="showMail" @check="checkMail" @read="toggleRead"/>
-      <mail-compose v-if="isComposing" @mailSent=addMail />
-	</section>
+    <section class="mail-app">
+    <mail-nav @setCompose="isComposing = !isComposing" />
+    <section class="main-content">
+    <mail-header />  <!-- TODO -->
+        <!-- <img src="assets/img/mail-logo.png" alt="" /> -->
+        <mail-filter @filter="setFilter" />
+        <tab-filter @tabFilter="setTabFilter" :unread="unreadCount" />
+        <!--<router-link to="/mail/edit">Send a new mail</router-link>-->
+        <mail-list
+        v-if="mails"
+        @remove="removeMail"
+        :mails="mailsToShow"
+        @viewMail="showMail"
+        @check="checkMail"
+            @read="toggleRead"
+        />
+        <mail-compose v-if="isComposing" @mailSent="addMail" />
+        </section>
+    </section>
 	`,
     data() {
         return {
@@ -122,6 +133,7 @@ export default {
         mailFilter,
         mailList,
         tabFilter,
-        mailCompose
+        mailCompose,
+        mailNav
     }
 }

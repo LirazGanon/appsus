@@ -1,0 +1,15 @@
+.mail-app {
+    display: flex;
+
+}
+
+.app-nav {
+    flex-basis: 10%;
+    background-color: var(--nav-bg);
+}
+
+
+.main-content {
+
+    max-width: 90%;
+}
