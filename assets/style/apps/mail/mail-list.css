@@ -19,6 +19,7 @@ article.mail-preview .fade {
     white-space: nowrap;
     overflow-x: hidden;
     text-overflow: ellipsis;
+    margin-inline-end: 10px;
 }
 
 .desc {
@@ -35,7 +36,12 @@ article.mail-preview .fade {
     background-color: var(--mail-unread-bg) !important;
 
 }
-
+.mail-list .sender{
+    width: 130px;
+}
+.mail-list .sentAt{
+    width: 60px;
+}
 .mail-list .sentAt,
 .mail-list .actions {
     text-align: right;
@@ -70,6 +76,8 @@ article.mail-preview {
     display: none;
     right: 0;
     background-color: #fff;
+    /* position: absolute; */
+    color: var(--txt);
 }
 
 .mail-list li:hover .actions {

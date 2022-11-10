@@ -11,7 +11,7 @@ export default {
     name: 'mail-app',
     template:/*html*/ `
     <section class="mail-app">
-    <mail-nav @setCompose="isComposing = !isComposing" />
+    <mail-nav @setCompose="isComposing = !isComposing" @filter="setFilterBy"/>
     <section class="main-content">
     <mail-header />  <!-- TODO -->
         <mail-filter @filter="setFilter" />
@@ -37,6 +37,7 @@ export default {
                 from: '',
                 type: ''
             },
+            filterByCat:'',
             unreadCount: {
                 Primary: 0,
                 Promotion: 0,
@@ -98,6 +99,9 @@ export default {
         },
         setFilter(filterBy) {
             this.filterBy.subject = filterBy.subject
+        },
+        setFilter(val) {
+            this.filterByCat= val
         },
         setTabFilter(filterBy) {
             this.filterBy.type = filterBy
