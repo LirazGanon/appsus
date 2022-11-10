@@ -9,8 +9,8 @@ export default {
         </section>
         <button @click="composed" class="composed"><i class="fa-solid fa-pencil"></i>&nbsp Compose</button>
         <ul class="clean-list">
-            <li>
-            <i class="fa-solid fa-inbox"></i>
+            <li @click="filter('')">
+            <i class="fa-solid fa-inbox" ></i>
             &nbsp
             Inbox
             </li>
@@ -19,20 +19,26 @@ export default {
             &nbsp
             Starred
             </li>
-            <li>
+            <li @click="filter('')">
             <i class="fa-solid fa-circle"></i>
             &nbsp
             Unread
+            </li>
+            <li>
+            <i class="fa-regular fa-paper-plane"></i>
+            &nbsp
+            Sent
             </li>
         </ul>
         </section>
     `,
     data() {
-        return {
-          
-        }
+
     },
     methods: {
+        filter(val){
+            this.$emit('filter', val)
+        },
         composed(){
             this.$emit('setCompose')
         }
