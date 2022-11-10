@@ -39,22 +39,10 @@ function save(mail) {
     }
 }
 
-function getEmptyMail() {
-    return {
-        id: '',
-        subject: '',
-        body: '',
-        isRead: false,
-        sentAt: '',
-        from: 'your-mail@someting.com',
-        to: 'recived-mail@someting.com'
-    }
-}
-
 
 function getNextMailId(mailId) {
     return storageService.query(MAIL_KEY)
-        .then(mails => {
+    .then(mails => {
             var idx = mails.findIndex(mail => mail.id === mailId)
             if (idx === mails.length - 1) idx = -1
             return mails[idx + 1].id
@@ -67,9 +55,22 @@ function _createMails() {
                 mails = _getDefaultMails()
                 utilService.saveToStorage(MAIL_KEY, mails)
             }
-        return mails
-    }
-
+            return mails
+        }
+        
+        function getEmptyMail() {
+            return {
+                id: '',
+                subject: '',
+                body: '',
+                isRead: false,
+                sentAt: Date.now(),
+                from: 'your-mail@someting.com',
+                to: '',
+                type: 'Social'
+            }
+        }
+        
 function _getDefaultMails() {
     return [
         {

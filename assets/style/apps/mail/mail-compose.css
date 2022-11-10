@@ -1,0 +1,43 @@
+section.mail-compose-wrapper{
+    position: absolute;
+    left: 5%;
+    bottom: 20px;
+    background-color: #fff;
+    z-index: 10;
+    box-shadow: rgb(0 0 0 / 20%) 0 2px 6px;
+    box-shadow: 0px 8px 10px 1px rgb(0 0 0 / 14%), 0px 3px 14px 2px rgb(0 0 0 / 12%), 0px 5px 5px -3px rgb(0 0 0 / 20%);
+}
+section.mail-compose{
+   
+    padding: 0 20px;
+}
+.mail-compose form > * {
+display: block;
+}
+.mail-compose input,
+.mail-compose textarea{
+    outline: none;
+    border: none;
+}
+
+.mail-compose-header{
+background-color: var(--mail-unread-bg);
+padding:15px 20px;
+}
+
+.mail-compose span.subject{
+    border-bottom: 1px solid var(--mail-border);
+    border-top: 1px solid var(--mail-border);
+}
+
+.mail-compose button{
+    margin: 15px 0;
+    background-color: #0b57d0;
+    font-family: OpenSans, sans-serif;
+    font-size: 1em;
+    color: #fff;
+    padding:5px 1em;
+    border-radius: 1em;
+    border: none;
+    
+}
