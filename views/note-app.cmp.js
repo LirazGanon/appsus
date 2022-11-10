@@ -5,6 +5,7 @@ import { noteService } from "../apps/keep/services/note.service.js"
 import noteAddTxt from "../apps/keep/cmps/note-add-txt.cmp.js"
 import noteAddImg from "../apps/keep/cmps/note-add-img.cmp.js"
 import noteAddVideo from "../apps/keep/cmps/note-add-video.cmp.js"
+import noteAddTodo from "../apps/keep/cmps/note-add-todo.cmp.js"
 
 
 import noteList from "../apps/keep/cmps/note-list.cmp.js"
@@ -15,32 +16,53 @@ import noteFilter from "../apps/keep/cmps/note.filter.cmp.js"
 
 export default {
     template:/*html*/ `
-	<section class="main-content">
-
+	
+    <section class="note-app">
+        <note-filter @filter="filter"  />
         
-        <note-filter @filter="filter" />
-        <note-add-txt @addNote="add"/>
-        <note-add-img @addNote="add"/>
-        <note-add-video @addNote="add"/>
+        <section class=" main-content">
+            <section>
+            <note-add-txt @addNote="add" v-if="addType === 'txt'"/>
+            <note-add-img @addNote="add"  v-if="addType === 'img'"/>
+            <note-add-video @addNote="add" v-if="addType === 'video'"/>
+            
+            <div class="fake-note">
+            <p @click="addType='txt'" v-if="!addType">text...</p>
+                <div class="add-note-controls">
+                    <button @click="addType='txt'">txt</button>
+                    <button @click="addType='img'">img</button>
+                    <button @click="addType='video'">video</button>
+                </div>
+            </div>
+        </section> 
+        <section class="note-content">
+        
+                <section>
+                <span>Pinned</span>
+                <note-list
+                    v-if="notes" 
+                    :notes="notesToShow"
+                    @delete="deleteNote" />
+                </section>
 
-
-        <section>
-        <span>Pinned</span>
-        <note-list
-            v-if="notes" 
-            :notes="notesToShow"
-            @delete="deleteNote" />
+                <section>
+                <span>unPinned</span>
+                <note-list
+                    v-if="notes" 
+                    :notes="notesToShowNonPinned"
+                    @delete="deleteNote" />
+                </section>
         </section>
+    </section>
 
-        <section>
-        <span>unPinned</span>
-        <note-list
-            v-if="notes" 
-            :notes="notesToShowNonPinned"
-            @delete="deleteNote" />
-        </section>
 
-	</section>
+    </section>
+        <note-add-todo />
+
+       
+        
+        
+       
 	`,
     data() {
         return {
@@ -49,12 +71,13 @@ export default {
                 title: '',
                 type: ''
             },
-            addType: 1
+            addType: null
         }
     },
     created() {
         noteService.query()
             .then(notes => this.notes = notes)
+        eventBus.on('updated', this.updateNote)
     },
     methods: {
         add(note) {
@@ -62,7 +85,11 @@ export default {
                 .then(note => {
                     this.notes.push(note)
                     showSuccessMsg('note added!')
+                    this.addType = null
                 })
+        },
+        updateNote(note) {
+            noteService.save(note)
         },
         deleteNote(noteId) {
             noteService.remove(noteId)
@@ -102,7 +129,7 @@ export default {
             return this.notes.filter(note =>
                 regex.test(note.info.title)
                 && note.type.includes(this.filterBy.type)
-                && note.isPinned 
+                && note.isPinned
             )
         },
         notesToShowNonPinned() {
@@ -120,6 +147,7 @@ export default {
         noteAddTxt,
         noteAddVideo,
         noteList,
+        noteAddTodo,
         noteAddImg
     }
 }

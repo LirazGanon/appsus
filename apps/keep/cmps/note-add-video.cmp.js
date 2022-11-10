@@ -7,8 +7,8 @@ export default {
     <!-- <component></component> -->
 
     
-    <form @submit.prevent="addNote" class="add-note flex center">
-        <input v-model="note.info.title" :type="search" placeholder="title.."/>
+    <form @submit.prevent="addNote" class="add-note">
+        <input v-model="note.info.title" :type="search" placeholder="title.." ref="title"/>
         <input v-model="note.info.url" @change="onFileChange" :type="search" placeholder="Youtube URL.."/>
         <button>submit</button>
     </form>
@@ -29,9 +29,9 @@ export default {
             }
         }
     },
-    created() {
-
-    },
+    mounted() {
+        this.$refs.title.focus()
+      },
     methods: {
         addNote() {
             const note = JSON.parse(JSON.stringify(this.note))
@@ -48,23 +48,18 @@ export default {
         },
         onFileChange(ev) {
             let url = ev.target.value
-            let newUrl = url.match(/(http:|https:)?(\/\/)?(www\.)?(youtube.com|youtu.be)\/(watch|embed)?(\?v=|\/)?(\S+)?/)
-            newUrl[5] = '/embed'
-            newUrl.splice(0,1)
-            newUrl = newUrl.join('')
-            console.log(newUrl)
-            this.note.info.url = newUrl
+         
+
+            var regExp = /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+            var match = url.match(regExp);
+            if (match && match[2].length == 11) {
+                this.note.info.url = `https://www.youtube.com/embed/${match[2]}` 
+             
+            }
+            
         }
 
-        // saveURL(ev) {
-        //     let url = ev.target.value
-        //     let newUrl = url.match(/(http:|https:)?(\/\/)?(www\.)?(youtube.com|youtu.be)\/(watch|embed)?(\?v=|\/)?(\S+)?/)
-        //     newUrl[5] = '/embed'
-        //     newUrl.splice(0,1)
-        //     newUrl = newUrl.join('')
-        //     console.log(newUrl)
-        //     this.info.videoURL = newUrl
-        // }
+     
 
     },
     computed: {

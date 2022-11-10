@@ -8,3 +8,9 @@
 .main-content{
   min-height: 75vh;
 }
+
+.mail-app,
+.note-app{
+  min-height: 75vh;
+
+}

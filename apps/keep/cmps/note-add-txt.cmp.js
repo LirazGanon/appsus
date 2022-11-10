@@ -7,9 +7,9 @@ export default {
     <!-- <component></component> -->
 
     
-    <form @submit.prevent="addNote" class="add-note flex center">
+    <form @submit.prevent="addNote" class="add-note">
         <input v-model="note.info.title" :type="search" placeholder="title.."/>
-        <input v-model="note.info.txt" :type="search" placeholder="text..."/>
+        <input v-model="note.info.txt" :type="search" placeholder="text..." ref="txt"/>
         <button>submit</button>
     </form>
 
@@ -29,9 +29,9 @@ export default {
             }
         }
     },
-    created() {
-
-    },
+    mounted() {
+        this.$refs.txt.focus()
+      },
     methods: {
         addNote() {
             const note = JSON.parse(JSON.stringify(this.note))

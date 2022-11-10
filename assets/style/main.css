@@ -24,5 +24,6 @@
 
 
 @import 'apps/note/note-app.css';
+@import 'apps/note/note-nav.css';
 @import 'cmps/note-add.css';
 @import 'cmps/note.css';

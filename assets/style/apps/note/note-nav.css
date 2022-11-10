@@ -1,0 +1,9 @@
+.app-nav label {
+    padding: 7px 20px;
+    border-bottom-right-radius: 1em;
+    border-top-right-radius: 1em;
+}
+
+.app-nav label:hover {
+    background-color: lightgray;
+}

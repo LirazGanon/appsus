@@ -1,18 +1,46 @@
-.add-note{
-    background: var(--add-mail);
+.add-note {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.add-note>*{
-    border: none;
-    height: 2.5rem;
-    margin-block: 10px;
+.add-note>* {
+  border: none;
+  height: 2.5rem;
+  margin-block: 10px;
 }
 
-.add-note>input{
-    border-radius: 13px 0 0 13px;
-    outline: none;
+.fake-note {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.add-note>button{
-    border-radius: 0 13px 13px 0;
+.fake-note {
+  border: none;
+  height: 2.5rem;
+  margin-block: 10px;
 }
+
+.add-note>input,
+.fake-note>p {
+  margin: 0;
+  min-width: 400px;
+  background: var(--inp-bg);
+  color: var(--txt);
+  outline: none;
+  font-size: .9em;
+}
+
+.add-note>input:focus {
+  border-bottom: 1px solid var(--inp-bg);
+}
+
+.fake-note>p {
+  line-height: 2.5em;
+  padding-inline-start: 10px;
+  font-size: 0.9em;
+  color: var(--txt-light);
+}
+
+.add-note>button {}

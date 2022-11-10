@@ -7,6 +7,13 @@
    
 }
 
+.note-app{
+    display: flex;
+}
+.note-app >*:last-child{
+    flex: 1;
+}
+
 @media (min-width: 600px) {
     .note-list {
         column-count: 2;
@@ -24,13 +31,8 @@
         column-count: 4;
     }
 }
-@media (min-width: 1500px) {
+/* @media (min-width: 1500px) {
     .note-list {
         column-count: 5;
     }
-}
-@media (min-width: 1800px) {
-    .note-list {
-        column-count: 6;
-    }
-}
+} */

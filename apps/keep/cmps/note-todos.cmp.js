@@ -30,19 +30,25 @@ export default {
 `,
     data() {
         return {
-            newNote: this.note,
+            
             todo: {
                 txt: '',
                 doneAt: null,
             }
+            
         }
     },
     methods: {
-
+        updateEmit(note){
+            this.$emit('updated', note)
+        },
         addTodo() {
+            const newNote = this.clone()
             if (!this.todo.txt) return
+
             // this.newNote
             // this.$emit('add',this.note.id,this.todo)
+            this.updateEmit(newNote)
             this.todo = ''
         },
         deleteTodo(todoId) {
@@ -51,7 +57,11 @@ export default {
         setDone(todoId) {
             console.log('todoId:', this.note.id, todoId)
             this.$emit('todoDone', this.note.id, todoId)
+        },
+        clone(){
+            return JSON.parse(JSON.stringify(this.note))
         }
+        
 
     },
     computed: {

@@ -3,12 +3,11 @@ export default {
 <section>
 
 
-<form @submit.prevent="addNote" class="add-note flex center">
-        <input v-model="note.info.title" type="search" placeholder="title.."/>
+<form @submit.prevent="addNote" class="add-note">
+        <input v-model="note.info.title" type="search" placeholder="title.." ref="title"/>
         <input v-model="note.info.url" @change="onFileChange" type="file" placeholder=""/>
         <button>submit</button>
     </form>
-hi
 </section>
 `,
     data() {
@@ -26,6 +25,9 @@ hi
             }
         }
     },
+    mounted() {
+        this.$refs.title.focus()
+      },
     methods: {
         addNote(){
             const note = JSON.parse(JSON.stringify(this.note))
