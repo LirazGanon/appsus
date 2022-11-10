@@ -14,8 +14,8 @@ import noteList from "../apps/keep/cmps/note-list.cmp.js"
 import noteFilter from "../apps/keep/cmps/note.filter.cmp.js"
 
 //TODO:fix the addTODO
-{/* <img src="assets/img/note-logo.png" alt="" /> */ }
 
+{/* <img src="assets/img/note-logo.png" alt="" /> */ }
 export default {
     name:'note-app',
     template:/*html*/ `

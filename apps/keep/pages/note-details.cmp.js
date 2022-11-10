@@ -35,13 +35,11 @@ export default {
                 })
         },
         saveNote() {
-            noteService.save(noteToEdit).then(note => {
+            noteService.save(this.noteToEdit).then(note => {
                 showSuccessMsg('note saved')
                 this.$router.push('/note')
-            }
+                 }
             )
-
-
         },
         back() {
 

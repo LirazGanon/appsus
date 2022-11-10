@@ -51,15 +51,6 @@ export default {
             // this.noteToEdit.info.url = 
         }
 
-        // saveURL(ev) {
-        //     let url = ev.target.value
-        //     let newUrl = url.match(/(http:|https:)?(\/\/)?(www\.)?(youtube.com|youtu.be)\/(watch|embed)?(\?v=|\/)?(\S+)?/)
-        //     newUrl[5] = '/embed'
-        //     newUrl.splice(0,1)
-        //     newUrl = newUrl.join('')
-        //     console.log(newUrl)
-        //     this.info.videoURL = newUrl
-        // }
 
     },
     computed: {
