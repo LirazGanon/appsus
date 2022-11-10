@@ -2,27 +2,36 @@ import { eventBus, showErrorMsg, showSuccessMsg } from "../services/event-bus.se
 import { noteService } from "../apps/keep/services/note.service.js"
 
 
+import noteAddTxt from "../apps/keep/cmps/note-add-txt.cmp.js"
+import noteAddImg from "../apps/keep/cmps/note-add-img.cmp.js"
+
+
 import noteList from "../apps/keep/cmps/note-list.cmp.js"
-import noteAdd from "../apps/keep/cmps/note.add.cmp.js"
+import noteFilter from "../apps/keep/cmps/note.filter.cmp.js"
 
 //TODO:fix the img
 {/* <img src="assets/img/note-logo.png" alt="" /> */ }
 
 export default {
     template:/*html*/ `
-	< class="main-content">
-
-        <note-add @addNote="add"/>
+	<section class="main-content">
+    <note-filter @filter="filter"/>
+    <note-add-txt @addNote="add"/>
+    <note-add-img @addNote="add"/>
         <note-list
              v-if="notes" 
-             :notes="notes"
+             :notes="notesToShow"
              @delete="deleteNote" />
 
 	</section>
 	`,
     data() {
         return {
-            notes: null
+            notes: null,
+            filterBy: {
+                title: '',
+                type: ''
+            }
         }
     },
     created() {
@@ -46,6 +55,10 @@ export default {
 
                 })
         },
+        filter(filterBy) {
+            this.filterBy = filterBy
+        }
+        ,
         addTodo(noteId, todo) {
             noteService.addTodo(noteId, todo)
                 .then(note => {
@@ -66,11 +79,15 @@ export default {
         }
     },
     computed: {
+        notesToShow() {
+            const regex = new RegExp(this.filterBy.title, 'i')
+            return this.notes.filter(note => regex.test(note.info.title) && note.type.includes(this.filterBy.type))
+        }
     },
     components: {
-
-        // noteVideo,
-        noteAdd,
-        noteList
+        noteFilter,
+        noteAddTxt,
+        noteList,
+        noteAddImg
     }
 }

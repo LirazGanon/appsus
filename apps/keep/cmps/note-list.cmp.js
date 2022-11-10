@@ -3,9 +3,8 @@ import notePreview from '../cmps/note-preview.cmp.js'
 export default {
     props: ['notes'],
     template: `
-<section>
 
-<ul class="note-list">
+<ul class="note-list clean-list">
     <li v-for='note in notes' class="note">
         <note-preview
         :note="note"
@@ -16,7 +15,6 @@ export default {
 </ul>
 
 
-</section>
 `,
     data() {
         return {

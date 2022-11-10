@@ -6,6 +6,7 @@ export default {
     props: ['note'],
     template: `
 <section class="note">
+    <h2>{{ note.info.title }}</h2>
     <p>{{ note.info.txt }}</p>
     
 <!-- <pre>{{note}}</pre> -->
@@ -17,8 +18,8 @@ export default {
         }
     },
     methods: {
-        deleteNote(){
-            this.$emit('delete',this.note.id)
+        deleteNote() {
+            this.$emit('delete', this.note.id)
         }
     },
     computed: {

@@ -23,14 +23,13 @@
 }
 
 .img-placeholder{
-    height: 250px;
-    background: #eee;
     margin-inline:20px ;
     margin-block-end: 15px;
-    border-radius: 13px;
 }
 
-
+.img-placeholder>img{
+    border-radius: 13px;
+}
 
 
 
