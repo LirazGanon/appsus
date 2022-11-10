@@ -1,3 +1,76 @@
-article.mail-preview{
-    gap:10px;
+article.mail-preview h3 {
+    font-family: OpenSans, sans-serif;
+    font-size: 1rem;
 }
+
+article.mail-preview .fade {
+    color: black;
+    opacity: 0.4;
+}
+
+
+
+.read {
+    color: var(--txt-light);
+    background-color: var(--mail-unread-bg) !important;
+
+}
+
+.mail-list .sentAt,
+.mail-list .actions {
+    text-align: right;
+}
+
+article.mail-preview {
+    gap: 10px;
+    line-height: 2.8em;
+    padding: 0 15px;
+}
+
+.mail-list li {
+    border-bottom: 1px solid var(--mail-border);
+    overflow: hidden;
+}
+
+.mail-list li:first-child {
+    border-top: 1px solid var(--mail-border);
+}
+
+.mail-list li:hover {
+    box-shadow: inset 1px 0 0 #dadce0, inset -1px 0 0 #dadce0, 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
+    z-index: 2;
+    cursor: pointer;
+}
+.mail-list li:hover .fade {
+    opacity: 1;
+}
+.mail-list .actions {
+    display: none;
+    right: 0;
+    background-color: #fff;
+}
+
+.mail-list li:hover .actions {
+    display: inline-block;
+}
+
+.mail-list li:hover .sentAt {
+    display: none;
+}
+
+.mail-list .actions>* {
+    border-radius: 50%;
+    background-color: transparent;
+    border: none;
+    font-size: 1em;
+    padding: 12px;
+    margin: 0 3px;
+}
+
+.mail-list .actions>*:hover {
+    background-color: var(--btn-hover-bg);
+}
+
+/* .mail-preview section{
+    flex-basis: 30%;
+} */

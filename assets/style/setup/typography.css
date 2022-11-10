@@ -13,3 +13,7 @@
     font-family: roberto-black;
     src: url('../fonts/Roboto-Black.ttf');
 }
+@font-face {
+    font-family: OpenSans;
+    src: url('../fonts/OpenSans-Regular.ttf');
+}

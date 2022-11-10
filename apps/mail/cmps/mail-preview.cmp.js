@@ -3,14 +3,18 @@ export default {
     name:'mail-preview',
     template:/*html*/ `
         <article @click="view(mail.id)" class="mail-preview flex align-center" :class="{read:mail.isRead}">
-        <input type="checkbox" name="check-email">
-        <i class="fa-regular fa-star"></i> 
-            <h2 class="grow clean-space">{{ senderName }}</h2>
-            <h2 class="grow2 clean-space">{{ shortedSubject }}</h2>
-            <h3 class="grow3 clean-space text-overflow">{{ mail.body}} </h3>
-            <h3 class="clean-space">{{ formattedTime}} </h3>
-            <section class="actions">
-            <button @click.stop="removeMail(mail.id)">x</button>
+        <input type="checkbox" name="check-email" class="fade" @click.stop @input="checked(mail)" :checked="mail.isChecked">
+        <i class="fa-regular fa-star fade"></i>
+     
+        <h3 class="grow clean-space text-overflow">{{ senderName }}</h3>
+        <h3 class="grow2 clean-space text-overflow">{{ mail.subject }}</h3>
+        <h3 class="grow3 clean-space text-overflow">{{ mail.body}} </h3>
+        <h3 class="grow clean-space sentAt">{{ formattedTime}} </h3>
+
+            <section class="actions grow" :class="{read:mail.isRead}">
+            <button @click.stop="removeMail(mail.id)"><i class="fa-regular fa-trash-can"></i></button>
+            <button @click.stop="toggleRead(mail)"><i class="fa-regular fa-envelope"></i></button>
+            <button @click.stop=""><i class="fa-regular fa-clock"></i></button>
         </section>
         </article>
     `,methods: {
@@ -19,11 +23,23 @@ export default {
         },
         removeMail(mailId){
             this.$emit('remove', mailId)
+        },
+        checked(mail){
+            this.$emit('check', mail)
+        },
+        toggleRead(mail){
+            this.$emit('read', mail)
         }
     },
     computed: {
         formattedTime() {
-            return new Intl.DateTimeFormat('en-US').format(this.mail.sentAt)
+            const timeStamp = this.mail.sentAt
+            if ((Date.now() - timeStamp) > 24*60*60*1000){
+                let options = { day: "numeric", month: "short" }
+                return new Date(timeStamp).toLocaleDateString("en-US", options);
+            }
+            const date = new Date(timeStamp);
+            return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
         },
         shortedSubject() {
             const str = this.mail.subject
@@ -39,6 +55,6 @@ export default {
             const str = this.mail.from  
             const strs = str.split('@') 
             return strs[0]
-        }
+        },
     }
 }
