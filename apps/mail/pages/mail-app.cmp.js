@@ -11,7 +11,7 @@ export default {
     name: 'mail-app',
     template:/*html*/ `
     <section class="mail-app">
-    <mail-nav @setCompose="isComposing = !isComposing" @filter="setFilterBy"/>
+    <mail-nav @setCompose="isComposing = !isComposing"/>
     <section class="main-content">
     <mail-header />  <!-- TODO -->
         <mail-filter @filter="setFilter" />
