@@ -79,7 +79,8 @@ function _getDefaultMails() {
             isRead: false,
             sentAt: Date.now() - utilService.getRandomInt(0, 100000000),
             from: 'messages-noreply@linkedin.com',
-            to: 'lirazganon@gmail.com'
+            to: 'lirazganon@gmail.com',
+            type: 'Social'
         },
         {
             id: utilService.makeId(),
@@ -88,7 +89,8 @@ function _getDefaultMails() {
             isRead: false,
             sentAt: Date.now() - utilService.getRandomInt(0, 100000000),
             from: 'info@meetup.com',
-            to: 'lirazganon@gmail.com'
+            to: 'lirazganon@gmail.com',
+            type: 'Promotion',
         },
         {
             id: utilService.makeId(),
@@ -99,7 +101,8 @@ function _getDefaultMails() {
             isRead: true,
             sentAt: Date.now() - utilService.getRandomInt(0, 100000000),
             from: 'CodeSandbox@meetup.com',
-            to: 'lirazganon@gmail.com'
+            to: 'lirazganon@gmail.com',
+            type: 'Promotion',
         },
         {
             id: utilService.makeId(),
@@ -113,7 +116,8 @@ function _getDefaultMails() {
             isRead: true,
             sentAt: Date.now() - utilService.getRandomInt(0, 100000000),
             from: 'brandcrowd@hello.brandcrowd.com',
-            to: 'lirazganon@gmail.com'
+            to: 'lirazganon@gmail.com',
+            type: 'Promotion',
         },
         {
             id: utilService.makeId(),
@@ -125,7 +129,8 @@ function _getDefaultMails() {
             isRead: false,
             sentAt: Date.now() - utilService.getRandomInt(0, 100000000),
             from: 'arguscarhire@email.arguscarhire.com',
-            to: 'lirazganon@gmail.com'
+            to: 'lirazganon@gmail.com',
+            type: 'Social',
         },
         {
             id: utilService.makeId(),
@@ -138,7 +143,8 @@ function _getDefaultMails() {
             isRead: false,
             sentAt: Date.now() - utilService.getRandomInt(0, 100000000),
             from: 'mongodbteam@mongodb.com',
-            to: 'lirazganon@gmail.com'
+            to: 'lirazganon@gmail.com',
+            type: 'Promotion',
         },
         {
             id: utilService.makeId(),
@@ -149,7 +155,8 @@ function _getDefaultMails() {
             isRead: false,
             sentAt: Date.now() - utilService.getRandomInt(0, 100000000),
             from: 'erin@cloudykitchen.com',
-            to: 'lirazganon@gmail.com'
+            to: 'lirazganon@gmail.com',
+            type: 'Promotion',
         },
         {
             id: utilService.makeId(),
@@ -161,7 +168,8 @@ function _getDefaultMails() {
             isRead: true,
             sentAt: Date.now() - utilService.getRandomInt(0, 100000000),
             from: 'CodePen@cloudykitchen.com',
-            to: 'lirazganon@gmail.com'
+            to: 'lirazganon@gmail.com',
+            type: 'Promotion',
         },
         {
             id: utilService.makeId(),
@@ -174,7 +182,8 @@ function _getDefaultMails() {
             isRead: false,
             sentAt: Date.now() - utilService.getRandomInt(0, 100000000),
             from: 'linkedin@cloudykitchen.com',
-            to: 'lirazganon@gmail.com'
+            to: 'lirazganon@gmail.com',
+            type: 'Social',
         },
         {
             id: utilService.makeId(),
@@ -184,7 +193,8 @@ function _getDefaultMails() {
             isRead: false,
             sentAt: Date.now() - utilService.getRandomInt(0, 100000000),
             from: 'linkedin@cloudykitchen.com',
-            to: 'coursera@gmail.com'
+            to: 'coursera@gmail.com',
+            type: 'Promotion',
         },
         {
             id: utilService.makeId(),
@@ -213,7 +223,8 @@ function _getDefaultMails() {
             isRead: false,
             sentAt: Date.now() - utilService.getRandomInt(0, 100000000),
             from: 'walmart@walmart.com',
-            to: 'lirazganon@gmail.com'
+            to: 'lirazganon@gmail.com',
+            type: 'Promotion',
         },
         {
             id: utilService.makeId(),
@@ -224,10 +235,12 @@ Follow folders to get more detailed insights, reported instantly or once per day
             isRead: false,
             sentAt: Date.now() - utilService.getRandomInt(0, 100000000),
             from: 'dropbox@dropbox.com',
-            to: 'lirazganon@gmail.com'
+            to: 'lirazganon@gmail.com',
+            type: 'Social',
         },
 
 
     ]
 }
+
 
