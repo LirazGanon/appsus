@@ -37,7 +37,6 @@ export default {
                 from: '',
                 type: ''
             },
-            filterByCat:'',
             unreadCount: {
                 Primary: 0,
                 Promotion: 0,
