@@ -1,9 +1,10 @@
 import { mailService } from "../services/mail.service.js"
-import { showErrorMsg, showSuccessMsg, setUnreadObject } from '../../../services/event-bus.service.js'
+import { showErrorMsg, showSuccessMsg } from '../../../services/event-bus.service.js'
 
 import mailFilter from '../cmps/mail-filter.cmp.js'
 import mailList from '../cmps/mail-list.cmp.js'
-import tabFilter from '../cmps/mail-tab-filter.js'
+import tabFilter from '../cmps/mail-tab-filter.cmp.js'
+import mailCompose from '../cmps/mail-compose.cmp.js'
 
 export default {
     name: 'mail-app',
@@ -12,8 +13,10 @@ export default {
 	  <!-- <img src="assets/img/mail-logo.png" alt="" /> -->
 	  <mail-filter @filter="setFilter" />
       <tab-filter @tabFilter="setTabFilter" :unread="unreadCount"/>
-	  <router-link to="/mail/edit">Send a new mail</router-link>
+	   <!--<router-link to="/mail/edit">Send a new mail</router-link>-->
+    <button @click="isComposing = !isComposing">Compose</button>
 	  <mail-list v-if="mails" @remove="removeMail" :mails="mailsToShow" @viewMail="showMail" @check="checkMail" @read="toggleRead"/>
+      <mail-compose v-if="isComposing" @mailSent=addMail />
 	</section>
 	`,
     data() {
@@ -29,6 +32,7 @@ export default {
                 Promotion: 0,
                 Social: 0
             },
+            isComposing: false
         }
     },
     created() {
@@ -48,6 +52,11 @@ export default {
             mailService.remove(mailId)
                 .then(() => {
                     const idx = this.mails.findIndex(mail => mail.id === mailId)
+                    let mail = this.mails[idx]
+                    if (!mail.isRead){
+                        this.unreadCount[mail.type] -= 1
+                        this.unreadCount.Primary -= 1
+                    }
                     this.mails.splice(idx, 1)
                     showSuccessMsg(`Mail ${mailId} deleted`)
                 })
@@ -58,8 +67,7 @@ export default {
         },
         toggleRead(mail) {
             mail.isRead = !mail.isRead
-            this.unreadCount[mail.type] += mail.isRead ? -1 : +1
-            this.unreadCount.Primary += mail.isRead ? -1 : +1
+            this.updateReadCount(mail)
             mailService.save(mail)
                 .then(() => {
                     showSuccessMsg(`Mail ${mail.id} read`)
@@ -69,7 +77,14 @@ export default {
                     showErrorMsg('Cannot read mail')
                 })
         },
-
+        addMail(mail) {
+            this.mails.unshift(mail)
+            this.updateReadCount(mail)
+        },
+        updateReadCount(mail) {
+            this.unreadCount[mail.type] += mail.isRead ? -1 : +1
+            this.unreadCount.Primary += mail.isRead ? -1 : +1
+        },
         setFilter(filterBy) {
             this.filterBy.subject = filterBy.subject
         },
@@ -105,6 +120,7 @@ export default {
     components: {
         mailFilter,
         mailList,
-        tabFilter
+        tabFilter,
+        mailCompose
     }
 }
