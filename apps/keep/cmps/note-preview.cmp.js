@@ -16,10 +16,12 @@ export default {
         <component
         :note="note"
         :is="note.type"
-            @save="saveNote"/>  
+        @save="saveNote"/>  
           
         <note-actions 
-              @delete="deleteNote"/>
+            :id="note.id"
+              @delete="deleteNote"
+              />
     </section>
    
         
@@ -29,11 +31,11 @@ export default {
         }
     },
     methods: {
-        deleteNote(){
-            this.$emit('delete',this.note.id)
+        deleteNote() {
+            this.$emit('delete', this.note.id)
         },
-        saveNote(){
-            this.$emit('save',this.note.id)
+        saveNote() {
+            this.$emit('save', this.note.id)
         }
     },
     computed: {

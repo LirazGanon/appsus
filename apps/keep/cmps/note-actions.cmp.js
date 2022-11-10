@@ -1,4 +1,6 @@
 export default {
+    name:'note-actions',
+    props:['id'],
     template: `
 <section>
 <div class="actions">
@@ -6,7 +8,10 @@ export default {
             <img src="../../assets/img/trash.png" alt="" @click="deleteNote" />
         </div>
         <div class="action edit-note">
-            <img src="../../assets/img/editing.png" alt="" />
+            <router-link :to="'/note/' + id">
+                <img src="../../assets/img/editing.png" 
+                />
+            </router-link>
         </div>
         <div class="action send-note">
             <img src="../../assets/img/envelope.png" alt="" />

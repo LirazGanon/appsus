@@ -1,5 +1,6 @@
 
 export default {
+    name:'note-todo',
     props: ['note'],
     template: `
 <section>
@@ -61,8 +62,6 @@ export default {
         clone(){
             return JSON.parse(JSON.stringify(this.note))
         }
-        
-
     },
     computed: {
         doneTodos() {

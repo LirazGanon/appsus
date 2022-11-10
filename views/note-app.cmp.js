@@ -8,13 +8,16 @@ import noteAddVideo from "../apps/keep/cmps/note-add-video.cmp.js"
 import noteAddTodo from "../apps/keep/cmps/note-add-todo.cmp.js"
 
 
+import noteDetails from "../apps/keep/pages/note-details.cmp.js"
+
 import noteList from "../apps/keep/cmps/note-list.cmp.js"
 import noteFilter from "../apps/keep/cmps/note.filter.cmp.js"
 
-//TODO:fix the img
+//TODO:fix the addTODO
 {/* <img src="assets/img/note-logo.png" alt="" /> */ }
 
 export default {
+    name:'note-app',
     template:/*html*/ `
 	
     <section class="note-app">
@@ -57,7 +60,6 @@ export default {
 
 
     </section>
-        <note-add-todo />
 
        
         
@@ -148,6 +150,7 @@ export default {
         noteAddVideo,
         noteList,
         noteAddTodo,
-        noteAddImg
+        noteAddImg,
+        noteDetails
     }
 }
