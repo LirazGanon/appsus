@@ -4,7 +4,6 @@
 }
 
 .app-nav {
-    flex-basis: 250px;
     background-color: var(--nav-bg);
     height: 90vh;
 }
