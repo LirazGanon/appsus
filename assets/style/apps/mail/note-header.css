@@ -1,12 +1,21 @@
-
 .note-header .logo-container {
     align-items: center;
     margin: 10px 10px 20px 10px;
 }
 
 .note-header .logo-container .note-logo {
-    height: 50px;
-    width: 50px;
+    height: 40px;
+    width: 40px;
+}
+
+.logo-container>button{
+    height: 48px;
+    width: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border: none;
 }
 
 .note-header .logo-container>.note-logo~p {
@@ -16,3 +25,28 @@
     top: 5px;
 }
 
+.end-icons {
+    display: flex;
+}
+
+.end-icons img {
+    width: 30px;
+    margin-inline-end: 10px;
+    cursor: pointer;
+}
+
+.end-icons .user-wrapper {
+    position: relative;
+}
+
+.end-icons .user-wrapper img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+}
+
+.end-icons .user-img {
+    position: absolute;
+    padding: 4px;
+    border-radius: 50%;
+}

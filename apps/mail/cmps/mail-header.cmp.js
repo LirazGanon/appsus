@@ -4,18 +4,22 @@ export default {
     template:/*html*/ `
 	<section class="app-header flex justify-between align-center">
 	  <section class="logo-container flex">
+      <button>
 	    <i class="fa-solid fa-bars"></i>
+      </button>
 	    <img src="assets/img/mail-logo.png" class="mail-logo" />
 	    <p>Amail</p>
 	  </section>
-	  <section class="mail-filter">
-	    <input
-	      @input="filter"
-	      v-model="filterBy.subject"
-	      type="text"
-	      placeholder="Search"
-	    />
-	  </section>
+	  
+    <label>
+    <span><i class="fa-solid fa-magnifying-glass"></i></span>
+        <input
+        @input="filter"
+        v-model="filterBy.subject"
+        type="text"
+        placeholder="Search"
+        />
+    </label>
 	  <span class="end-icons">
 	    <img src="../assets/img/svg/help.svg" alt="" />
 	    <img src="../assets/img/svg/setting.svg" alt="" />

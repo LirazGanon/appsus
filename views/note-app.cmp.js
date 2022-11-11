@@ -21,10 +21,10 @@ export default {
     name: 'note-app',
     template:/*html*/ `
 	
-    <note-header /> 
+    <note-header @filterTitle="filterTitle"/> 
     <section class="note-app">
         
-    <note-filter @filter="filter"  />
+    <note-filter @filter="filterType"  />
         
         <section class=" main-content">
             <section class="above-notes ">
@@ -131,10 +131,12 @@ export default {
                     showErrorMsg(`cannot delete note`)
                 })
         },
-        filter(filterBy) {
-            this.filterBy = filterBy
-        }
-        ,
+        filterType(filterBy) {
+            this.filterBy.type = filterBy.type
+        },
+        filterTitle(filterBy){
+            this.filterBy.title = filterBy.title
+        },
         addTodo(noteId, todo) {
             noteService.addTodo(noteId, todo)
                 .then(note => {
