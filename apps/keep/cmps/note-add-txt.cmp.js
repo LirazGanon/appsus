@@ -26,9 +26,7 @@ export default {
                     title: '',
                     txt: '',
                 },
-                style: {
-                    backgroundColor: "#548"
-                }
+                style: { backgroundColor: '#61c3ed' }
             }
         }
     },

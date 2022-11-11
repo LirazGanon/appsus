@@ -19,17 +19,15 @@ export default {
                     url: "",
                     title: ""
                 },
-                style: {
-                    backgroundColor: "#00d"
-                }
+                style: { backgroundColor: '#61c3ed' }
             }
         }
     },
     mounted() {
         this.$refs.title.focus()
-      },
+    },
     methods: {
-        addNote(){
+        addNote() {
             const note = JSON.parse(JSON.stringify(this.note))
             this.$emit('addNote', note)
             console.log('this.note:', this.note)
@@ -37,7 +35,7 @@ export default {
         onFileChange(e) {
             const file = e.target.files[0]
             this.note.info.url = URL.createObjectURL(file)
-          }
+        }
     },
     computed: {
     },

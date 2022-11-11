@@ -10,6 +10,7 @@ export default {
         <note-preview
         :note="note"
          @delete="deleteNote"
+         @saveNote="saveNote"
           />
 
     </li>
@@ -26,6 +27,9 @@ export default {
         deleteNote(noteId) {
             this.$emit('delete', noteId)
         },
+        saveNote(noteId){
+            console.log('noteId:', noteId)
+        }
     },
     computed: {
     },

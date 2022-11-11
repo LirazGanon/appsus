@@ -8,7 +8,7 @@
       "txt": "Fullstack Me Baby!"
     },
     "style": {
-      "backgroundColor":"#0dd"
+      "backgroundColor":"#de6457"
     }
   },
   {
@@ -21,7 +21,7 @@
       "txt": "Don't forget to get lunch!"
     },
     "style": {
-      "backgroundColor":"#d0d"
+      "backgroundColor":"#dae86d"
     }
   },
   {
@@ -34,7 +34,7 @@
       "txt": "Delete eventBus MSG"
     },
     "style": {
-      "backgroundColor":"#00d"
+      "backgroundColor":"#94ed61"
     }
   },
   {
@@ -47,7 +47,7 @@
       "txt": "pick up Bobi 16:00"
     },
     "style": {
-      "backgroundColor":"#d0d"
+      "backgroundColor":"#61c3ed"
     }
   },
   {
@@ -59,7 +59,7 @@
       "title": "Bobi and Me"
     },
     "style": {
-      "backgroundColor": "#dd0"
+      "backgroundColor": "#5d70de"
     }
   },
   {
@@ -74,7 +74,7 @@
       ]
     },
     "style": {
-      "backgroundColor":"#00d"
+      "backgroundColor":"#cb75f0"
     }
   },
   {
@@ -86,7 +86,7 @@
       "url": "https://www.youtube.com/embed/QhQ4m5g2fhA"
     },
     "style" :{
-      "backgroundColor":"#00d"
+      "backgroundColor":"#de6457"
     }
   }
 ]

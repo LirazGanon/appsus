@@ -22,13 +22,14 @@ const routerOptions = {
 		{
 			path: '/note',
 			component: noteApp,
-	
+			children: [
+				{
+					path: '/note/edit/:id',
+					component: noteEdit
+				}
+				,
+			]
 		},
-		{
-			path: '/note/:id',
-			component: noteEdit
-		}
-		,
 		{
 			path: '/mail',
 			component: mailApp

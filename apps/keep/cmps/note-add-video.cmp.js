@@ -25,7 +25,8 @@ export default {
                 info: {
                     title: '',
                     url: '',
-                }
+                },
+                style: { backgroundColor: '#61c3ed' }
             }
         }
     },
@@ -44,9 +45,7 @@ export default {
                     title: '',
                     url: '',
                 },
-                style: {
-                    backgroundColor: "#888"
-                }
+                style: { backgroundColor: '#61c3ed' }
             }
         },
         onFileChange(ev) {

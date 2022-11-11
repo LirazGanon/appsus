@@ -42,8 +42,8 @@ export default {
         </section> 
         <section class="note-content">
         
-                <section>
-                <span>Pinned</span>
+            <section>
+                <div class="notes-pin">Pinned</div>
                 <note-list
                     v-if="notes" 
                     :notes="notesToShow"
@@ -51,7 +51,7 @@ export default {
                 </section>
 
                 <section>
-                <span>unPinned</span>
+                <div class="notes-pin">unPinned</div>
                 <note-list
                     v-if="notes" 
                     :notes="notesToShowNonPinned"
@@ -60,12 +60,9 @@ export default {
         </section>
     </section>
 
-
+    <router-view/>
+    
     </section>
-
-       
-        
-        
        
 	`,
     data() {

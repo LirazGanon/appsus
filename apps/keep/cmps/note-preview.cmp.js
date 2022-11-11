@@ -1,3 +1,4 @@
+import { eventBus, showErrorMsg, showSuccessMsg } from "../../../services/event-bus.service.js"
 
 import noteTxt from "../cmps/note-txt.cmp.js"
 import noteImg from "../cmps/note-img.cmp.js"
@@ -16,12 +17,13 @@ export default {
         <component
         :note="note"
         :is="note.type"
-        @save="saveNote"/>  
+       />  
           
         <note-actions 
-            :id="note.id"
+            :note="note"
               @delete="deleteNote"
-              
+              @setColor="setColor"
+              @pinNote="pinNote"
               />
     </section>
    
@@ -35,11 +37,22 @@ export default {
         deleteNote() {
             this.$emit('delete', this.note.id)
         },
-        saveNote() {
-            this.$emit('save', this.note.id)
+        setColor(theme) {
+            this.note.style = theme
+            eventBus.emit('updated', this.deepCopy)
+            showSuccessMsg('color changed!')
+        },
+        pinNote() {
+            this.note.isPinned = !this.note.isPinned
+            eventBus.emit('updated', this.deepCopy)
+            showSuccessMsg('Note Pinned')
+
         }
     },
     computed: {
+        deepCopy() {
+            return JSON.parse(JSON.stringify(this.note))
+        }
     },
     components: {
         noteTxt,

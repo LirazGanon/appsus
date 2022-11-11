@@ -10,6 +10,19 @@ export default {
         <ul class="clean-list">
             <li>
                 <label>
+                <i class="fa-solid fa-inbox"></i>
+                    <span>inbox</span>
+                    <input
+                    type="radio"
+                    v-model="filterBy.type"
+                    @input="filter"
+                    checked
+                    value=""/>
+                </label>
+            </li>
+            <li>
+                <label>
+                <i class="fa-solid fa-font"></i>
                     <span>text</span>
                     <input
                     type="radio"
@@ -19,8 +32,10 @@ export default {
                 </label>
             </li>
             <li>
+
                 <label>
-                        <span><i class="fa-solid fa-camera"></i></span>
+                <i class="fa-solid fa-camera">
+                        <span></i>images</span>
                         <input
                         type="radio"
                         v-model="filterBy.type"
@@ -31,12 +46,24 @@ export default {
             </li>
             <li>
                 <label>
+                <i class="fa-solid fa-list"></i>
                     <span>Todos</span>
                     <input
                     type="radio"
                     v-model="filterBy.type"
                     @input="filter"
                     value="note-todos"/>
+                </label>
+            </li>
+            <li>
+                <label>
+                <i class="fa-brands fa-youtube"></i>
+                    <span>videos</span>
+                    <input
+                    type="radio"
+                    v-model="filterBy.type"
+                    @input="filter"
+                    value="note-video"/>
                 </label>
             </li>
         </ul>

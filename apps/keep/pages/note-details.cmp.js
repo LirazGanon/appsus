@@ -40,9 +40,6 @@ export default {
                 this.$router.push('/note')
                  }
             )
-        },
-        back() {
-
         }
     },
     computed: {
@@ -51,5 +48,11 @@ export default {
         }
     },
     components: {
+    },
+    watch:{
+        noteId(){
+            this.loadNote()
+        }
+        
     }
 }
