@@ -14,7 +14,7 @@ export default {
     <mail-header  @filter="setFilter"/> 
     <section class="mail-app">
     <mail-nav @setCompose="isComposing = !isComposing" @filterBy='setTabFilter' :unread="unreadCount.Primary"/>
-    <section class="main-content">
+    <section class="main-content" v-if="!getParamsId">
      
         <tab-filter @tabFilter="setTabFilter" :unread="unreadCount" />
         <!--<router-link to="/mail/edit">Send a new mail</router-link>-->
@@ -29,6 +29,8 @@ export default {
         />
         <mail-compose v-if="isComposing" @mailSent="addMail" @composeClose="isComposing=false"/>
         </section>
+    <router-view v-else/>
+
     </section>
 	`,
     data() {
@@ -148,6 +150,9 @@ export default {
 
             return mails
 
+        },
+        getParamsId(){
+            return this.$route.params.id
         }
     },
     components: {

@@ -55,11 +55,23 @@
   position: relative;
 }
 
-.new-todo>button {
+
+
+.new-todo>button:hover {
+  background: #3555;
+  color: var(--inp-bg);
+}
+
+.add-note>button:not(.btn-add-todo) {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  right: 5%;
+  bottom: -25px;
+  left: 0;
+}
+
+.btn-add-todo {
+  position: absolute;
+  bottom: 8px ;
+  right: 10px;
   background: transparent;
   border: 2px solid var(--txt);
   border-radius: 50%;
@@ -67,17 +79,6 @@
   width: 24px;
   font-size: .6em;
   transition: background .3s, color .3s;
-}
-
-.new-todo>button:hover {
-  background: #3555;
-  color: var(--inp-bg);
-}
-
-.add-note>button {
-  position: absolute;
-  bottom: -25px;
-  left: 0;
 }
 
 .add-note-controls{

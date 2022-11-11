@@ -17,7 +17,7 @@ export default {
              v-model="todo.txt"
              type="text" 
              />
-             <button><i class="fa-solid fa-plus"></i></button>
+             <button class="btn-add-todo"><i class="fa-solid fa-plus"></i></button>
              <input v-model="todo.txt" :type="search" placeholder="Finish Homework" ref="todo"/>
         </form>
         <button>submit</button>

@@ -50,7 +50,7 @@ export default {
                 <div class="fake-note"  v-if="!addType">
                     <p 
                     :class="animateOut"
-                    @click="addType='txt'" 
+                    @click="addType='txt'"
                    >
                         text...
                     </p>
@@ -154,7 +154,7 @@ export default {
         setType(type) {
             this.addType = type
             if (this.state) {
-                setTimeout(() => this.state = false, 500)
+                setTimeout(() => this.state = false, 0)
             }
         }
     },

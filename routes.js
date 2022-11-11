@@ -32,12 +32,18 @@ const routerOptions = {
 		},
 		{
 			path: '/mail',
-			component: mailApp
+			component: mailApp,
+			children: [
+				{
+					path: '/mail/:id',
+					component: mailDetails
+				}
+			]
 		},
-		{
-			path: '/mail/:id',
-			component: mailDetails
-		}
+		// {
+		// 	path: '/mail/:id',
+		// 	component: mailDetails
+		// }
 
 	],
 }
