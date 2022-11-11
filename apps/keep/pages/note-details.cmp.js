@@ -5,12 +5,16 @@ import { noteService } from "../services/note.service.js"
 export default {
     name: 'note-dits',
     template: `
-<section>
-    <form  @submit="saveNote">
+<section class="full-screen">
+    
+    <form  @submit="saveNote" :v-if="noteToEdit.type=== 'note-txt' ">
         <input type="search" v-model="noteToEdit.info.title" />
         <input type="search" v-model="noteToEdit.info.txt" />
         <button>save!</button>
     </form>
+
+    
+
     <router-link to="/note">back</router-link>
     <pre v-if="noteToEdit" >
         {{ noteToEdit }}
@@ -38,7 +42,7 @@ export default {
             noteService.save(this.noteToEdit).then(note => {
                 showSuccessMsg('note saved')
                 this.$router.push('/note')
-                 }
+            }
             )
         }
     },
@@ -49,10 +53,10 @@ export default {
     },
     components: {
     },
-    watch:{
-        noteId(){
+    watch: {
+        noteId() {
             this.loadNote()
         }
-        
+
     }
 }

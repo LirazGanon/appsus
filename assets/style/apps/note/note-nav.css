@@ -1,4 +1,26 @@
-.app-nav label {
+
+.app-nav .logo-container{
+    align-items: center;
+    margin: 10px 10px 20px 10px;
+}
+
+.app-nav .logo-container .note-logo{
+    height: 50px;
+    width: 50px;
+}
+
+.app-nav .logo-container > .note-logo ~p{
+    align-self: flex-end;
+    background: linear-gradient(45deg,yellow,green,red);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.app-nav .logo-container:has(.note-logo){
+    margin-block-end: calc(15vh - 60px);
+}
+/* .app-nav label {
     padding: 7px 20px;
     border-bottom-right-radius: 1em;
     border-top-right-radius: 1em;
@@ -6,4 +28,34 @@
 
 .app-nav label:hover {
     background-color: lightgray;
+} */
+
+.app-nav .note-filters li{
+    padding: 0;
+    margin: 0;
+    display: flex;
 }
+
+
+.app-nav li label{
+
+    padding: 7px 20px;
+    margin-inline-end: 7px;
+    cursor: pointer;
+    width: 250px;
+
+}
+.app-nav label input{
+    display: none;
+}
+
+.app-nav label span{
+    margin-inline-start: 10px;
+}
+
+
+.app-nav li:has(label input:checked){
+    background: #d3e3fd;
+    font-weight: 600;
+} 
+

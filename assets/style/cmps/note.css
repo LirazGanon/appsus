@@ -1,4 +1,4 @@
-.notes-pin{
+.notes-pin {
     border-bottom: 1px solid var(--txt);
     margin-inline-end: 20px;
 }
@@ -6,17 +6,19 @@
 .note {
     width: minmax(100px, 250px);
     break-inside: avoid;
-    border-radius: 13px;
+    /* border-radius: 8px; */
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    box-shadow: 0 0 0 1px #3335;
 }
-.note:not(:first-child){
+
+.note:not(:first-child) {
     margin-top: 10px;
 }
 
 
-.note > h2{
+.note>h2 {
     margin-block-start: 10px;
     margin-inline-start: 10px;
 }
@@ -27,31 +29,31 @@
     line-break: anywhere;
 }
 
-.note > iframe{
+.note>iframe {
     align-self: center;
     margin-block-end: 10px;
 }
 
-.img-placeholder{
-    margin-inline:20px ;
+.img-placeholder {
+    margin-inline: 20px;
     margin-block-end: 15px;
 }
 
-.img-placeholder>img{
-    border-radius: 13px;
+.img-placeholder>img {
+    border-radius: 5px;
 }
 
-.note-content{
+.note-content {
     display: grid;
-    
+
 }
 
-.notes-grid{
+.notes-grid {
     flex-basis: 80%;
 }
 
 
-.note-filter{
+.note-filter {
     flex-basis: 20%;
     width: 100px;
 }
@@ -62,7 +64,7 @@
 .actions {
     display: flex;
     flex-direction: row-reverse;
-    background: #eee5;
+    background: #3335;
 }
 
 .action {
@@ -77,8 +79,97 @@
 
 .action:hover {
     background: #eee5;
+    scale: 1.1;
 }
 
-.done{
+.todo-item {
+    align-items: center;
+}
+
+.todo-item>*:not(:last-child) {
+    margin-inline-end: 10px;
+}
+
+.todo-item i {
+    margin-inline-start: 10px;
+    cursor: pointer;
+
+}
+
+.todo-item input {
+    flex: 1;
+    background: transparent;
+    outline: none;
+    border: none;
+    box-shadow: inset 0 -1px var(--txt);
+    padding: .9em .9em .3em .6em;
+    font-size: 1em;
+}
+
+.todo-item button {
+    margin-inline-start: auto;
+
+    margin-inline-end: 10px;
+    background: transparent;
+    border: none;
+    color: var(--txt);
+    font-size: 1.4em;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.todo-item button i {
+    transition: scale .5s;
+}
+
+.todo-item button:hover i {
+    scale: 1.4;
+}
+
+.done {
     text-decoration: line-through;
+}
+
+.add-todo {
+    margin-block: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-todo>input {
+    margin-inline-end: 10px;
+    background: transparent;
+    outline: none;
+    border: none;
+    box-shadow: inset 0 -1px var(--txt);
+    padding: .9em .9em .3em .6em;
+    font-size: 1em;
+}
+
+.add-todo>button {
+    height: 36px;
+    width: 36px;
+    background: transparent;
+    border: none;
+    color: var(--txt);
+    font-size: 1.4em;
+    cursor: pointer;
+    
+}
+
+.add-todo>button>i {
+    border: 3px solid var(--txt);
+    border-radius: 50%;
+    height: 36px;
+    width: 36px;
+}
+
+.add-todo>button>i::before{
+    position: relative;
+     top: 4px;
+     left: 1px; 
 }

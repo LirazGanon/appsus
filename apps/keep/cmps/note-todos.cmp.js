@@ -1,28 +1,45 @@
+import { eventBus } from "../../../services/event-bus.service.js"
+import { utilService } from "../../../services/util.service.js"
+
+
 
 export default {
-    name:'note-todo',
+    name: 'note-todo',
     props: ['note'],
     template: `
-<section>
+<section class="note">
     <h2>{{note.info.label}}</h2>
+
+    <ul class="clean-list">
+        <li class="todo-item flex" v-for="todo in notDoneTodos" :v-if="todo.doneAt" @click="setDone(todo.id)">
+            <i class="fa-regular fa-square"></i>
+            <input 
+                :class="{done:todo.doneAt}"
+                v-model="todo.txt" 
+                @click.stop
+                @change="updateTodo"/>
+            <button @click="deleteTodo">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </li>
+    </ul>
     
-    <ul>
-        <li class="flex" v-for="todo in notDoneTodos" :v-if="todo.doneAt" @click="setDone(todo.id)">
-            <p :class="{done:todo.doneAt}">{{todo.txt}}</p>
-            <button @click="deleteTodo">x</button>
+    <ul class="clean-list">
+        <li class="todo-item flex" v-for="todo in doneTodos" :v-if="todo.doneAt" @click="setDone(todo.id,false)">
+            <i class="fa-regular fa-square-check"></i>
+            <input
+                :class="{done:todo.doneAt}"
+                v-model="todo.txt"
+                @click.stop
+                @change="updateTodo"/>
+            <button @click="deleteTodo(todo.id)">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
         </li>
     </ul>
-    <pre>{{ newNote }}</pre>
-    <ul>
-        <li class="flex" v-for="todo in doneTodos" :v-if="todo.doneAt">
-            <p :class="{done:todo.doneAt}">{{todo.txt}}</p>
-            <input type="checkbox" />
-            <button @click="deleteTodo">x</button>
-        </li>
-    </ul>
-    <form @submit.prevent="addTodo" v-model="todo.txt">
-        <input type="text" v-model="todo"/>
-        <button>add</button>
+    <form @submit.prevent="addTodo" class="add-todo">
+        <input type="text" v-model="todo.txt"/>
+        <button><i class="fa-solid fa-plus"></i></button>
     </form>
     
        
@@ -31,48 +48,69 @@ export default {
 `,
     data() {
         return {
-            
+            newNote: this.clone(),
             todo: {
                 txt: '',
                 doneAt: null,
-            }
-            
+                id: utilService.makeId()
+            },
         }
     },
     methods: {
-        updateEmit(note){
-            this.$emit('updated', note)
+        updateEmit(note) {
+            eventBus.emit('updated', note)
+
         },
         addTodo() {
-            const newNote = this.clone()
             if (!this.todo.txt) return
+            this.newNote.info.todos.push(this.clone(this.todo))
 
-            // this.newNote
-            // this.$emit('add',this.note.id,this.todo)
-            this.updateEmit(newNote)
-            this.todo = ''
+            this.updateEmit(this.clone(this.newNote))
+            this.todo = {
+                txt: '',
+                doneAt: null,
+                id: utilService.makeId()
+            }
         },
         deleteTodo(todoId) {
-            this.$emit('deleteTodo', this.note.id, todoId)
+            console.log(todoId);
+            const idx = this.newNote.info.todos.findIndex(todo => todo.id === todoId)
+            this.newNote.info.todos.splice(idx, 1)
+            this.updateEmit(this.clone(this.newNote))
+
         },
-        setDone(todoId) {
-            console.log('todoId:', this.note.id, todoId)
-            this.$emit('todoDone', this.note.id, todoId)
+        setDone(todoId, isDone = true) {
+            const todo = this.newNote.info.todos.find(todo => todo.id === todoId)
+            isDone ?
+                todo.doneAt = Date.now() :
+                todo.doneAt = null
+
+            this.updateEmit(this.clone(this.newNote))
+
         },
-        clone(){
-            return JSON.parse(JSON.stringify(this.note))
+        updateTodo() {
+            this.updateEmit(this.clone(this.newNote))
         }
+        ,
+        clone(newNote = this.note) {
+            return JSON.parse(JSON.stringify(newNote))
+        },
+        getEmptyTodo() {
+            return
+        },
+
     },
     computed: {
         doneTodos() {
-            return this.note.info.todos.filter(todo => todo.doneAt)
+            return this.newNote.info.todos.filter(todo => todo.doneAt)
         },
         notDoneTodos() {
-            return this.note.info.todos.filter(todo => !todo.doneAt)
+            return this.newNote.info.todos.filter(todo => !todo.doneAt)
         },
         currNote() {
             return this.newNote
-        }
+        },
+
 
     },
     components: {
