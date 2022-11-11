@@ -5,7 +5,7 @@ export default {
 	<section class="app-header flex justify-between align-center">
 	  <section class="logo-container flex">
       <button>
-	    <i class="fa-solid fa-bars"></i>
+	      <i class="fa-solid fa-bars"></i>
       </button>
 	    <img src="assets/img/mail-logo.png" class="mail-logo" />
 	    <p>Amail</p>
