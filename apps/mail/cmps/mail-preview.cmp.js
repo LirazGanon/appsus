@@ -8,9 +8,9 @@ export default {
         <i v-if="!mail.IsStarred" class="fa-regular fa-star fade" @click.stop="setStarred(mail)" ></i>
         <i v-else class="fa-solid fa-star" @click.stop="setStarred(mail)" class="starred"></i>
      
-        <h3 class="clean-space sender text-overflow" :class="{'un-bold':mail.isRead}" >{{ senderName }}</h3>
+        <h3 class="clean-space sender text-overflow" :class="{'un-bold black':mail.isRead}" >{{ senderName }}</h3>
         <section class="content">
-            <h3 class="title clean-space" :class="{'un-bold':mail.isRead}"  >{{ mail.subject }}</h3>
+            <h3 class="title clean-space" :class="{'un-bold black':mail.isRead}"  >{{ mail.subject }}</h3>
             <h3 class="desc clean-space">{{ mail.body}} </h3>
         </section>
         <h3 class="clean-space sentAt">{{ formattedTime}} </h3>
