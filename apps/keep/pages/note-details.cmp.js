@@ -5,21 +5,29 @@ import { noteService } from "../services/note.service.js"
 export default {
     name: 'note-dits',
     template: `
-<section class="full-screen">
+<section class="full-screen" v-if="noteToEdit">
     
-    <form  @submit="saveNote" :v-if="noteToEdit.type=== 'note-txt' ">
+    <section>
+
+    
+    <form  
+    @submit="saveNote" 
+    :v-if="noteToEdit.type=== 'note-txt'"
+    class="flex flex-column">
+    
         <input type="search" v-model="noteToEdit.info.title" />
         <input type="search" v-model="noteToEdit.info.txt" />
         <button>save!</button>
     </form>
 
-    
+
 
     <router-link to="/note">back</router-link>
-    <pre v-if="noteToEdit" >
+    <pre  >
         {{ noteToEdit }}
         <router-link to="/note"></router-link>
     </pre>
+    </section>
 </section>
 `,
     data() {

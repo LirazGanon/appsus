@@ -6,7 +6,7 @@
 .note {
     width: minmax(100px, 250px);
     break-inside: avoid;
-    /* border-radius: 8px; */
+    border-radius: 5px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -158,18 +158,24 @@
     color: var(--txt);
     font-size: 1.4em;
     cursor: pointer;
-    
+
 }
 
+
 .add-todo>button>i {
+    transition: background .3s, color .3s;
     border: 3px solid var(--txt);
     border-radius: 50%;
     height: 36px;
     width: 36px;
 }
 
-.add-todo>button>i::before{
+.add-todo>button:hover i {
+    background: #3335;
+    color: var(--btn-hover-bg);
+}
+
+.add-todo>button>i::before {
     position: relative;
-     top: 4px;
-     left: 1px; 
+    top: 4px;
 }
