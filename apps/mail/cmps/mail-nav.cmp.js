@@ -6,7 +6,7 @@ export default {
     
         <button @click="composed" class="composed"><i class="fa-solid fa-pencil"></i>&nbsp Compose</button>
         <ul class="clean-list">
-            <li @click="filter('')" :class="{selected:!selected}" class="flex justify-between">
+            <li @click=" this.$router.push('/mail')" :class="{selected:!selected}" class="flex justify-between">
             <span>
             <i class="fa-solid fa-inbox" ></i>
             &nbsp

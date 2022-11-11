@@ -5,30 +5,39 @@ import { showErrorMsg, showSuccessMsg } from "../../../services/event-bus.servic
 export default {
     template:/*html*/`
 	<section v-if="mail" class="mail-details">
-    <section class="mail-details-header">
-    <router-link :to="'/mail/'  + prevMailId"  :class="{disable:!prevMailId}"><i class="fa-solid fa-angle-left"></i></router-link>
-    <router-link :to="'/mail/' + nextMailId"><i class="fa-solid fa-angle-right"></i></router-link>
-    </section>
+	  <section class="mail-details-header">
+	    <router-link :to="'/mail/'  + prevMailId" :class="{disable:!prevMailId}"
+	      ><i class="fa-solid fa-angle-left"></i
+	    ></router-link>
+	    <router-link :to="'/mail/' + nextMailId"
+	      ><i class="fa-solid fa-angle-right"></i
+	    ></router-link>
+	  </section>
 	  <hr />
-      <span class="mail-details-top flex justify-between align-center" >
-      <span class="title flex align-center">
-      <h2>{{ mail.subject }}</h2>
-      <p>{{mail.type}}</p>
-      </span>
-      <h3>{{ formattedTime }}</h3>
-      </span>
-      <span class="from flex align-center">
-     <img src="assets/img/unnamed.png" alt="">
-	  <h3> {{ mail.from }}</h3>
-      </span>
-	  <h3>to: {{ mail.to }}</h3>
-	  <p>body: {{ mail.body }}</p>
-	  <hr />
+	  <span class="mail-details-top flex justify-between align-center">
+	    <span class="title flex align-center">
+	      <h2>{{ mail.subject }}</h2>
+	      <p>{{mail.type}}</p>
+	    </span>
+	    <h3>{{ formattedTime }}</h3>
+	  </span>
 	
-	  
+	  <span class="from flex align-center">
+	    <img src="assets/img/unnamed.png" alt="" />
+	    <span>
+	      <span class="sender flex align-center">
+	        <h3>{{senderName}}</h3>
+	        <p><{{ mail.from }}></p>
+	      </span>
+	      <p>Me <i class="fa-solid fa-caret-down"></i></p> 
+	    </span>
+	  </span>
+
+	  <pre> {{ mail.body }}</pre>
+	  <hr />
 	</section>
 	<h3 v-else>Loading...</h3>
-	`, 
+	`,
     data() {
         return {
             mail: null,
@@ -70,6 +79,7 @@ export default {
     },
     computed: {
         mailId() {
+            if (!this.$route.params.id) return undefined
             return this.$route.params.id
         },
         formattedTime(){
@@ -81,11 +91,16 @@ export default {
               };
               return new Intl.DateTimeFormat('en-US', options).format(this.mail.sentAt)
         },
+        senderName(){
+            const str = this.mail.from  
+            const strs = str.split('@') 
+            return strs[0]
+        },
 
     },
     watch: {
         mailId() {
-            console.log('Mail Id changed')
+            if(this.mailId === undefined) return
             this.loadMail()
         }
     }

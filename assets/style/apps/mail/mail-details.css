@@ -1,5 +1,6 @@
 .mail-details{
     padding: 15px;
+    flex: 1
 }
 .mail-details-header{
     display: flex;
@@ -38,12 +39,36 @@ color: var(--txt-light);
     padding: 3px;
 }
 
-.mail-details span.from{
-    gap:10px
+.mail-details span.from>*{
+margin-inline-end: 10px;
 }
 
 .mail-details span.from img{
     border-radius: 50%;
+}
+.mail-details span.from h3{
+margin: 0;
+font-size: 1em;
+font-weight: 600;
+}
+
+.mail-details span.from p{
+    position: relative;
+margin: 0;
+padding: 0;
+background-color: transparent
+}
+
+span.from span.sender{
+    gap: 7px;
+}
+
+.mail-details pre{
+    margin-top: 50px;
+    white-space: pre-line;
+    font-size: 1.3em;
+    line-height: 1.5em;
+
 }
 
 
