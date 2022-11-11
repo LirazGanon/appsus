@@ -46,7 +46,7 @@ function getNextMailId(mailId) {
     .then(mails => {
             var idx = mails.findIndex(mail => mail.id === mailId)
             if (idx === mails.length - 1) idx = -1
-            return mails[idx + 1].id
+            return {nextId:mails[idx + 1].id, idx, mailLength:mails.length}
         })
 }
 

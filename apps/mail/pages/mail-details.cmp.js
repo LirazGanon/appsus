@@ -6,6 +6,7 @@ export default {
     template:/*html*/`
 	<section v-if="mail" class="mail-details">
 	  <section class="mail-details-header">
+      <p>{{mailIdx}} of {{mailCount}}</p>
 	    <router-link :to="'/mail/'  + prevMailId" :class="{disable:!prevMailId}"
 	      ><i class="fa-solid fa-angle-left"></i
 	    ></router-link>
@@ -42,7 +43,9 @@ export default {
         return {
             mail: null,
             nextMailId: null,
-            prevMailId: null
+            prevMailId: null,
+            mailIdx: null,
+            mailCount: null
         }
     },
     created() {
@@ -55,10 +58,13 @@ export default {
                     this.mail = mail
                     this.markAsRead()
                     mailService.getNextMailId(mail.id)
-                        .then(nextMailId => this.nextMailId = nextMailId)
+                        .then(nextMailId =>{
+                            this.nextMailId = nextMailId.nextId
+                            this.mailIdx = nextMailId.idx
+                            this.mailCount = nextMailId.mailLength
+                        } )
                     mailService.getPrevMailId(mail.id)
                         .then(prevMailId =>{
-                        console.log(prevMailId)
                             this.prevMailId = prevMailId
                         } )
                     }
@@ -69,7 +75,6 @@ export default {
             this.mail.isRead = true
             mailService.save(this.mail)
             .then(() => {
-                showSuccessMsg(`Mail ${this.mailId} read`)
             })
             .catch(err =>{
                 console.log('OOPS', err)

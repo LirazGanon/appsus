@@ -5,7 +5,15 @@
 .mail-details-header{
     display: flex;
     justify-content: flex-end;
+    align-items: center;
     margin-top: 10px;
+    gap: 5px;
+}
+.mail-details-header p{
+    margin: 0;
+    font-size: 0.8em;
+    color: var(--txt-light);
+
 }
 
 .mail-details-top h3{
