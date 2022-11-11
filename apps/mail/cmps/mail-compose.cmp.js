@@ -5,7 +5,10 @@ export default {
     name: 'mail-compose',
     template:/*html*/ `
     <section class="mail-compose-wrapper">
-    <section class="mail-compose-header">New Message</section>
+    <section class="mail-compose-header flex justify-between">
+    <h3>New Message</h3>
+    <i class="fa-solid fa-xmark" @click="composeClose"></i>
+    </section>
 	<section class="mail-compose">
     <form @submit.prevent="send">
     <span>
@@ -47,7 +50,10 @@ export default {
                     console.log('OOps:', err)
                     showErrorMsg(`Cannot send mail`)
                 })
-        }
+            },
+            composeClose(){
+                this.$emit('composeClose')
+            }
  
     }
 }

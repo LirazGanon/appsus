@@ -24,6 +24,16 @@ background-color: var(--mail-unread-bg);
 padding:15px 20px;
 }
 
+.mail-compose-header h3{
+    font-family: OpenSans, sans-serif;
+    margin: 0;
+    font-size: 1em;
+}
+
+.mail-compose-header i{
+    cursor: pointer;
+}
+
 .mail-compose span.subject{
     border-bottom: 1px solid var(--mail-border);
     border-top: 1px solid var(--mail-border);

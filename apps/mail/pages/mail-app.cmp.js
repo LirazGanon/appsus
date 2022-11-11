@@ -27,7 +27,7 @@ export default {
          @read="toggleRead"
          @starred="starred"
         />
-        <mail-compose v-if="isComposing" @mailSent="addMail" />
+        <mail-compose v-if="isComposing" @mailSent="addMail" @composeClose="isComposing=false"/>
         </section>
     </section>
 	`,
