@@ -19,8 +19,24 @@
     color: var(--txt);
 }
 
+.end-icons{
+    display: flex;
+}
 .end-icons img{
     width: 30px;
     margin-inline-end: 10px;
     cursor: pointer;
+}
+
+.end-icons .user-wrapper{
+position: relative;
+}
+
+.end-icons .user-wrapper img{
+width: 40px;
+}
+.end-icons .user-img{
+    position: absolute;
+    padding: 4px;
+    border-radius: 50%;
 }

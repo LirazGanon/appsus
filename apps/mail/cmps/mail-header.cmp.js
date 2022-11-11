@@ -20,7 +20,10 @@ export default {
 	    <img src="../assets/img/svg/help.svg" alt="" />
 	    <img src="../assets/img/svg/setting.svg" alt="" />
 	    <img src="../assets/img/svg/apps.svg" alt="" @click="goToApp" />
-	    <img src="../assets/img/svg/ring.svg" class="user-img" alt="" />
+      <span class="user-wrapper">
+      <img src="../assets/img/liraz.jpg" class="user-img" alt="">
+	    <img src="../assets/img/svg/ring.svg" class="user-img-ring" alt="" />
+      </span>
 	  </span>
 	</section>
 	`,
