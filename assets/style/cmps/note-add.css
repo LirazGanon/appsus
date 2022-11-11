@@ -38,10 +38,19 @@
   color: var(--txt);
   outline: none;
   font-size: .9em;
+  border-bottom: 1px solid #3331;
 }
 
 .add-note>input:focus {
   border-bottom: 1px solid var(--inp-bg);
+}
+
+.add-note .img-holder{
+  background-color: var(--inp-bg);
+  max-width: 400px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .fake-note>p {
