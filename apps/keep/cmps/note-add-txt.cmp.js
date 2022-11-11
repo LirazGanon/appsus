@@ -25,6 +25,9 @@ export default {
                 info: {
                     title: '',
                     txt: '',
+                },
+                style: {
+                    backgroundColor: "#548"
                 }
             }
         }

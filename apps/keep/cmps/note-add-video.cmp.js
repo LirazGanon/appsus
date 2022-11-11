@@ -43,6 +43,9 @@ export default {
                 info: {
                     title: '',
                     url: '',
+                },
+                style: {
+                    backgroundColor: "#888"
                 }
             }
         },

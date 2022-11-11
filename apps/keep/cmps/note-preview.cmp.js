@@ -11,7 +11,7 @@ import noteActions from './note-actions.cmp.js'
 export default {
     props: ['note'],
     template: `
-    <section className="note">
+    <section className="note" :style='note.style'>
 
         <component
         :note="note"
@@ -21,6 +21,7 @@ export default {
         <note-actions 
             :id="note.id"
               @delete="deleteNote"
+              
               />
     </section>
    

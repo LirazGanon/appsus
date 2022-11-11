@@ -1,0 +1,27 @@
+.note>section>.actions{
+    position: relative;
+}
+
+
+.choose-color {
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background: red;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    
+    height: 100px;
+    width: 100%;
+}
+
+.choose-color >*{
+    height: 48px;
+    width: 48px;
+    border-radius: 50%;
+    border: 1px solid #eee;
+}
+
+
