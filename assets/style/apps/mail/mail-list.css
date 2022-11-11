@@ -1,6 +1,10 @@
 article.mail-preview h3 {
     font-family: OpenSans, sans-serif;
-    font-size: 1rem;
+    font-size: 0.9rem;
+}
+
+article.mail-preview h3.un-bold{
+    font-weight: 400;
 }
 
 article.mail-preview .fade {
@@ -20,6 +24,7 @@ article.mail-preview .fade {
     overflow-x: hidden;
     text-overflow: ellipsis;
     margin-inline-end: 10px;
+    min-width: 100px;
 }
 
 .desc {
@@ -40,7 +45,7 @@ article.mail-preview .fade {
     width: 130px;
 }
 .mail-list .sentAt{
-    width: 60px;
+    padding-inline-start: 50px;
 }
 .mail-list .sentAt,
 .mail-list .actions {
@@ -76,7 +81,7 @@ article.mail-preview {
     display: none;
     right: 0;
     background-color: #fff;
-    /* position: absolute; */
+    position: absolute;
     color: var(--txt);
 }
 
@@ -85,7 +90,7 @@ article.mail-preview {
 }
 
 .mail-list li:hover .sentAt {
-    display: none;
+    /* display: none; */
 }
 
 .mail-list .actions>* {
