@@ -6,7 +6,8 @@ export default {
         <section class="mail-list">
             <ul class="flex flex-column clean-list">
                 <li v-for="mail in mails" :key="mail.id">
-                    <mail-preview :mail="mail"  @viewMail="view" @remove="removeMail" @check="checked" @read="toggleRead"/>
+                    <mail-preview :mail="mail"  @viewMail="view" @remove="removeMail"
+                     @check="checked" @read="toggleRead" @starred="setStar"/>
                 </li>
             </ul>
         </section>
@@ -20,6 +21,8 @@ export default {
             this.$emit('check', mail)
         }, toggleRead(mail){
             this.$emit('read', mail)
+        }, setStar(mail){
+            this.$emit('starred', mail)
         }
     },
     components: {

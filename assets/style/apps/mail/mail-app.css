@@ -9,6 +9,10 @@
     height: 100vh;
 }
 
+.app-header{
+    background-color: var(--nav-bg);
+    }
+
 
 .main-content {
     flex: 1;

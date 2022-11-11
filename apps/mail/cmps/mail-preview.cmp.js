@@ -4,7 +4,9 @@ export default {
     template:/*html*/ `
         <article @click="view(mail.id)" class="mail-preview flex align-center" :class="{read:mail.isRead}">
         <input type="checkbox" name="check-email" class="fade" @click.stop @input="checked(mail)" :checked="mail.isChecked">
-        <i class="fa-regular fa-star fade"></i>
+
+        <i v-if="!mail.IsStarred" class="fa-regular fa-star fade" @click.stop="setStarred(mail)" ></i>
+        <i v-else class="fa-solid fa-star" @click.stop="setStarred(mail)" class="starred"></i>
      
         <h3 class="clean-space sender text-overflow">{{ senderName }}</h3>
         <section class="content">
@@ -31,6 +33,9 @@ export default {
         },
         toggleRead(mail){
             this.$emit('read', mail)
+        },
+        setStarred(mail){
+            this.$emit('starred', mail)
         }
     },
     computed: {

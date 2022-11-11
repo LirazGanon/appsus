@@ -20,10 +20,12 @@
 @import 'apps/mail/mail-list.css';
 @import 'apps/mail/mail-compose.css';
 @import 'apps/mail/mail-nav.css';
+@import 'apps/mail/mail-header.css';
 
 
 
 @import 'apps/note/note-app.css';
 @import 'apps/note/note-nav.css';
+@import 'apps/mail/note-header.css';
 @import 'cmps/note-add.css';
 @import 'cmps/note.css';

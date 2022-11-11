@@ -6,6 +6,7 @@ import noteAddTxt from "../apps/keep/cmps/note-add-txt.cmp.js"
 import noteAddImg from "../apps/keep/cmps/note-add-img.cmp.js"
 import noteAddVideo from "../apps/keep/cmps/note-add-video.cmp.js"
 import noteAddTodo from "../apps/keep/cmps/note-add-todo.cmp.js"
+import noteHeader from '../apps/keep/cmps/note-header.cmp.js'
 
 
 import noteDetails from "../apps/keep/pages/note-details.cmp.js"
@@ -24,6 +25,7 @@ export default {
         <note-filter @filter="filter"  />
         
         <section class=" main-content">
+        <note-header /> 
             <section>
             <note-add-txt @addNote="add" v-if="addType === 'txt'"/>
             <note-add-img @addNote="add"  v-if="addType === 'img'"/>
@@ -151,6 +153,7 @@ export default {
         noteList,
         noteAddTodo,
         noteAddImg,
-        noteDetails
+        noteDetails,
+        noteHeader
     }
 }

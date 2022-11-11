@@ -1,20 +1,21 @@
 import { mailService } from "../services/mail.service.js"
 import { showErrorMsg, showSuccessMsg } from '../../../services/event-bus.service.js'
 
-import mailFilter from '../cmps/mail-filter.cmp.js'
+
 import mailList from '../cmps/mail-list.cmp.js'
 import tabFilter from '../cmps/mail-tab-filter.cmp.js'
 import mailCompose from '../cmps/mail-compose.cmp.js'
 import mailNav from '../cmps/mail-nav.cmp.js'
+import mailHeader from '../cmps/mail-header.cmp.js'
 
 export default {
     name: 'mail-app',
     template:/*html*/ `
     <section class="mail-app">
-    <mail-nav @setCompose="isComposing = !isComposing"/>
+    <mail-nav @setCompose="isComposing = !isComposing" @filterBy='setTabFilter' :unread="unreadCount.Primary"/>
     <section class="main-content">
-    <mail-header />  <!-- TODO -->
-        <mail-filter @filter="setFilter" />
+    <mail-header  @filter="setFilter"/> 
+     
         <tab-filter @tabFilter="setTabFilter" :unread="unreadCount" />
         <!--<router-link to="/mail/edit">Send a new mail</router-link>-->
         <mail-list
@@ -23,7 +24,8 @@ export default {
         :mails="mailsToShow"
         @viewMail="showMail"
         @check="checkMail"
-            @read="toggleRead"
+         @read="toggleRead"
+         @starred="starred"
         />
         <mail-compose v-if="isComposing" @mailSent="addMail" />
         </section>
@@ -102,11 +104,26 @@ export default {
         setTabFilter(filterBy) {
             this.filterBy.type = filterBy
         },
+        filterAll(val){
+            this.filterBy[val] = true
+        },
         showMail(mailId) {
             this.$router.push('/mail/' + mailId)
         },
         checkMail(mail) {
             mail.isChecked = !mail.isChecked
+            mailService.save(mail)
+                .then(() => {
+                    showSuccessMsg(`Mail ${mail.id} checked`)
+                })
+                .catch(err => {
+                    console.log('OOPS', err)
+                    showErrorMsg('Cannot check mail')
+                })
+        },
+        starred(mail) {
+            console.log(mail)
+            mail.IsStarred = !mail.IsStarred
             mailService.save(mail)
                 .then(() => {
                     showSuccessMsg(`Mail ${mail.id} checked`)
@@ -122,17 +139,20 @@ export default {
             const regex = new RegExp(this.filterBy.subject, 'i')
             let mails = this.mails.filter(mail => regex.test(mail.subject))
             console.log(this.filterBy.type)
-            mails = mails.filter(mail => mail.type.includes(this.filterBy.type))
-            // mails = mails.filter(mail => mail.maxSpeed > this.filterBy.minSpeed)
+            if(this.filterBy.type==='unread') mails = mails.filter(mail => !mail.isRead)
+            else if(this.filterBy.type==='sent') mails = mails.filter(mail => mail.from === 'your-mail@someting.com')
+            else if(this.filterBy.type==='starred') mails = mails.filter(mail => mail.IsStarred)
+            else mails = mails.filter(mail => mail.type.includes(this.filterBy.type))
+          
             return mails
 
         }
     },
     components: {
-        mailFilter,
         mailList,
         tabFilter,
         mailCompose,
-        mailNav
+        mailNav,
+        mailHeader
     }
 }

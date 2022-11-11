@@ -101,6 +101,7 @@ article.mail-preview {
     background-color: var(--btn-hover-bg);
 }
 
-/* .mail-preview section{
-    flex-basis: 30%;
-} */
+.starred{
+   color: rgb(248, 217, 44);
+    opacity: 1 !important;
+}
