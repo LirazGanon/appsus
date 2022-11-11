@@ -19,6 +19,7 @@ export default {
     methods: {
         deleteNote() {
             this.$emit('delete', this.note.id)
+            
         }
     },
     computed: {

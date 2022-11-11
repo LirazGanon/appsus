@@ -1,13 +1,27 @@
+import { eventBus } from "../../../services/event-bus.service.js"
+
 export default {
-    props:['state'],
+    props: ['state'],
     template: `
 <section>
 
 
 <form @submit.prevent="addNote" class="add-note">
-        <input v-model="note.info.title" type="search" placeholder="title.." ref="title"/>
-        <input v-model="note.info.url" @change="onFileChange" type="file" required :class="animate"/>
-        <button>submit</button>
+        <input
+            v-model="note.info.title"
+            type="search"
+            placeholder="Title.."
+            ref="title"
+            class="animate__animated animate__fadeIn"/>
+        <input 
+            v-model="note.info.url" 
+            @change="onFileChange" 
+            type="file" 
+            required 
+            ref="image" 
+            hidden
+            />
+        <button><i class="fa-solid fa-plus"></i></button>
     </form>
 </section>
 `,
@@ -25,7 +39,9 @@ export default {
         }
     },
     mounted() {
+        this.uploadImg()
         this.$refs.title.focus()
+        eventBus.on('uploadImg',this.uploadImg)
     },
     methods: {
         addNote() {
@@ -36,13 +52,9 @@ export default {
         onFileChange(e) {
             const file = e.target.files[0]
             this.note.info.url = URL.createObjectURL(file)
+        },
+        uploadImg(){
+            this.$refs.image.click()
         }
-    },
-    computed: {
-        animate() {
-            return { 'animate__animated animate__slideInDown': this.state }
-        }
-    },
-    components: {
     }
 }

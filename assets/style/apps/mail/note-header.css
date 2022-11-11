@@ -8,6 +8,10 @@
     width: 40px;
 }
 
+.note-header .logo-container{
+    padding-inline-end: 30px;
+}
+
 .logo-container>button{
     height: 48px;
     width: 48px;
@@ -49,4 +53,9 @@
     position: absolute;
     padding: 4px;
     border-radius: 50%;
+}
+
+.note-header{
+    box-shadow: 0 1px 3px #3335;
+    margin-block-end: 10px;
 }

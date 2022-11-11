@@ -12,7 +12,7 @@ export default {
     <form @submit.prevent="addNote" class="add-note ">
         <input v-model="note.info.title" :type="search" placeholder="title.."/>
         <input v-model="note.info.txt" :type="search" placeholder="text..." ref="txt" required :class="animate"/>
-        <button>submit</button>
+        <button><i class="fa-solid fa-plus"></i></button>
     </form>
     <!-- <note-actions-cmp :note="note"> -->
 

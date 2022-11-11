@@ -1,42 +1,55 @@
+import { eventBus } from "../../../services/event-bus.service.js"
+
 export default {
     name: 'mail-nav',
     props:['unread'],
     template:/*html*/ `
-        <section class="app-nav">
+        <section class="app-nav" :class="navState">
     
-        <button @click="composed" class="composed"><i class="fa-solid fa-pencil"></i>&nbsp Compose</button>
+        <button @click="composed" class="composed">
+        <i class="fa-solid fa-pencil"></i>
+        <span>
+        Compose
+        </span>
+        </button>
         <ul class="clean-list">
-            <li @click=" this.$router.push('/mail')" :class="{selected:!selected}" class="flex justify-between">
-            <span>
-            <i class="fa-solid fa-inbox" ></i>
-            &nbsp
-            Inbox
-            </span>
-            <span class="unread-count">{{unread}}</span>
+            <li @click=" this.$router.push('/mail')" :class="{selected:!selected}" class="nav-item" >
+                <i class="fa-solid fa-inbox" ></i>
+                <span>
+                Inbox
+                </span>
+                <span class="unread-count">{{unread}}</span>
             </li>
-            <li @click="filter('starred')" :class="{selected: selected ==='starred'}">
+            <li @click="filter('starred')" :class="{selected: selected ==='starred'}" class="nav-item">
             <i class="fa-regular fa-star"></i>
-            &nbsp
+            <span>
             Starred
+            </span>
             </li>
-            <li @click="filter('unread')" :class="{selected: selected ==='unread'}">
+            <li @click="filter('unread')" :class="{selected: selected ==='unread'}" class="nav-item">
             <i class="fa-solid fa-circle"></i>
-            &nbsp
+            <span>
             Unread
+            </span>
             </li >
-            <li @click="filter('sent')" :class="{selected: selected ==='sent'}">
+            <li @click="filter('sent')" :class="{selected: selected ==='sent'}" class="nav-item">
             <i class="fa-regular fa-paper-plane"></i>
-            &nbsp
+            <span>
             Sent
+            </span>
             </li>
         </ul>
         </section>
     `,
     data() {
         return{
-            selected:''
+            selected:'',
+            expanded: false
         }
 
+    },
+    mounted() {
+        eventBus.on('expandNav', this.expandNav)
     },
     methods: {
         filter(val){
@@ -46,6 +59,14 @@ export default {
         },
         composed(){
             this.$emit('setCompose')
+        },
+        expandNav() {
+            this.expanded = !this.expanded
+        }
+    },
+    computed: {
+        navState(){
+            return {active:this.expanded}
         }
     }
 }

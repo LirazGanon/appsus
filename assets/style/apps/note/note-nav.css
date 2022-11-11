@@ -3,25 +3,38 @@
 .app-nav .note-filters li {
     padding: 0;
     margin: 0;
+    border-radius: 0 1em 1em 0;
+}
+.app-nav li label{
+    padding: 7px 34px;
+    width: 45px;
+    overflow: hidden;
     display: flex;
+    transition: width .3s;
+    cursor: pointer;
+    margin-inline-end: 10px;
+
 }
 
+.app-nav li label span{
+    /* display: none; */
+    padding-inline-start: 20px;
 
-.app-nav li label {
+}
 
-    padding: 7px 20px;
-    margin-inline-end: 7px;
-    cursor: pointer;
+.app-nav.app-nav.active li label span{
+    opacity: 1;
+    display: inline-block;
+
+}
+
+.app-nav.active li label {
     width: 250px;
 
 }
 
 .app-nav label input {
     display: none;
-}
-
-.app-nav label span {
-    margin-inline-start: 10px;
 }
 
 

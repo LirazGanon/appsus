@@ -57,7 +57,7 @@ export default {
                 </div>
                     <div class="add-note-controls">
                         <button @click="setType('txt')"><i class="fa-solid fa-font"></i></button>
-                        <button @click="setType('img')"><i class="fa-regular fa-image"></i></button>
+                        <button @click="setType('img')"@click="uploadImg"><i class="fa-regular fa-image"></i></button>
                         <button @click="setType('video')"><i class="fa-brands fa-youtube"></i></button>
                         <button @click="setType('todo')"><i class="fa-solid fa-list"></i></button>
                     </div>
@@ -134,7 +134,7 @@ export default {
         filterType(filterBy) {
             this.filterBy.type = filterBy.type
         },
-        filterTitle(filterBy){
+        filterTitle(filterBy) {
             this.filterBy.title = filterBy.title
         },
         addTodo(noteId, todo) {
@@ -143,7 +143,6 @@ export default {
                     const idx = this.notes.findIndex(note => note.id === noteId)
                     this.notes[idx] = note
                 })
-
         },
         deleteTodo(noteId, todoId) {
             noteService.deleteTodo(noteId, todoId)
@@ -151,13 +150,19 @@ export default {
                     const idx = this.notes.findIndex(note => note.id === noteId)
                     this.notes[idx] = note
                 })
-
         },
         setType(type) {
             this.addType = type
             if (this.state) {
-                setTimeout(() => this.state = false, 0)
+                setTimeout(() => {
+                if (type === 'img') return
+                    this.state = false
+                }, 300)
             }
+            if (type === 'img') this.state = true
+        },
+        uploadImg() {
+            eventBus.emit('uploadImg')
         }
     },
     computed: {

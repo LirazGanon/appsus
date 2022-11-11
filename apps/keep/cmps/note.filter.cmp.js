@@ -1,8 +1,10 @@
+import { eventBus } from "../../../services/event-bus.service.js"
+
 export default {
     template: `
 <section>
   
-      <section class="app-nav">
+      <section class="app-nav" :class="navState">
      
         <ul class="note-filters clean-list">
             <li>
@@ -31,8 +33,8 @@ export default {
             <li>
 
                 <label>
-                <i class="fa-solid fa-camera">
-                        <span></i>images</span>
+                <i class="fa-solid fa-camera"></i>
+                        <span>images</span>
                         <input
                         type="radio"
                         v-model="filterBy.type"
@@ -74,15 +76,26 @@ export default {
             filterBy: {
                 title: '',
                 type: null
-            }
+            },
+            expanded: false
         }
     },
+    mounted() {
+        eventBus.on('expandNav', this.expandNav)
+    }
+    ,
     methods: {
         filter() {
             this.$emit('filter', this.filterBy)
+        },
+        expandNav() {
+            this.expanded = !this.expanded
         }
     },
     computed: {
+        navState(){
+            return {active:this.expanded}
+        }
     },
     components: {
     },

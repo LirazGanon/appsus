@@ -1,10 +1,12 @@
+import { eventBus } from "../../../services/event-bus.service.js"
+
 export default {
     name: 'mail-header',
     props: [''],
     template:/*html*/ `
 	<section class="app-header flex justify-between align-center">
 	  <section class="logo-container flex">
-      <button>
+      <button @click="expandNav">
 	      <i class="fa-solid fa-bars"></i>
       </button>
 	    <img src="assets/img/mail-logo.png" class="mail-logo" />
@@ -45,6 +47,9 @@ export default {
         },
         goToApp(){
             this.$router.push('/note')
+        },
+        expandNav(){
+            eventBus.emit('expandNav')
         }
     },
     func() {

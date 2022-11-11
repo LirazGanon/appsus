@@ -1,5 +1,7 @@
 .app-header>label {
   position: relative;
+  flex: 1;
+  padding-inline-end: 10px;
 }
 
 .app-header>label>input {
@@ -9,11 +11,13 @@
   border-radius: 4px;
   font-size: 16px;
   outline: none;
+  width: 100%;
 }
 
 .app-header>label>input:focus-within {
   background-color: var(--nav-bg);
   box-shadow: 1px 1px 3px #3335;
+  
 }
 
 .app-header>label>span {

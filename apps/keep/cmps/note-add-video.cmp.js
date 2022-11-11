@@ -11,7 +11,7 @@ export default {
     <form @submit.prevent="addNote" class="add-note">
         <input v-model="note.info.title" :type="search" placeholder="title.." ref="title"/>
         <input  @change="onFileChange" :type="search" placeholder="Youtube URL.." :class="animate"/>
-        <button>submit</button>
+        <button><i class="fa-solid fa-plus"></i></button>
     </form>
 
 
