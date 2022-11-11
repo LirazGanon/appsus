@@ -1,4 +1,10 @@
 button.composed {
+    width: 60px;
+    overflow: hidden;
+}
+
+
+button.composed {
     padding: 1em 1.2em;
     border-radius: 1em;
     font-size: 1.2em;
@@ -8,6 +14,16 @@ button.composed {
     transition: box-shadow 0.2s;
     margin-inline-start: 10px;
     color: var(--txt);
+    display: flex;
+    transition: width .3s;
+}
+
+.app-nav.active button.composed {
+    width: 168px;
+}
+
+button.composed i {
+    margin-inline-end: 20px;
 }
 
 button.composed:hover {
@@ -15,11 +31,7 @@ button.composed:hover {
 }
 
 .app-nav .nav-item {
-    /* padding: 7px 20px;
-border-bottom-right-radius: 1em;
-border-top-right-radius: 1em;
-margin-inline-end: 7px;
-cursor: pointer; */
+
     border-radius: 0 1em 1em 0;
     padding: 7px 34px;
     width: 45px;
@@ -28,9 +40,10 @@ cursor: pointer; */
     transition: width .3s;
     cursor: pointer;
     margin-inline-end: 10px;
+    position: relative;
 }
 
-.app-nav .nav-item span{
+.app-nav .nav-item span:not(.unread-count) {
     padding-inline-start: 20px;
 
 }
@@ -49,8 +62,33 @@ cursor: pointer; */
     font-weight: 600;
 }
 
-.mail-app .unread-count {
+.app-nav li>span:not(.unread-count) {
+    flex: 1;
+}
+
+.unread-count {
     font-size: 0.8em;
-    align-self: end;
-    justify-content: end;
+    position: absolute;
+    top: 2px;
+    right: 11px;
+    background: rgb(255, 18, 18);
+    color: #eee;
+    border-radius: 50%;
+    padding: 5px;
+    height: 14px;
+    width: 14px;
+    line-height: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .3s;
+}
+
+.app-nav.active .unread-count {
+    position: relative;
+    top: 0;
+    right: 0;
+    background: transparent;
+    color: var(--txt);
+
 }
