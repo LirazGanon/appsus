@@ -6,11 +6,12 @@
 .app-nav {
     flex-basis: 250px;
     background-color: var(--nav-bg);
-    height: 100vh;
+    height: 90vh;
 }
 
 .app-header{
     background-color: var(--nav-bg);
+    height: 10vh;
     }
 
 

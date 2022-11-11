@@ -20,6 +20,7 @@
 /* Apps */
 @import 'apps/mail/mail-app.css';
 @import 'apps/mail/mail-list.css';
+@import 'apps/mail/mail-list-tab.css';
 @import 'apps/mail/mail-compose.css';
 @import 'apps/mail/mail-nav.css';
 @import 'apps/mail/mail-header.css';

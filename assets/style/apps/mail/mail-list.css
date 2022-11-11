@@ -1,3 +1,15 @@
+section.mail-list{
+    overflow: auto;
+    height: 82vh;
+}
+
+article.mail-preview {
+    gap: 10px;
+    line-height: 2.8em;
+    padding: 0 15px;
+    position: relative;
+}
+
 article.mail-preview h3 {
     font-family: OpenSans, sans-serif;
     font-size: 0.9rem;
@@ -52,11 +64,6 @@ article.mail-preview .fade {
     text-align: right;
 }
 
-article.mail-preview {
-    gap: 10px;
-    line-height: 2.8em;
-    padding: 0 15px;
-}
 
 .mail-list li {
     border-bottom: 1px solid var(--mail-border);

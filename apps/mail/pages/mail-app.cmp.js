@@ -144,6 +144,8 @@ export default {
             else if(this.filterBy.type==='starred') mails = mails.filter(mail => mail.IsStarred)
             else mails = mails.filter(mail => mail.type.includes(this.filterBy.type))
           
+            mails.sort((a, b) => b.sentAt - a.sentAt)
+
             return mails
 
         }

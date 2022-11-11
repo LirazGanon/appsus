@@ -4,7 +4,7 @@ export default {
     template:/*html*/ `
         <section class="mail-tab-filter">
          <button v-for="(filter,idx) in filterBy" class="filter-btn" :key="idx" 
-         @click="setFilter(filter)">{{ filter }} {{unread[filter]}} </button>
+         @click="setFilter(filter)" :class="{'btn-selected':filter===selected}"><i :class="fa[idx]" ></i>&nbsp {{ filter }} {{unread[filter]}} </button>
         </section>
     `,
     data() {
@@ -14,10 +14,17 @@ export default {
                 'Promotion',
                 'Social'
             ],
+            fa:[
+                'fa-solid fa-inbox',
+                'fa-solid fa-tag',
+               'fa-solid fa-user-group'
+            ],
+            selected:'Primary'
         }
     },
     methods: {
         setFilter(filter) {
+            this.selected = filter
             if (filter === 'Primary') filter = ''
             this.$emit('tabFilter', filter)
         },

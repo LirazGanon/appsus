@@ -1,0 +1,33 @@
+.mail-tab-filter button{
+height: 55px;
+width: 248px;
+background-color: #FFF;
+border: none;
+margin-top: 10px;
+text-align: start;
+padding: 10px;
+font-family: OpenSans, sans-serif;
+font-size: 1em;
+position: relative;
+}
+
+.mail-tab-filter > :first-child{
+    margin-inline-start: 9px;
+}
+
+.mail-tab-filter .btn-selected{
+    color:#0b57d0;
+}
+.mail-tab-filter .btn-selected::before{
+    background-color: #0b57d0;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 3px;
+    right: 0;
+    margin: 0 8px;
+    position: absolute;
+    left: -10px;
+}
