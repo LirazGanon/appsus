@@ -16,7 +16,8 @@ export const mailService = {
     remove,
     save,
     getEmptyMail,
-    getNextMailId
+    getNextMailId,
+    getPrevMailId
 }
 
 function query() {
@@ -49,10 +50,20 @@ function getNextMailId(mailId) {
         })
 }
 
+function getPrevMailId(mailId) {
+    return storageService.query(MAIL_KEY)
+    .then(mails => {
+            var idx = mails.findIndex(mail => mail.id === mailId)
+            if (idx === 0) return null
+            return mails[idx - 1].id
+        })
+}
+
 function _createMails() {
     let mails = utilService.loadFromStorage(MAIL_KEY)
             if (!mails || !mails.length) {
                 mails = _getDefaultMails()
+                mails.sort((a, b) => b.sentAt - a.sentAt)
                 utilService.saveToStorage(MAIL_KEY, mails)
             }
             return mails

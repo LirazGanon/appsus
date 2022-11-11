@@ -1,0 +1,61 @@
+.mail-details{
+    padding: 15px;
+}
+.mail-details-header{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+.mail-details-top h3{
+font-size: 0.9em;
+color: var(--txt-light);
+}
+
+.mail-details span.title{
+    gap:10px;
+    margin-bottom: 20px;
+}
+
+.mail-details span h2{
+    margin: 0;
+}
+.mail-details span p{
+    font-size: 0.8em;
+    background-color: rgb(227, 227, 227);
+    padding:2px 5px;
+    border-radius: 3px;
+    margin: 0;
+    color: var(--txt-light);
+}
+
+.mail-details-header > :last-child{
+    margin-inline-end: 20px;
+}
+
+.mail-details-header i{
+    font-size: 1.2em;
+    padding: 3px;
+}
+
+.mail-details span.from{
+    gap:10px
+}
+
+.mail-details span.from img{
+    border-radius: 50%;
+}
+
+
+.mail-details hr{
+    opacity: 0.2;
+}
+
+.mail-details h2,
+.mail-details h1,
+.mail-details h3,
+.mail-details p{
+    font-family: openSans;
+    font-weight: 400;
+    
+    }

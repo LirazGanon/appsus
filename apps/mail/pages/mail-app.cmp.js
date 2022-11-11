@@ -144,9 +144,7 @@ export default {
             if(this.filterBy.type==='unread') mails = mails.filter(mail => !mail.isRead)
             else if(this.filterBy.type==='sent') mails = mails.filter(mail => mail.from === 'your-mail@someting.com')
             else if(this.filterBy.type==='starred') mails = mails.filter(mail => mail.IsStarred)
-            else mails = mails.filter(mail => mail.type.includes(this.filterBy.type))
-          
-            mails.sort((a, b) => b.sentAt - a.sentAt)
+            else mails = mails.filter(mail => mail.type.includes(this.filterBy.type))            
 
             return mails
 

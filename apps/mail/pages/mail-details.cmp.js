@@ -5,25 +5,35 @@ import { showErrorMsg, showSuccessMsg } from "../../../services/event-bus.servic
 export default {
     template:/*html*/`
 	<section v-if="mail" class="mail-details">
-	  <router-link :to="'/mail/' + nextMailId">Next Mail</router-link>
-	
+    <section class="mail-details-header">
+    <router-link :to="'/mail/'  + prevMailId"  :class="{disable:!prevMailId}"><i class="fa-solid fa-angle-left"></i></router-link>
+    <router-link :to="'/mail/' + nextMailId"><i class="fa-solid fa-angle-right"></i></router-link>
+    </section>
 	  <hr />
-	  <h2>{{ mail.subject }}</h2>
-	  <h2>time: {{ formattedTime }}</h2>
-	  <h3>from: {{ mail.from }}</h3>
+      <span class="mail-details-top flex justify-between align-center" >
+      <span class="title flex align-center">
+      <h2>{{ mail.subject }}</h2>
+      <p>{{mail.type}}</p>
+      </span>
+      <h3>{{ formattedTime }}</h3>
+      </span>
+      <span class="from flex align-center">
+     <img src="assets/img/unnamed.png" alt="">
+	  <h3> {{ mail.from }}</h3>
+      </span>
 	  <h3>to: {{ mail.to }}</h3>
 	  <p>body: {{ mail.body }}</p>
 	  <hr />
 	
-	  <router-link to="/mail">Back</router-link>
+	  
 	</section>
 	<h3 v-else>Loading...</h3>
 	`, 
     data() {
         return {
             mail: null,
-            imgValid: true,
-            nextMailId: null
+            nextMailId: null,
+            prevMailId: null
         }
     },
     created() {
@@ -37,7 +47,13 @@ export default {
                     this.markAsRead()
                     mailService.getNextMailId(mail.id)
                         .then(nextMailId => this.nextMailId = nextMailId)
-                })
+                    mailService.getPrevMailId(mail.id)
+                        .then(prevMailId =>{
+                        console.log(prevMailId)
+                            this.prevMailId = prevMailId
+                        } )
+                    }
+                )
                 .catch(err => showErrorMsg('Cannot load mail'))
         },
         markAsRead(){
@@ -57,9 +73,15 @@ export default {
             return this.$route.params.id
         },
         formattedTime(){
-            return new Intl.DateTimeFormat('en-US').format(this.mail.sentAt)
-        }
- 
+            const options = {
+                year: 'numeric', month: 'numeric', day: 'numeric',
+                hour: 'numeric', minute: 'numeric', 
+                hour12: false,
+                timeZone: 'America/Los_Angeles'
+              };
+              return new Intl.DateTimeFormat('en-US', options).format(this.mail.sentAt)
+        },
+
     },
     watch: {
         mailId() {
