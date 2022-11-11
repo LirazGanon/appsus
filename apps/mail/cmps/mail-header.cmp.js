@@ -5,12 +5,15 @@ export default {
     props: [''],
     template:/*html*/ `
 	<section class="app-header flex justify-between align-center">
-	  <section class="logo-container flex">
-      <button @click="expandNav">
-	      <i class="fa-solid fa-bars"></i>
-      </button>
-	    <img src="assets/img/mail-logo.png" class="mail-logo" />
-	    <p>Amail</p>
+	  
+    <section class="logo-search flex align-center">
+    
+        <section class="logo-container flex">
+        <button @click="expandNav">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+            <img src="assets/img/mail-logo.png" class="mail-logo" />
+            <p>jQmail</p>
 	  </section>
 	  
     <label>
@@ -22,6 +25,7 @@ export default {
         placeholder="Search"
         />
     </label>
+    </section>
 	  <span class="end-icons">
 	    <img src="assets/img/svg/help.svg" alt="" />
 	    <img src="assets/img/svg/setting.svg" alt="" />
@@ -45,10 +49,10 @@ export default {
         filter() {
             this.$emit('filter', this.filterBy)
         },
-        goToApp(){
+        goToApp() {
             this.$router.push('/note')
         },
-        expandNav(){
+        expandNav() {
             eventBus.emit('expandNav')
         }
     },
