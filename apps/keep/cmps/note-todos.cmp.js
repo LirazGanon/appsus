@@ -8,7 +8,15 @@ export default {
     props: ['note'],
     template: `
 <section class="note">
-    <h2>{{note.info.label}}</h2>
+    <h2>
+        <input
+        v-model="newNote.info.label"
+        @change="updateTodo"
+        placeholder="My Todos"
+        class="note-title"
+        type="text"
+         />
+    </h2>
 
     <ul class="clean-list">
         <li class="todo-item flex" v-for="todo in notDoneTodos" :v-if="todo.doneAt" @click="setDone(todo.id)">
@@ -64,7 +72,7 @@ export default {
         addTodo() {
             if (!this.todo.txt) return
             this.newNote.info.todos.push(this.clone(this.todo))
-
+            
             this.updateEmit(this.clone(this.newNote))
             this.todo = {
                 txt: '',
@@ -95,10 +103,6 @@ export default {
         clone(newNote = this.note) {
             return JSON.parse(JSON.stringify(newNote))
         },
-        getEmptyTodo() {
-            return
-        },
-
     },
     computed: {
         doneTodos() {

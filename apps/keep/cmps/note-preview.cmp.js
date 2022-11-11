@@ -34,8 +34,8 @@ export default {
         }
     },
     methods: {
-        deleteNote() {
-            this.$emit('delete', this.note.id)
+        deleteNote(noteId) {
+            this.$emit('delete', noteId)
         },
         setColor(theme) {
             this.note.style = theme

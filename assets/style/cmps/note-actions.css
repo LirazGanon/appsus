@@ -3,6 +3,18 @@
 }
 
 
+.note>section>.actions>div {
+    opacity: 0;
+    transition: none;
+    
+}
+
+.note:hover>section>.actions>div {
+    transition: opacity .3s;
+    opacity: 1;
+}
+
+
 .choose-color {
     position: absolute;
     top: -60px;

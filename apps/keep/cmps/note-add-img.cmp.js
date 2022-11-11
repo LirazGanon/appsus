@@ -1,11 +1,12 @@
 export default {
+    props:['state'],
     template: `
 <section>
 
 
 <form @submit.prevent="addNote" class="add-note">
         <input v-model="note.info.title" type="search" placeholder="title.." ref="title"/>
-        <input v-model="note.info.url" @change="onFileChange" type="file" placeholder=""/>
+        <input v-model="note.info.url" @change="onFileChange" type="file" required :class="animate"/>
         <button>submit</button>
     </form>
 </section>
@@ -38,6 +39,9 @@ export default {
         }
     },
     computed: {
+        animate() {
+            return { 'animate__animated animate__slideInDown': this.state }
+        }
     },
     components: {
     }

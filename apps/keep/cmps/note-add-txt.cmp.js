@@ -1,17 +1,20 @@
+import noteActionsCmp from "./note-actions.cmp.js"
 
 export default {
+    props: ['state'],
     template: `
-<section>
+<section >
 
 
     <!-- <component></component> -->
 
     
-    <form @submit.prevent="addNote" class="add-note">
+    <form @submit.prevent="addNote" class="add-note ">
         <input v-model="note.info.title" :type="search" placeholder="title.."/>
-        <input v-model="note.info.txt" :type="search" placeholder="text..." ref="txt"/>
+        <input v-model="note.info.txt" :type="search" placeholder="text..." ref="txt" required :class="animate"/>
         <button>submit</button>
     </form>
+    <!-- <note-actions-cmp :note="note"> -->
 
 
 </section>
@@ -32,9 +35,10 @@ export default {
     },
     mounted() {
         this.$refs.txt.focus()
-      },
+    },
     methods: {
         addNote() {
+            if (!this.note.info.txt) return
             const note = JSON.parse(JSON.stringify(this.note))
             this.$emit('addNote', note)
             this.note = {
@@ -55,8 +59,11 @@ export default {
 
     },
     computed: {
-
+        animate() {
+            return { 'animate__animated animate__slideInDown': this.state }
+        }
     },
     components: {
+        noteActionsCmp
     }
 }

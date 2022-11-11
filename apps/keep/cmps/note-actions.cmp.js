@@ -1,12 +1,13 @@
 import chooseColor from './choose-color.cmp.js'
 
+
 export default {
     name: 'note-actions',
     props: ['note'],
     template: `
 <section>
 <div class="actions">
-        <div class="action delete-note" title="delete" @click="deleteNote">
+        <div class="action delete-note" title="delete" @click="deleteNote(note.id)">
             <img src="assets/img/trash.png" alt=""  />
         </div>
         <div class="action edit-note">
@@ -35,8 +36,8 @@ export default {
         }
     },
     methods: {
-        deleteNote() {
-            this.$emit('delete')
+        deleteNote(noteId) {
+            this.$emit('delete',noteId)
         },
         setColor(theme) {
             this.pickColor = false

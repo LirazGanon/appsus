@@ -58,6 +58,13 @@
     width: 100px;
 }
 
+.note .note-title{
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1.2em;
+    padding: 0;
+}
 
 
 
