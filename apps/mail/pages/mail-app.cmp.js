@@ -11,10 +11,10 @@ import mailHeader from '../cmps/mail-header.cmp.js'
 export default {
     name: 'mail-app',
     template:/*html*/ `
+    <mail-header  @filter="setFilter"/> 
     <section class="mail-app">
     <mail-nav @setCompose="isComposing = !isComposing" @filterBy='setTabFilter' :unread="unreadCount.Primary"/>
     <section class="main-content">
-    <mail-header  @filter="setFilter"/> 
      
         <tab-filter @tabFilter="setTabFilter" :unread="unreadCount" />
         <!--<router-link to="/mail/edit">Send a new mail</router-link>-->

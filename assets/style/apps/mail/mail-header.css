@@ -1,3 +1,24 @@
+.app-header .logo-container{
+    align-items: center;
+    margin:10px 10px 20px 10px;
+}
+
+.mail-logo{
+    width: 50px;
+    margin-inline-end: 5px;
+
+}
+
+.logo-container i{
+    margin-inline-end: 10px;
+    font-size: 1.3em;
+}
+.logo-container p{
+    margin: 0;
+    font-size: 1.5em;
+    color: var(--txt);
+}
+
 .end-icons img{
     width: 30px;
     margin-inline-end: 10px;

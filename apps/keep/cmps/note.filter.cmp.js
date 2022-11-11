@@ -7,12 +7,7 @@ export default {
         type="text"
       /> -->
       <section class="app-nav">
-        <section class="logo-container flex">
-        <i class="fa-solid fa-bars"></i>
-            <img src="assets/img/note-logo.png" class="note-logo"alt="" />
-            <p>ote</p>
-        </section>
-
+     
         <ul class="note-filters clean-list">
             <li>
                 <label>

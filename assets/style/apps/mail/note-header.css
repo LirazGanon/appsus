@@ -1,3 +1,21 @@
-.note-app .YOURCLASS{
-    color: red;
+
+.note-header .logo-container {
+    align-items: center;
+    margin: 10px 10px 20px 10px;
 }
+
+.note-header .logo-container .note-logo {
+    height: 50px;
+    width: 50px;
+}
+
+.note-header .logo-container>.note-logo~p {
+    align-self: flex-end;
+    font-size: 1.7em;
+    position: relative;
+    top: 5px;
+}
+
+/* .note-header .logo-container:has(.note-logo) {
+    margin-block-end: calc(15vh - 60px);
+} */

@@ -1,23 +1,4 @@
-.app-nav .logo-container {
-    align-items: center;
-    margin: 10px 10px 20px 10px;
-}
 
-.app-nav .logo-container .note-logo {
-    height: 50px;
-    width: 50px;
-}
-
-.app-nav .logo-container>.note-logo~p {
-    align-self: flex-end;
-    font-size: 1.7em;
-    position: relative;
-    top: 5px;
-}
-
-.app-nav .logo-container:has(.note-logo) {
-    margin-block-end: calc(15vh - 60px);
-}
 
 .app-nav .note-filters li {
     padding: 0;

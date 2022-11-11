@@ -21,11 +21,12 @@ export default {
     name:'note-app',
     template:/*html*/ `
 	
+    <note-header /> 
     <section class="note-app">
-        <note-filter @filter="filter"  />
+        
+    <note-filter @filter="filter"  />
         
         <section class=" main-content">
-        <note-header /> 
             <section>
             <note-add-txt @addNote="add" v-if="addType === 'txt'"/>
             <note-add-img @addNote="add"  v-if="addType === 'img'"/>
