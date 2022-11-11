@@ -28,7 +28,7 @@ export default {
 	    <span>
 	      <span class="sender flex align-center">
 	        <h3>{{senderName}}</h3>
-	        <p><{{ mail.from }}></p>
+	        <p>&lt;{{ mail.from }}></p>
 	      </span>
 	      <p>Me <i class="fa-solid fa-caret-down"></i></p> 
 	    </span>

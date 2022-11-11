@@ -6,7 +6,7 @@ export default {
         <input type="checkbox" name="check-email" class="fade" @click.stop @input="checked(mail)" :checked="mail.isChecked">
 
         <i v-if="!mail.IsStarred" class="fa-regular fa-star fade" @click.stop="setStarred(mail)" ></i>
-        <i v-else class="fa-solid fa-star" @click.stop="setStarred(mail)" class="starred"></i>
+        <i v-else class="fa-solid fa-star starred" @click.stop="setStarred(mail)"></i>
      
         <h3 class="clean-space sender text-overflow" :class="{'un-bold black':mail.isRead}" >{{ senderName }}</h3>
         <section class="content">

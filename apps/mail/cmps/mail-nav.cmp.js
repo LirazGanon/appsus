@@ -13,7 +13,7 @@ export default {
         </span>
         </button>
         <ul class="clean-list">
-            <li @click=" this.$router.push('/mail')" :class="{selected:!selected}" class="nav-item" >
+            <li @click=" this.$router.push('/mail');filter('')" :class="{selected:!selected}" class="nav-item" >
                 <i class="fa-solid fa-inbox" ></i>
                 <span>
                 Inbox
@@ -53,7 +53,6 @@ export default {
     },
     methods: {
         filter(val){
-            console.log(val)
             this.selected=val
             this.$emit('filterBy', val)
         },

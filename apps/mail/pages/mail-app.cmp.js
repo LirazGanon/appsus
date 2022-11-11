@@ -124,7 +124,7 @@ export default {
                 })
         },
         starred(mail) {
-            console.log(mail)
+
             mail.IsStarred = !mail.IsStarred
             mailService.save(mail)
                 .then(() => {
@@ -140,7 +140,7 @@ export default {
         mailsToShow() {
             const regex = new RegExp(this.filterBy.subject, 'i')
             let mails = this.mails.filter(mail => regex.test(mail.subject))
-            console.log(this.filterBy.type)
+ 
             if(this.filterBy.type==='unread') mails = mails.filter(mail => !mail.isRead)
             else if(this.filterBy.type==='sent') mails = mails.filter(mail => mail.from === 'your-mail@someting.com')
             else if(this.filterBy.type==='starred') mails = mails.filter(mail => mail.IsStarred)
