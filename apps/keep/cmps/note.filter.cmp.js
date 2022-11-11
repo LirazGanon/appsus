@@ -1,11 +1,7 @@
 export default {
     template: `
 <section>
-    <!-- <input
-        v-model="filterBy.title"
-        @input="filter"
-        type="text"
-      /> -->
+  
       <section class="app-nav">
      
         <ul class="note-filters clean-list">

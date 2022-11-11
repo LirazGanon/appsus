@@ -9,10 +9,11 @@
     height: 90vh;
 }
 
-.app-header{
+.app-header {
     background-color: var(--nav-bg);
-    height: 10vh;
-    }
+    height: 64px;
+    padding: 8px;
+}
 
 
 .main-content {
