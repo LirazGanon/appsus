@@ -25,6 +25,7 @@ export default {
             <img :src="pinImg" alt="" />
         </div>
         <choose-color v-if="pickColor" @setColor="setColor">
+            
     </div>
 </section>
 `,

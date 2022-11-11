@@ -7,12 +7,12 @@ export default {
     template: `
 <section class="full-screen" v-if="noteToEdit">
     
-    <section>
+    <section class="note-editor note">
 
     
     <form  
     @submit="saveNote" 
-    :v-if="noteToEdit.type=== 'note-txt'"
+    :v-if="noteToEdit.type === 'note-txt'"
     class="flex flex-column">
     
         <input type="search" v-model="noteToEdit.info.title" />
