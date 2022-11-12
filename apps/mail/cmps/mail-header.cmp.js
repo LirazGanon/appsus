@@ -1,4 +1,5 @@
 import { eventBus } from "../../../services/event-bus.service.js"
+import appsPicker from '../../../cmps/apps-picker.cmp.js'
 
 export default {
     name: 'mail-header',
@@ -27,22 +28,27 @@ export default {
     </label>
     </section>
 	  <span class="end-icons">
-	    <img src="assets/img/svg/help.svg" alt="" />
+	    <img src="assets/img/svg/help.svg" alt="" @click="goAbout" />
 	    <img src="assets/img/svg/setting.svg" alt="" />
-	    <img src="assets/img/svg/apps.svg" alt="" @click="goToApp" />
+        <span class="apps-wrapper flex align-center" @click.stop="toggleShowApps">
+        <img src="assets/img/svg/apps.svg" alt="" />
+        <apps-picker :class="{'opacity-1':appsIsShowing}">
+        </span>
       <span class="user-wrapper">
       <img src="assets/img/liraz.jpg" class="user-img" alt="">
 	    <img src="assets/img/svg/ring.svg" class="user-img-ring" alt="" />
       </span>
 	  </span>
+      <section  class="apps-screen" @click="toggleShowApps" :class="{'opacity-1':appsIsShowing}">
 	</section>
 	`,
     data() {
         return {
+            appsIsShowing: false,
             filterBy: {
                 subject: '',
-                minSpeed: 0
-            }
+                minSpeed: 0,
+            },
         }
     },
     methods: {
@@ -54,9 +60,18 @@ export default {
         },
         expandNav() {
             eventBus.emit('expandNav')
+        },
+        goAbout(){
+            this.$router.push('/about')
+        },
+        toggleShowApps(){
+          this.appsIsShowing = !this.appsIsShowing
         }
     },
     func() {
         this.$emit('')
-    }
+    },
+    components: {
+        appsPicker
+      }
 }
