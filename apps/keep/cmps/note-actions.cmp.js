@@ -10,7 +10,7 @@ export default {
         <div class="action delete-note" title="delete" @click="deleteNote(note.id)">
             <img src="assets/img/trash.png" alt=""  />
         </div>
-        <div class="action edit-note">
+        <div class="action edit-note" v-if="note.type !== 'note-todos'">
             <router-link :to="'/note/edit/' + note.id">
                 <img src="assets/img/editing.png" 
                 />

@@ -19,7 +19,8 @@ button.composed {
     transition: width .3s;
 }
 
-.app-nav.active button.composed {
+.app-nav.active button.composed,
+.app-nav:hover  button.composed{
     width: 168px;
 }
 

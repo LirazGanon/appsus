@@ -11,6 +11,9 @@
     display: flex;
     flex-direction: column;
     box-shadow: 0 0 0 1px #3335;
+    font-family: 'Edu VIC WA NT Beginner', cursive;
+    font-weight: 600;
+
 }
 
 .note:not(:first-child) {
@@ -60,7 +63,7 @@
     width: 100px;
 }
 
-.note .note-title{
+.note .note-title {
     background: transparent;
     border: none;
     outline: none;
@@ -68,7 +71,11 @@
     padding: 0;
 }
 
+.note h2 input {
+    font-family: 'Edu VIC WA NT Beginner', cursive;
+    font-weight: 900;
 
+}
 
 .actions {
     display: flex;
@@ -93,6 +100,7 @@
 
 .todo-item {
     align-items: center;
+
 }
 
 .todo-item>*:not(:last-child) {
@@ -113,18 +121,17 @@
     box-shadow: inset 0 -1px var(--txt);
     padding: .9em .9em .3em .6em;
     font-size: 1em;
+    font-family: 'Edu VIC WA NT Beginner', cursive;
+
 }
 
 .todo-item button {
-    margin-inline-start: auto;
-
-    margin-inline-end: 10px;
+    margin-inline-end: 16px;
     background: transparent;
     border: none;
     color: var(--txt);
     font-size: 1.4em;
     cursor: pointer;
-
     display: flex;
     align-items: center;
     justify-content: center;
@@ -147,6 +154,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-inline-end: 16px;
+    position: relative;
+
 }
 
 .add-todo>input {
@@ -157,6 +167,8 @@
     box-shadow: inset 0 -1px var(--txt);
     padding: .9em .9em .3em .6em;
     font-size: 1em;
+    flex: 1;
+    margin-inline-start: 33px;
 }
 
 .add-todo>button {
