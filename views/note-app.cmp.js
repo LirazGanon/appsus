@@ -101,12 +101,17 @@ export default {
         }
     },
     created() {
-        noteService.query()
-            .then(notes => this.notes = notes)
+        this.loadNotes()
+      
         eventBus.on('updated', this.updateNote)
         eventBus.on('addNote', this.add)
     },
     methods: {
+        loadNotes(){
+            noteService.query()
+            .then(notes => this.notes = notes)
+        }
+        ,
         add(note) {
             noteService.save(note)
                 .then(note => {
@@ -185,6 +190,10 @@ export default {
         },
         animateOut() {
             return { 'animate__animated': this.addType }
+        },
+        checkParams(){
+            return this.$route.params.id
+
         }
     },
     components: {
@@ -196,5 +205,10 @@ export default {
         noteAddImg,
         noteDetails,
         noteHeader
+    },
+    watch:{
+        checkParams(){
+            this.loadNotes()
+        }
     }
 }

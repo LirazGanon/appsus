@@ -7,7 +7,7 @@
     /* width: minmax(100px, 250px); */
     break-inside: avoid;
     border-radius: 5px;
-    overflow: hidden;
+    /* overflow: hidden; */
     display: flex;
     flex-direction: column;
     box-shadow: 0 0 0 1px #3335;
@@ -24,6 +24,14 @@
 .note>h2 {
     margin-block-start: 10px;
     margin-inline-start: 10px;
+    line-break: anywhere;
+
+}
+
+.note ul,
+.note form
+{
+    margin-inline: 10px;
 }
 
 .note>p {

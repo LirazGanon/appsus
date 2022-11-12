@@ -5,34 +5,78 @@ import { noteService } from "../services/note.service.js"
 export default {
     name: 'note-dits',
     template: `
-<section class="full-screen" v-if="noteToEdit">
+<section class="full-screen" v-if="noteToEdit" @click="close">
     
-    <section class="note-editor note">
+    <section class="note-editor note" :style="noteToEdit.style" @click.stop>
 
-    
+    <!-- TXT -->
     <form  
     @submit="saveNote" 
-    :v-if="noteToEdit.type === 'note-txt'"
+    v-if="noteToEdit.type === 'note-txt'"
     class="flex flex-column">
     
         <input type="search" v-model="noteToEdit.info.title" />
         <input type="search" v-model="noteToEdit.info.txt" />
-        <button>save!</button>
+        <button><i class="fa-solid fa-square-check"></i></button>
+        
+
     </form>
 
 
+<!-- IMG -->
+    <form 
+        class="flex flex-column" 
+        @submit="saveNote" 
+        v-else-if="noteToEdit.type === 'note-img'">
+        
+        <input type="search" v-model="noteToEdit.info.title" />
+        <img :src="noteToEdit.info.url" alt="" />
+        
+        <input 
+            v-model="note.info.url" 
+            @change="onFileChange" 
+            type="file" 
+            required 
+            ref="image" 
+            hidden
+            />
+           <button><i class="fa-solid fa-square-check"></i></button>
+           <div>
+           <button @click="setRef">
+                <i class="fa-regular fa-image"></i>
+            </button>
+           </div>
+        </form>
+        
+        
+        <!-- VIDEO -->
+        <form class="flex flex-column" 
+        @submit="saveNote" 
+        v-else>
+        <input type="search" v-model="noteToEdit.info.title" />
+        <iframe :src="noteToEdit.info.url"></iframe>
+        
+        <input type="search" @input="onFileChange" placeholder="Youtube URL..." v-model="noteToEdit.info.url" />
+        <button><i class="fa-solid fa-square-check"></i></button>
+        
+            </form>
 
-    <router-link to="/note">back</router-link>
-    <pre  >
-        {{ noteToEdit }}
-        <router-link to="/note"></router-link>
-    </pre>
+            <section class="edit-actions flex">
+                <router-link to="/note"><i class="fa-solid fa-angles-left"></i></router-link>
+
+                <div class="action color-note">
+                    <img src="assets/img/paint.png" @click="pickColor = !pickColor"/>
+                </div>
+                <choose-color v-if="pickColor" @setColor="setColor" />
+            </section>
+   
     </section>
 </section>
 `,
     data() {
         return {
-            noteToEdit: null
+            noteToEdit: null,
+            pickColor: false
         }
     },
     created() {
@@ -42,6 +86,7 @@ export default {
         loadNote() {
             noteService.get(this.noteId)
                 .then(note => {
+                    console.log(note);
                     this.noteToEdit = note
                     console.log(note);
                 })
@@ -52,6 +97,25 @@ export default {
                 this.$router.push('/note')
             }
             )
+        },
+        setRef() {
+            this.$refs.image.click()
+        },
+        onFileChange(e) {
+            const file = e.target.files[0]
+            this.noteToEdit.info.url = URL.createObjectURL(file)
+        },
+        onFileChange(ev) {
+            let url = ev.target.value
+            const regExp =
+                /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/
+            const match = url.match(regExp)
+            const id = match && match[7].length == 11 ? match[7] : null
+            const newURL = 'https://www.youtube.com/embed/' + id
+            this.noteToEdit.info.url = newURL
+        },
+        close(){
+            this.$router.push({path:'/note'})
         }
     },
     computed: {
