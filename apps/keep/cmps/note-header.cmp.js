@@ -6,6 +6,7 @@ export default {
     template:/*html*/ `
         <section class="app-header note-header flex justify-between align-center">
 
+        <section class="logo-search flex align-center">
         <section class="logo-container flex">
         <button @click="expandNav">
         <i class="fa-solid fa-bars"></i>
@@ -21,6 +22,8 @@ export default {
                 type="search"
                 placeholder="search..."/> 
             </label>
+            </section>
+
                 <span class=end-icons>
                 <img src="assets/img/svg/help.svg" alt="">
                 <img src="assets/img/svg/setting.svg" alt="">

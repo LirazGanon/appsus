@@ -46,13 +46,12 @@
     height: 48px;
     width: 48px;
     border-radius: 50%;
-    border: 1px solid #eee;
+    border: 1px solid var(--txt);
     cursor: pointer;
     transition: scale .3s;
 }
 
 
 .choose-color>*:hover {
-
     scale: 1.3;
 }

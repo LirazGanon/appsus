@@ -1,10 +1,11 @@
-.app-header>label {
+.app-header>section>label {
   position: relative;
   flex: 1;
   padding-inline-end: 10px;
+  max-width: 722px;
 }
 
-.app-header>label>input {
+.app-header>section>label>input {
   border: none;
   background-color: var(--inp-bg);
   padding-left: 56px;
@@ -14,15 +15,19 @@
   width: 100%;
 }
 
-.app-header>label>input:focus-within {
+.app-header>section>label>input:focus-within {
   background-color: var(--nav-bg);
   box-shadow: 1px 1px 3px #3335;
-  
+
 }
 
-.app-header>label>span {
+.app-header>section>label>span {
   position: absolute;
   left: 20px;
   top: 50%;
   transform: translateY(-50%);
+}
+
+.logo-search {
+  flex: 1;
 }

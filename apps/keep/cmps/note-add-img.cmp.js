@@ -13,6 +13,9 @@ export default {
             placeholder="Title.."
             ref="title"
             class="animate__animated animate__fadeIn"/>
+            <section class="img-holder">
+                <img v-if="note.info.url" :src="note.info.url" alt="" />
+            </section>
         <input 
             v-model="note.info.url" 
             @change="onFileChange" 

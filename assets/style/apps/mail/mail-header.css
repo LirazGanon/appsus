@@ -1,45 +1,48 @@
-.app-header .logo-container{
+.app-header .logo-container {
     align-items: center;
-    margin:10px 10px 20px 10px;
+    margin: 10px 100px 20px 10px;
 }
 
-.mail-logo{
+.mail-logo {
     width: 50px;
     margin-inline-end: 5px;
 
 }
 
-.logo-container>button{
+.logo-container>button {
     height: 48px;
     width: 48px;
 }
 
-.logo-container i{
+.logo-container i {
     font-size: 1.3em;
 }
-.logo-container p{
+
+.logo-container p {
     margin: 0;
     font-size: 1.5em;
     color: var(--txt);
 }
 
-.end-icons{
+.end-icons {
     display: flex;
 }
-.end-icons img{
+
+.end-icons img {
     width: 30px;
     margin-inline-end: 10px;
     cursor: pointer;
 }
 
-.end-icons .user-wrapper{
-position: relative;
+.end-icons .user-wrapper {
+    position: relative;
 }
 
-.end-icons .user-wrapper img{
-width: 40px;
+.end-icons .user-wrapper img {
+    width: 40px;
 }
-.end-icons .user-img{
+
+.end-icons .user-img {
     position: absolute;
     padding: 4px;
     border-radius: 50%;

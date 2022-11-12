@@ -7,12 +7,12 @@ export default {
     data() {
         return {
             themes: [
-                { backgroundColor: '#de6457' },
-                { backgroundColor: '#dae86d' },
-                { backgroundColor: '#94ed61' },
-                { backgroundColor: '#61c3ed' },
-                { backgroundColor: '#5d70de' },
-                { backgroundColor: '#cb75f0' },
+                { backgroundColor: '#f28b82' },
+                { backgroundColor: '#fff475' },
+                { backgroundColor: '#ccff90' },
+                { backgroundColor: '#cbf0f8' },
+                { backgroundColor: '#aecbfa' },
+                { backgroundColor: '#d7aefb' },
 
             ]
                 

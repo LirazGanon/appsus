@@ -10,6 +10,8 @@
 
 .note-header .logo-container{
     padding-inline-end: 30px;
+    margin: 10px 100px 20px 10px;
+
 }
 
 .logo-container>button{
