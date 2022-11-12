@@ -10,7 +10,7 @@ export default {
     
         <section class="logo-container flex">
         <button @click="expandNav">
-            <i class="fa-solid fa-bars"></i>
+            <img src="assets/img/svg/menu-bar.svg" />
         </button>
             <img src="assets/img/mail-logo.png" class="mail-logo" />
             <p>jQmail</p>

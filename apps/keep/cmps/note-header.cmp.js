@@ -9,7 +9,7 @@ export default {
         <section class="logo-search flex align-center">
         <section class="logo-container flex">
         <button @click="expandNav">
-        <i class="fa-solid fa-bars"></i>
+        <img src="assets/img/svg/menu-bar.svg" />
         </button>
             <img src="assets/img/note-logo.png" class="note-logo"alt="" />
             <p>ote</p>

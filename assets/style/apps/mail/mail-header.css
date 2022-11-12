@@ -1,11 +1,12 @@
 .app-header .logo-container {
     align-items: center;
-    margin: 10px 100px 20px 10px;
+    margin: 10px 100px 20px 0px;
 }
 
 .mail-logo {
     width: 50px;
     margin-inline-end: 5px;
+    padding: 5px;
 
 }
 
