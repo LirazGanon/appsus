@@ -16,3 +16,7 @@
     flex: 1;
 }
 
+.note-content{
+    overflow: auto;
+    height: 82vh;
+}
