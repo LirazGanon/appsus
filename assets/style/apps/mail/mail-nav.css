@@ -49,6 +49,7 @@ button.composed:hover {
 
 }
 
+.app-nav:hover .nav-item,
 .app-nav.active .nav-item {
     width: 250px;
 

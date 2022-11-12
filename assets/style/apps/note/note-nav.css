@@ -28,6 +28,7 @@
 
 }
 
+.app-nav:hover li label,
 .app-nav.active li label {
     width: 250px;
 
