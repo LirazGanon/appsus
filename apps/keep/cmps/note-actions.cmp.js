@@ -57,7 +57,7 @@ export default {
             this.$router.push('/mail')
             setTimeout(() => {
                 eventBus.emit('noteToMail',this.note)
-            }, 1000);
+            }, 500);
             
         }
 

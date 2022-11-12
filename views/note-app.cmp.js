@@ -118,7 +118,7 @@ export default {
         addMail(mail) {
             const { subject, body } = mail
             const note = {
-                id: '',
+                id: null,
                 type: 'note-txt',
                 isPinned: true,
                 info: {
