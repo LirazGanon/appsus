@@ -1,4 +1,6 @@
 import { eventBus } from "../../../services/event-bus.service.js"
+import chooseColor from './choose-color.cmp.js'
+
 
 export default {
     props: ['state'],
@@ -6,7 +8,7 @@ export default {
 <section>
 
 
-<form @submit.prevent="addNote" class="add-note">
+<form @submit.prevent="addNote" class="add-note" :style="note.style">
         <input
             v-model="note.info.title"
             type="search"
@@ -24,7 +26,11 @@ export default {
             ref="image" 
             hidden
             />
+            <div class="action color-note">
+            <img src="assets/img/paint.png" @click="pickColor = !pickColor"/>
+        </div>
         <button><i class="fa-solid fa-plus"></i></button>
+        <choose-color v-if="pickColor" @setColor="setColor">
     </form>
 </section>
 `,
@@ -37,8 +43,10 @@ export default {
                     url: "",
                     title: ""
                 },
-                style: { backgroundColor: '#61c3ed' }
-            }
+                style: { backgroundColor: '#ebf1fa' }
+            },
+            pickColor:false
+
         }
     },
     mounted() {
@@ -58,6 +66,13 @@ export default {
         },
         uploadImg(){
             this.$refs.image.click()
+        },
+        setColor(theme) {
+            this.pickColor = false
+            this.note.style = theme
         }
+    },
+    components: {
+        chooseColor
     }
 }

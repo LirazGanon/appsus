@@ -25,6 +25,9 @@ export default {
         <div class="action pin-note" @click="pinNote">
             <img :src="pinImg" alt="" />
         </div>
+        <div class="action pin-note" @click="copyNote">
+        <img src="assets/img/copy.png" alt="" />
+        </div>
         <choose-color v-if="pickColor" @setColor="setColor">
             
     </div>
@@ -46,6 +49,9 @@ export default {
         pinNote() {
             console.log('hi');
             this.$emit('pinNote')
+        },
+        copyNote(){
+            this.$emit('copyNote')
         }
 
     },

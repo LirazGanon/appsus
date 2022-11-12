@@ -10,7 +10,7 @@ export default {
 <section class="note">
     <h2>
         <input
-        v-model="newNote.info.label"
+        v-model="newNote.info.title"
         @change="updateTodo"
         placeholder="My Todos"
         class="note-title"

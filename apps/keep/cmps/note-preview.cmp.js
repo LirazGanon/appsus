@@ -7,6 +7,7 @@ import noteTodos from "../cmps/note-todos.cmp.js"
 
 
 import noteActions from './note-actions.cmp.js'
+import { utilService } from "../../../services/util.service.js"
 
 
 export default {
@@ -24,6 +25,7 @@ export default {
               @delete="deleteNote"
               @setColor="setColor"
               @pinNote="pinNote"
+              @copyNote="copyNote"
               />
     </section>
    
@@ -47,12 +49,20 @@ export default {
             eventBus.emit('updated', this.deepCopy)
             showSuccessMsg('Note Pinned')
 
-        }
-    },
-    computed: {
+        },
+        copyNote() {
+            const copy = this.deepCopy()
+            console.log('copy:', copy)
+            copy.id = null
+            console.log('copy:', copy)
+            eventBus.emit('addNote', copy)
+        },
         deepCopy() {
             return JSON.parse(JSON.stringify(this.note))
         }
+    },
+    computed: {
+        
     },
     components: {
         noteTxt,

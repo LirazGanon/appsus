@@ -104,6 +104,7 @@ export default {
         noteService.query()
             .then(notes => this.notes = notes)
         eventBus.on('updated', this.updateNote)
+        eventBus.on('addNote', this.add)
     },
     methods: {
         add(note) {

@@ -35,6 +35,7 @@
     height: 30px;
     width: 30px;
     background: #eee;
+    background: linear-gradient(135deg,#eee,#eee,transparent);
     position: absolute;
     bottom: -15px;
     right: calc(30px *3 + 15px);
