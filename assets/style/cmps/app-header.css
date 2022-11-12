@@ -31,3 +31,48 @@
 .logo-search {
   flex: 1;
 }
+
+
+/* APPS PICKER */
+
+.app-header .apps-wrapper {
+  position: relative;
+}
+
+.apps-picker{
+  position: absolute;
+  width: max-content;
+  top: 65px;
+  right: 0;
+  background-color: #FFF;
+padding: 20px;
+border-radius: 10px;
+box-shadow: rgb(0 0 0 / 20%) 0 2px 6px;
+border:1px solid rgb(237, 236, 236);
+opacity: 0;
+pointer-events: none;
+transition:opacity 0.2s;
+}
+
+.apps-picker img.picker-app{
+  width: inherit;
+  height: 45px;
+  margin: 0;
+}
+
+.apps-picker span{
+  padding: 10px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+}
+.apps-picker span:hover{
+  background-color: var(--btn-hover-bg);
+}
+.opacity-1{
+  opacity: 1;
+  pointer-events: all;
+}

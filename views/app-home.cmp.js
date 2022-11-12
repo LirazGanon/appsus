@@ -1,5 +1,6 @@
 import appHeader from '../cmps/app-header.cmp.js'
 import appFooter from '../cmps/app-footer.cmp.js'
+
 import weather from '../cmps/weather.cmp.js'
 import clock from '../cmps/clock.cmp.js'
 
@@ -20,14 +21,12 @@ export default {
 	        ><router-link to="/mail">
 	          <img src="assets/img/mail-logo.png" alt="" />
 	          <p>jQmail</p>
-	        </router-link></span
-	      >
-	      <span
-	        ><router-link to="/note">
+	        </router-link>
+            </span>
+	      <span><router-link to="/note">
 	          <img class="note-img" src="assets/img/note-logo.png" alt="" />
 	          <p>jQeep</p>
-	        </router-link></span
-	      >
+	        </router-link></span>
 	    </section>
 	  </section>
 	  <router-view v-else />
@@ -46,7 +45,7 @@ export default {
         appHeader,
         weather,
         clock,
-        appFooter
+        appFooter,
     }
 }
 
