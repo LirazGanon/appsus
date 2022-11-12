@@ -14,10 +14,12 @@ const routerOptions = {
 		{
 			path: '/',
 			component: homePage,
-		},
-		{
-			path: '/about',
-			component: aboutPage,
+			children: [
+				{
+					path: '/about',
+					component: aboutPage
+				}
+			]
 		},
 		{
 			path: '/note',

@@ -1,6 +1,6 @@
 export default {
-	template: `
-        <footer class="app-footer">
+	template:/*html*/ `
+        <footer class="app-footer flex align-center justify-center">
             <p>Coffeerights &copy; 2022</p>
         </footer>
     `,

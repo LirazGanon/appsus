@@ -1,0 +1,80 @@
+main.home{
+    height: 100vh;
+    background-color: var(--bg-light-white);
+}
+
+main.home .about-page{
+    flex: 1;
+}
+
+.home-header{
+    justify-content: end;
+}
+
+.home-page{
+flex: 1;
+}
+
+.home-page .main-logo{
+    margin: auto;
+    margin-top: 50px;
+}
+
+.home-page .home-info{
+    height: 104px;
+}
+.home-page .weather{
+    margin-inline-start: 15px;
+
+}
+
+.weather-top{
+    font-size: 1.3em;
+}
+.weather .city{
+    gap:10px;
+}
+
+.weather h2,
+.weather h3{
+    font-family: OpenSans, sans-serif;
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.home-page .clock{
+    padding: 20px;
+    font-family: Orbitron, sans-serif;
+    font-size: 1.5em;
+    color: var(--txt);
+    letter-spacing: 1px;
+}
+
+.home-page .apps{
+    margin-top: 20px;
+}
+
+.home-page .apps p {
+    font-size: 1.3em;
+    text-align: center;
+    margin: 0;
+}
+
+.home-page .apps .note-img{
+    padding: 5px;
+}
+
+
+.home-page .apps img{
+height: 80px;
+}
+.home-page .apps span{
+    padding: 20px 30px;
+    border-radius: 1em;
+    transition:background-color 0.2s;
+}
+
+.home-page .apps span:hover{
+
+    background-color: var(--hover-app-bg);
+}

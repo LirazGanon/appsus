@@ -13,7 +13,7 @@ export default {
             <h3 class="title clean-space" :class="{'un-bold black':mail.isRead}"  >{{ mail.subject }}</h3>
             <h3 class="desc clean-space">{{ mail.body}} </h3>
         </section>
-        <h3 class="clean-space sentAt">{{ formattedTime}} </h3>
+        <h3 class="clean-space sentAt" :class="{'un-bold':mail.isRead}" >{{ formattedTime}} </h3>
 
             <section class="actions" :class="{read:mail.isRead}">
             <button @click.stop="removeMail(mail.id)" title="Delete"><i class="fa-regular fa-trash-can"></i></button>

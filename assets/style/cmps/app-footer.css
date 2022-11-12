@@ -1,3 +1,10 @@
 .app-footer{
-    height: 10vh;
+    height: 40px;
+    background-color: var(--btn-hover-bg);
+    color: var(--txt-light);
 }
+
+
+.app-footer p{
+    margin: 0;
+} 
