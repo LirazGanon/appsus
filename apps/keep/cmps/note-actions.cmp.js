@@ -1,3 +1,4 @@
+import { eventBus } from '../../../services/event-bus.service.js'
 import chooseColor from './choose-color.cmp.js'
 
 
@@ -16,7 +17,7 @@ export default {
                 />
             </router-link>
         </div>
-        <div class="action send-note" title="email">
+        <div class="action send-note" title="email" @click="sendMail">
             <img src="assets/img/envelope.png" alt=""  />
         </div>
         <div class="action color-note" title="color">
@@ -51,6 +52,9 @@ export default {
         },
         copyNote(){
             this.$emit('copyNote')
+        },
+        sendMail(){
+            eventBus.emit('noteToMail',this.note)
         }
 
     },
