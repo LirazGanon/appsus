@@ -108,7 +108,8 @@
 
 .todo-item {
     align-items: center;
-
+    display: flex;
+    justify-content: space-between;
 }
 
 .todo-item>*:not(:last-child) {
@@ -121,13 +122,14 @@
 
 }
 
+
 .todo-item input {
     flex: 1;
     background: transparent;
     outline: none;
     border: none;
     box-shadow: inset 0 -1px var(--txt);
-    padding: .9em .9em .3em .6em;
+    padding: .9em 0 .3em .6em;
     font-size: 1em;
     font-family: 'Edu VIC WA NT Beginner', cursive;
 
@@ -168,12 +170,11 @@
 }
 
 .add-todo>input {
-    margin-inline-end: 10px;
     background: transparent;
     outline: none;
     border: none;
     box-shadow: inset 0 -1px var(--txt);
-    padding: .9em .9em .3em .6em;
+    padding: .9em 0 .3em .6em;
     font-size: 1em;
     flex: 1;
     margin-inline-start: 33px;
@@ -187,6 +188,7 @@
     color: var(--txt);
     font-size: 1.4em;
     cursor: pointer;
+    margin-inline-end: 16px;
 
 }
 

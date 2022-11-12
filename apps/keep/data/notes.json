@@ -5,10 +5,34 @@
     "isPinned": true,
     "info": {
       "title": "Fullstack Me Baby!",
-      "txt": "Fullstack Me Baby!"
+      "txt": "jQuery For Life!! 💖"
     },
     "style": {
       "backgroundColor":"#f28b82"
+    }
+  },
+  {
+    "id": "n10x5",
+    "type": "note-img",
+    "isPinned": false,
+    "info": {
+      "url": "https://preview.redd.it/er5bgv34l2121.jpg?auto=webp&s=6f2730a67e37012681849f80eb98ea323ef94d2e",
+      "title": "Chad 4Life"
+    },
+    "style": {
+      "backgroundColor": "#aecbfa"
+    }
+  },
+  {
+    "id": "sx0x5",
+    "type": "note-img",
+    "isPinned": true,
+    "info": {
+      "url": "../../../assets/img/mymeme.jpg",
+      "title": "#memeit"
+    },
+    "style": {
+      "backgroundColor": "#aecbfa"
     }
   },
   {
@@ -16,9 +40,8 @@
     "type": "note-txt",
     "isPinned": true,
     "info": {
-      "title": "Fullstack Me Baby!",
-
-      "txt": "Don't forget to get lunch!"
+      "title": "Pickup Hummus for Liraz",
+      "txt": "Loading Falafel..."
     },
     "style": {
       "backgroundColor":"#fff475"
@@ -26,37 +49,40 @@
   },
   {
     "id": "n105",
-    "type": "note-txt",
+    "type": "note-img",
     "isPinned": true,
     "info": {
-      "title": "Fullstack Me Baby!",
-
-      "txt": "Delete eventBus MSG"
+      "url": "../../../assets/img/water-bottle.png",
+      "title": "Stay Hydrated!"
     },
     "style": {
-      "backgroundColor":"#ccff90"
+      "backgroundColor": "#aecbfa"
     }
   },
   {
     "id": "n106",
-    "type": "note-txt",
+    "type": "note-todos",
     "isPinned": false,
     "info": {
-      "title": "Fullstack Me Baby!",
-
-      "txt": "pick up Bobi 16:00"
+      "title": "Self Growth ",
+      "todos": [
+        { "txt": "HTML", "doneAt": 187111111,"id":99},
+        { "txt": "CSS", "doneAt": 187111111,"id":100},
+        { "txt": "jQuery", "doneAt": null,"id":102},
+        { "txt": "JS", "doneAt": 187111111,"id":101}
+      ]
     },
     "style": {
-      "backgroundColor":"#cbf0f8"
+      "backgroundColor":"#d7aefb"
     }
   },
   {
     "id": "n152",
     "type": "note-img",
-    "isPinned": true,
+    "isPinned": false,
     "info": {
       "url": "../../../assets/img/cat.jpg",
-      "title": "Bobi and Me"
+      "title": "מחכה לך כאן 😎"
     },
     "style": {
       "backgroundColor": "#aecbfa"
@@ -67,14 +93,16 @@
     "type": "note-todos",
     "isPinned": false,
     "info": {
-      "title": "Get my stuff together",
+      "title": "The fridge is EMPTY again",
       "todos": [
-        { "txt": "Driving liscence", "doneAt": null,"id":99},
-        { "txt": "Coding power", "doneAt": 187111111,"id":100}
+        { "txt": "milk", "doneAt": null,"id":99},
+        { "txt": "veggies", "doneAt": 187111111,"id":100},
+        { "txt": "bread", "doneAt": 187111111,"id":101},
+        { "txt": "cheese", "doneAt": 187111111,"id":102}
       ]
     },
     "style": {
-      "backgroundColor":"#d7aefb"
+      "backgroundColor":"#fff475"
     }
   },
   {
@@ -82,8 +110,68 @@
     "type": "note-video",
     "isPinned": true,
     "info": {
-      "title": "jQuery",
+      "title": "jQuery - Tutorial",
       "url": "https://www.youtube.com/embed/QhQ4m5g2fhA"
+    },
+    "style" :{
+      "backgroundColor":"#f28b82"
+    }
+  },
+  {
+    "id": "n182",
+    "type": "note-img",
+    "isPinned": false,
+    "info": {
+      "url": "../../../assets/img/ninja.png",
+      "title": "Victorious"
+    },
+    "style": {
+      "backgroundColor": "#aecbfa"
+    }
+  },
+  {
+    "id": "n704",
+    "type": "note-txt",
+    "isPinned": false,
+    "info": {
+      "title": "Almost Done!!",
+      "txt": "Loading Sprint 4...."
+    },
+    "style": {
+      "backgroundColor":"#f28b82"
+    }
+  },
+  {
+    "id": "n794",
+    "type": "note-txt",
+    "isPinned": false,
+    "info": {
+      "title": "What is jQuery?",
+      "txt": "jQuery is a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers. With a combination of versatility and extensibility, jQuery has changed the way that millions of people write JavaScript."
+    },
+    "style": {
+      "backgroundColor":"#fff475"
+    }
+  },
+  {
+    "id": "n7514",
+    "type": "note-txt",
+    "isPinned": true,
+    "info": {
+      "title": "Elon Musk",
+      "txt": "When something is important enough, you do it even if the odds are not in your favor"
+    },
+    "style": {
+      "backgroundColor":"#fff475"
+    }
+  },
+  {
+    "id": "n163",
+    "type": "note-video",
+    "isPinned": false,
+    "info": {
+      "title": "Luffy",
+      "url": "https://www.youtube.com/embed/jfKfPfyJRdk"
     },
     "style" :{
       "backgroundColor":"#f28b82"

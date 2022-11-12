@@ -1,6 +1,6 @@
 import { showSuccessMsg } from "../../../services/event-bus.service.js"
 import { noteService } from "../services/note.service.js"
-
+import chooseColor from '../cmps/choose-color.cmp.js'
 
 export default {
     name: 'note-dits',
@@ -17,7 +17,7 @@ export default {
     
         <input type="search" v-model="noteToEdit.info.title" />
         <input type="search" v-model="noteToEdit.info.txt" />
-        <button><i class="fa-solid fa-square-check"></i></button>
+        <button><i class="fa-solid fa-check"></i></i></button>
         
 
     </form>
@@ -26,8 +26,8 @@ export default {
 <!-- IMG -->
     <form 
         class="flex flex-column" 
-        @submit="saveNote" 
-        v-else-if="noteToEdit.type === 'note-img'">
+        @submit="saveNote"
+        v-if="noteToEdit.type === 'note-img'">
         
         <input type="search" v-model="noteToEdit.info.title" />
         <img :src="noteToEdit.info.url" alt="" />
@@ -36,28 +36,27 @@ export default {
             v-model="note.info.url" 
             @change="onFileChange" 
             type="file" 
-            required 
             ref="image" 
             hidden
             />
-           <button><i class="fa-solid fa-square-check"></i></button>
-           <div>
-           <button @click="setRef">
-                <i class="fa-regular fa-image"></i>
-            </button>
-           </div>
+            <div class="img-upload">
+                <button @click="setRef">
+                    <i class="fa-regular fa-image"></i>
+                </button>
+            </div>
+            <button><i class="fa-solid fa-check"></i></button>
         </form>
         
         
         <!-- VIDEO -->
         <form class="flex flex-column" 
         @submit="saveNote" 
-        v-else>
+        v-if="noteToEdit.type === 'note-video'">
         <input type="search" v-model="noteToEdit.info.title" />
         <iframe :src="noteToEdit.info.url"></iframe>
         
         <input type="search" @input="onFileChange" placeholder="Youtube URL..." v-model="noteToEdit.info.url" />
-        <button><i class="fa-solid fa-square-check"></i></button>
+        <button><i class="fa-solid fa-check"></i></button>
         
             </form>
 
@@ -116,6 +115,10 @@ export default {
         },
         close(){
             this.$router.push({path:'/note'})
+        },
+        setColor(theme){
+            this.noteToEdit.style = theme
+            this.pickColor = false
         }
     },
     computed: {
@@ -124,6 +127,7 @@ export default {
         }
     },
     components: {
+        chooseColor
     },
     watch: {
         noteId() {

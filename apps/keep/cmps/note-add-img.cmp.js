@@ -72,7 +72,7 @@ export default {
             this.note.style = theme
         }
     },
-    components: {
+    component:{
         chooseColor
     }
 }
