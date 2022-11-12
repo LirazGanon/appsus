@@ -36,23 +36,23 @@ function save(mail) {
     if (mail.id) {
         return storageService.put(MAIL_KEY, mail)
     } else {
-        return storageService.post(MAIL_KEY, mail)
+        return storageService.post(MAIL_KEY, mail, false)
     }
 }
 
 
 function getNextMailId(mailId) {
     return storageService.query(MAIL_KEY)
-    .then(mails => {
+        .then(mails => {
             var idx = mails.findIndex(mail => mail.id === mailId)
             if (idx === mails.length - 1) idx = -1
-            return {nextId:mails[idx + 1].id, idx, mailLength:mails.length}
+            return { nextId: mails[idx + 1].id, idx, mailLength: mails.length }
         })
 }
 
 function getPrevMailId(mailId) {
     return storageService.query(MAIL_KEY)
-    .then(mails => {
+        .then(mails => {
             var idx = mails.findIndex(mail => mail.id === mailId)
             if (idx === 0) return null
             return mails[idx - 1].id
@@ -61,28 +61,28 @@ function getPrevMailId(mailId) {
 
 function _createMails() {
     let mails = utilService.loadFromStorage(MAIL_KEY)
-            if (!mails || !mails.length) {
-                mails = _getDefaultMails()
-                mails.sort((a, b) => b.sentAt - a.sentAt)
-                utilService.saveToStorage(MAIL_KEY, mails)
-            }
-            return mails
-        }
-        
-        function getEmptyMail() {
-            return {
-                id: '',
-                subject: '',
-                body: '',
-                isRead: false,
-                sentAt: Date.now(),
-                from: 'your-mail@someting.com',
-                to: '',
-                type: 'Social',
-                IsStarred:false
-            }
-        }
-        
+    if (!mails || !mails.length) {
+        mails = _getDefaultMails()
+        mails.sort((a, b) => b.sentAt - a.sentAt)
+        utilService.saveToStorage(MAIL_KEY, mails)
+    }
+    return mails
+}
+
+function getEmptyMail() {
+    return {
+        id: '',
+        subject: '',
+        body: '',
+        isRead: false,
+        sentAt: Date.now(),
+        from: 'your-mail@someting.com',
+        to: '',
+        type: 'Social',
+        IsStarred: false
+    }
+}
+
 function _getDefaultMails() {
     return [
         {
@@ -94,8 +94,8 @@ function _getDefaultMails() {
             from: 'messages-noreply@linkedin.com',
             to: 'lirazganon@gmail.com',
             type: 'Social',
-            IsStarred:false,
-            isTrash:false,
+            IsStarred: false,
+            isTrash: false,
         },
         {
             id: utilService.makeId(),
@@ -106,8 +106,8 @@ function _getDefaultMails() {
             from: 'info@meetup.com',
             to: 'lirazganon@gmail.com',
             type: 'Promotion',
-            IsStarred:false,
-            isTrash:false,
+            IsStarred: false,
+            isTrash: false,
         },
         {
             id: utilService.makeId(),
@@ -120,8 +120,8 @@ function _getDefaultMails() {
             from: 'CodeSandbox@meetup.com',
             to: 'lirazganon@gmail.com',
             type: 'Promotion',
-            IsStarred:false,
-            isTrash:false,
+            IsStarred: false,
+            isTrash: false,
         },
         {
             id: utilService.makeId(),
@@ -137,8 +137,8 @@ function _getDefaultMails() {
             from: 'brandcrowd@hello.brandcrowd.com',
             to: 'lirazganon@gmail.com',
             type: 'Promotion',
-            IsStarred:false,
-            isTrash:false,
+            IsStarred: false,
+            isTrash: false,
         },
         {
             id: utilService.makeId(),
@@ -152,8 +152,8 @@ function _getDefaultMails() {
             from: 'arguscarhire@email.arguscarhire.com',
             to: 'lirazganon@gmail.com',
             type: 'Social',
-            IsStarred:true,
-            isTrash:true,
+            IsStarred: true,
+            isTrash: true,
         },
         {
             id: utilService.makeId(),
@@ -168,8 +168,8 @@ function _getDefaultMails() {
             from: 'mongodbteam@mongodb.com',
             to: 'lirazganon@gmail.com',
             type: 'Promotion',
-            IsStarred:false,
-            isTrash:false,
+            IsStarred: false,
+            isTrash: false,
         },
         {
             id: utilService.makeId(),
@@ -182,8 +182,8 @@ function _getDefaultMails() {
             from: 'erin@cloudykitchen.com',
             to: 'lirazganon@gmail.com',
             type: 'Promotion',
-            IsStarred:false,
-            isTrash:false,
+            IsStarred: false,
+            isTrash: false,
         },
         {
             id: utilService.makeId(),
@@ -197,8 +197,8 @@ function _getDefaultMails() {
             from: 'CodePen@cloudykitchen.com',
             to: 'lirazganon@gmail.com',
             type: 'Promotion',
-            IsStarred:false,
-            isTrash:false,
+            IsStarred: false,
+            isTrash: false,
         },
         {
             id: utilService.makeId(),
@@ -213,8 +213,8 @@ function _getDefaultMails() {
             from: 'linkedin@cloudykitchen.com',
             to: 'lirazganon@gmail.com',
             type: 'Social',
-            IsStarred:false,
-            isTrash:false,
+            IsStarred: false,
+            isTrash: false,
         },
         {
             id: utilService.makeId(),
@@ -226,8 +226,8 @@ function _getDefaultMails() {
             from: 'linkedin@cloudykitchen.com',
             to: 'coursera@gmail.com',
             type: 'Promotion',
-            IsStarred:false,
-            isTrash:false,
+            IsStarred: false,
+            isTrash: false,
         },
         {
             id: utilService.makeId(),
@@ -258,8 +258,8 @@ function _getDefaultMails() {
             from: 'walmart@walmart.com',
             to: 'lirazganon@gmail.com',
             type: 'Promotion',
-            IsStarred:false,
-            isTrash:false,
+            IsStarred: false,
+            isTrash: false,
         },
         {
             id: utilService.makeId(),
@@ -272,8 +272,8 @@ function _getDefaultMails() {
             from: 'dropbox@dropbox.com',
             to: 'lirazganon@gmail.com',
             type: 'Social',
-            IsStarred:false,
-            isTrash:false,
+            IsStarred: false,
+            isTrash: false,
         },
         {
             id: utilService.makeId(),
@@ -289,8 +289,8 @@ function _getDefaultMails() {
             from: 'brandcrowd@hello.brandcrowd.com',
             to: 'lirazganon@gmail.com',
             type: 'Promotion',
-            IsStarred:false,
-            isTrash:false,
+            IsStarred: false,
+            isTrash: false,
         },
         {
             id: utilService.makeId(),
@@ -304,8 +304,8 @@ function _getDefaultMails() {
             from: 'arguscarhire@email.arguscarhire.com',
             to: 'lirazganon@gmail.com',
             type: 'Social',
-            IsStarred:true,
-            isTrash:true,
+            IsStarred: true,
+            isTrash: true,
         },
         {
             id: utilService.makeId(),
@@ -320,8 +320,8 @@ function _getDefaultMails() {
             from: 'mongodbteam@mongodb.com',
             to: 'lirazganon@gmail.com',
             type: 'Promotion',
-            IsStarred:false,
-            isTrash:false,
+            IsStarred: false,
+            isTrash: false,
         },
         {
             id: utilService.makeId(),
@@ -334,8 +334,8 @@ function _getDefaultMails() {
             from: 'erin@cloudykitchen.com',
             to: 'lirazganon@gmail.com',
             type: 'Promotion',
-            IsStarred:false,
-            isTrash:false,
+            IsStarred: false,
+            isTrash: false,
         },
         {
             id: utilService.makeId(),
@@ -349,8 +349,8 @@ function _getDefaultMails() {
             from: 'CodePen@cloudykitchen.com',
             to: 'lirazganon@gmail.com',
             type: 'Promotion',
-            IsStarred:false,
-            isTrash:false,
+            IsStarred: false,
+            isTrash: false,
         },
         {
             id: utilService.makeId(),
@@ -365,8 +365,8 @@ function _getDefaultMails() {
             from: 'linkedin@cloudykitchen.com',
             to: 'lirazganon@gmail.com',
             type: 'Social',
-            IsStarred:false,
-            isTrash:false,
+            IsStarred: false,
+            isTrash: false,
         },
         {
             id: utilService.makeId(),
@@ -378,8 +378,8 @@ function _getDefaultMails() {
             from: 'linkedin@cloudykitchen.com',
             to: 'coursera@gmail.com',
             type: 'Promotion',
-            IsStarred:false,
-            isTrash:false,
+            IsStarred: false,
+            isTrash: false,
         },
         {
             id: utilService.makeId(),
@@ -410,8 +410,8 @@ function _getDefaultMails() {
             from: 'walmart@walmart.com',
             to: 'lirazganon@gmail.com',
             type: 'Promotion',
-            IsStarred:false,
-            isTrash:false,
+            IsStarred: false,
+            isTrash: false,
         },
         {
             id: utilService.makeId(),
@@ -424,8 +424,8 @@ function _getDefaultMails() {
             from: 'dropbox@dropbox.com',
             to: 'lirazganon@gmail.com',
             type: 'Social',
-            IsStarred:false,
-            isTrash:false,
+            IsStarred: false,
+            isTrash: false,
         },
 
 

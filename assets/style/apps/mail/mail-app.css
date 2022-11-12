@@ -30,3 +30,7 @@
 .skeleton-wrapper{
     width: 100%;
 }
+
+body{
+    background-color:var(--main-background)
+}

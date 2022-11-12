@@ -40,7 +40,7 @@ export default {
             </li>
             <li @click="filter('draft')" :class="{selected: selected ==='draft'}" class="nav-item">
             <i class="fa-regular fa-file"></i>
-            <span>
+            <span> 
             Draft
             </span>
             </li>
@@ -65,10 +65,12 @@ export default {
     },
     methods: {
         filter(val){
+            this.$router.push('/mail')
             this.selected=val
             this.$emit('filterBy', val)
         },
         composed(){
+            this.$router.push('/mail')
             this.$emit('setCompose')
         },
         expandNav() {

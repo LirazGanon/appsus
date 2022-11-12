@@ -87,7 +87,7 @@ article.mail-preview .fade {
 .mail-list .actions {
     display: none;
     right: 0;
-    background-color: #fff;
+    background-color:var(--main-background);
     position: absolute;
     color: var(--txt);
 }

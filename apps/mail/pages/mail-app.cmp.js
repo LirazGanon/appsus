@@ -27,8 +27,9 @@ export default {
         @read="toggleRead"
         @trash="toggleTrash"
         @starred="starred"
+        @compose="setDraftCompose"
         />
-        <mail-compose v-if="isComposing" @mailSent="addMail" @composeClose="isComposing=false"/>
+        <mail-compose v-if="isComposing" @mailSent="addMail" @mailSaved="addDraftMail" @composeClose="isComposing=false" :mail="draftMail"/>
         </section>
     <router-view v-else/>
 
@@ -36,6 +37,7 @@ export default {
 	`,
     data() {
         return {
+            draftMail: null,
             mails: null,
             filterBy: {
                 subject: '',
@@ -68,7 +70,7 @@ export default {
                 .then(() => {
                     const idx = this.mails.findIndex(mail => mail.id === mailId)
                     let mail = this.mails[idx]
-                    if (!mail.isRead){
+                    if (!mail.isRead) {
                         this.unreadCount[mail.type] -= 1
                         this.unreadCount.Primary -= 1
                     }
@@ -105,9 +107,13 @@ export default {
                 })
         },
         addMail(mail) {
-            this.mails.unshift(mail)
+            // this.mails.unshift(mail)
             this.isComposing = false
             this.updateReadCount(mail)
+        },
+        addDraftMail(mail) {
+            if(mail.id === this.mails[0].id) return
+            this.mails.unshift(mail)
         },
         updateReadCount(mail) {
             this.unreadCount[mail.type] += mail.isRead ? -1 : +1
@@ -119,7 +125,7 @@ export default {
         setTabFilter(filterBy) {
             this.filterBy.type = filterBy
         },
-        filterAll(val){
+        filterAll(val) {
             this.filterBy[val] = true
         },
         showMail(mailId) {
@@ -147,31 +153,40 @@ export default {
                     console.log('OOPS', err)
                     showErrorMsg('Cannot check mail')
                 })
+        },
+        setDraftCompose(mail) {
+
+            this.draftMail = mail
+            this.isComposing = true
         }
     },
     computed: {
         mailsToShow() {
             const regex = new RegExp(this.filterBy.subject, 'i')
-            let mails = this.mails.filter(mail =>{
-                return regex.test(mail.subject)||
-                regex.test(mail.body)||
-                regex.test(mail.from)
+            let mails = this.mails.filter(mail => {
+                return regex.test(mail.subject) ||
+                    regex.test(mail.body) ||
+                    regex.test(mail.from)
             })
- 
-            if(this.filterBy.type==='trash'){
+
+            if (this.filterBy.type === 'trash') {
                 mails = mails.filter(mail => mail.isTrash)
                 return mails
             }
-            if(this.filterBy.type==='unread') mails = mails.filter(mail => !mail.isRead)
-            else if(this.filterBy.type==='sent') mails = mails.filter(mail => mail.from === 'your-mail@someting.com')
-            else if(this.filterBy.type==='starred') mails = mails.filter(mail => mail.IsStarred)
-            else mails = mails.filter(mail => mail.type.includes(this.filterBy.type))            
+            if (this.filterBy.type === 'unread') mails = mails.filter(mail => !mail.isRead)
+            else if (this.filterBy.type === 'sent') mails = mails.filter(mail => mail.from === 'your-mail@someting.com')
+            else if (this.filterBy.type === 'draft') {
+                mails = mails.filter(mail => mail.isDraft && !mail.isTrash)
+                return mails
+            }
+            else if (this.filterBy.type === 'starred') mails = mails.filter(mail => mail.IsStarred)
+            else mails = mails.filter(mail => mail.type.includes(this.filterBy.type))
 
-            mails = mails.filter(mail => !mail.isTrash)
+            mails = mails.filter(mail => !mail.isTrash && !mail.isDraft)
             return mails
 
         },
-        getParamsId(){
+        getParamsId() {
             return this.$route.params.id
         }
     },

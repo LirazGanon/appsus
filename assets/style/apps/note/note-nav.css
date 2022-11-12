@@ -50,6 +50,6 @@
 
 
 .app-nav li:has(label input:checked) {
-    background: #d3e3fd;
+    background: var( --active-nav-background);
     font-weight: 600;
 }
