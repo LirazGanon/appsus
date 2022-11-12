@@ -53,7 +53,7 @@ export default {
             eventBus.emit('addMail', this.mail)
             setTimeout(() => {
                 this.$router.push('/note')
-            }, 500);
+            }, 1000);
         }
     },
     computed: {

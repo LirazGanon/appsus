@@ -63,7 +63,10 @@ export default {
                     }
                 })
             })
+            
+            eventBus.on('noteToMail',this.noteToMail)
     },
+    
     methods: {
         removeMail(mailId) {
             mailService.remove(mailId)
@@ -142,15 +145,13 @@ export default {
                     showErrorMsg('Cannot check mail')
                 })
         },
-        getNote(){
-            eventBus.on('noteToMail',noteToMail)
+        noteToMail(note){
+            const mail = mailService.getEmptyMail()
+            mail.subject = note.info.title
+            mail.body = note.info.txt
+            
+            this.setDraftCompose(mail)
         },
-        // noteToMail(note){
-        //     note.info.title
-        //     note.info.txt
-     
-        //       },
-        // },
 
         starred(mail) {
 
