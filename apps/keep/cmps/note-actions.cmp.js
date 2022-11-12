@@ -54,8 +54,10 @@ export default {
             this.$emit('copyNote')
         },
         sendMail(){
-            eventBus.emit('noteToMail',this.note)
             this.$router.push('/mail')
+            setTimeout(() => {
+                eventBus.emit('noteToMail',this.note)
+            }, 1000);
             
         }
 
