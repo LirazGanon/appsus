@@ -38,6 +38,18 @@ export default {
             Sent
             </span>
             </li>
+            <li @click="filter('draft')" :class="{selected: selected ==='draft'}" class="nav-item">
+            <i class="fa-regular fa-file"></i>
+            <span>
+            Draft
+            </span>
+            </li>
+            <li @click="filter('trash')" :class="{selected: selected ==='trash'}" class="nav-item">
+            <i class="fa-solid fa-trash-can"></i>
+            <span>
+            Trash
+            </span>
+            </li>
         </ul>
         </section>
     `,

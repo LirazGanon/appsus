@@ -6,7 +6,7 @@ export default {
     template:/*html*/`
 	<section v-if="mail" class="mail-details">
 	  <section class="mail-details-header">
-      <p>{{mailIdx}} of {{mailCount}}</p>
+	    <p>{{mailIdx}} of {{mailCount}}</p>
 	    <router-link :to="'/mail/'  + prevMailId" :class="{disable:!prevMailId}"
 	      ><i class="fa-solid fa-angle-left"></i
 	    ></router-link>
@@ -30,22 +30,22 @@ export default {
 	        <h3>{{senderName}}</h3>
 	        <p>&lt;{{ mail.from }}></p>
 	      </span>
-	      <p>Me <i class="fa-solid fa-caret-down"></i></p> 
+	      <p>Me <i class="fa-solid fa-caret-down"></i></p>
 	    </span>
 	  </span>
-
+	
 	  <pre> {{ mail.body }}</pre>
 	  <hr />
 	</section>
-    <section v-else  class="skeleton-wrapper flex" >
-    <div v-for="n in 10" class="card-preview is-loading">
-    <div class="image"></div>
-    <div class="content">
-      <h2></h2>
-      <p></p>
-    </div>
-  </div>
-  </section>
+	<section v-else class="skeleton-wrapper">
+	  <div v-for="n in 2" class="card-preview is-loading">
+	    <div class="image"></div>
+	    <div class="content">
+	      <h2></h2>
+	      <p></p>
+	    </div>
+	  </div>
+	</section>
 	`,
     data() {
         return {

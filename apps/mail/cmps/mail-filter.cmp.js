@@ -7,12 +7,6 @@ export default {
                 v-model="filterBy.subject" 
                 type="text" 
                 placeholder="Search" />
-                 <!--  <label>
-                    Min speed:
-                 <input type="range" @input="filter" v-model.number="filterBy.minSpeed"
-                        min="0" max="500" />
-                        <span>{{filterBy.minSpeed}}</span>
-                </label> -->
         </section>
     `,
     data(){

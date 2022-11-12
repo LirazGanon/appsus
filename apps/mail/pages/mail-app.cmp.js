@@ -24,8 +24,9 @@ export default {
         :mails="mailsToShow"
         @viewMail="showMail"
         @check="checkMail"
-         @read="toggleRead"
-         @starred="starred"
+        @read="toggleRead"
+        @trash="toggleTrash"
+        @starred="starred"
         />
         <mail-compose v-if="isComposing" @mailSent="addMail" @composeClose="isComposing=false"/>
         </section>
@@ -80,6 +81,7 @@ export default {
                 })
         },
         toggleRead(mail) {
+            console.log('hi')
             mail.isRead = !mail.isRead
             this.updateReadCount(mail)
             mailService.save(mail)
@@ -89,6 +91,17 @@ export default {
                 .catch(err => {
                     console.log('OOPS', err)
                     showErrorMsg('Cannot read mail')
+                })
+        },
+        toggleTrash(mail) {
+            mail.isTrash = !mail.isTrash
+            mailService.save(mail)
+                .then(() => {
+                    showSuccessMsg(`Mail ${mail.id} Trashed`)
+                })
+                .catch(err => {
+                    console.log('OOPS', err)
+                    showErrorMsg('Cannot trash mail')
                 })
         },
         addMail(mail) {
@@ -139,13 +152,22 @@ export default {
     computed: {
         mailsToShow() {
             const regex = new RegExp(this.filterBy.subject, 'i')
-            let mails = this.mails.filter(mail => regex.test(mail.subject))
+            let mails = this.mails.filter(mail =>{
+                return regex.test(mail.subject)||
+                regex.test(mail.body)||
+                regex.test(mail.from)
+            })
  
+            if(this.filterBy.type==='trash'){
+                mails = mails.filter(mail => mail.isTrash)
+                return mails
+            }
             if(this.filterBy.type==='unread') mails = mails.filter(mail => !mail.isRead)
             else if(this.filterBy.type==='sent') mails = mails.filter(mail => mail.from === 'your-mail@someting.com')
             else if(this.filterBy.type==='starred') mails = mails.filter(mail => mail.IsStarred)
             else mails = mails.filter(mail => mail.type.includes(this.filterBy.type))            
 
+            mails = mails.filter(mail => !mail.isTrash)
             return mails
 
         },
