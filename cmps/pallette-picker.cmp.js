@@ -25,6 +25,7 @@ export default {
                     color: '#44ff00'
                 }
                 ],
+
                 [{
                     var: '--bg-light-white',
                     color: '#333'
@@ -34,6 +35,7 @@ export default {
                     color: '#333'
                 }
                 ],
+
                 [{
                     var: '--bg-light-white',
                     color: '#fff475'
@@ -43,6 +45,7 @@ export default {
                     color: '#fff475'
                 }
                 ],
+                
                 [{
                     var: '--bg-light-white',
                     color: '#ccff90'

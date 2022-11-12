@@ -35,18 +35,3 @@
     cursor: pointer;
 }
 
-.dark {
-    --txt: #eee !important;
-}
-
-.light {
-    --txt: #333 !important;
-}
-
-.warm {
-    --txt: red !important;
-}
-
-.chill {
-    --txt: pink !important;
-}
