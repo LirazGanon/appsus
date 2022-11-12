@@ -1,6 +1,6 @@
 .note-list {
     margin-block-start: 20px;
-    column-count: 1;
+    /* column-count: 1; */
     column-gap: 10px;
     row-gap: 20px;
     padding: 10px;

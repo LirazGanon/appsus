@@ -4,7 +4,7 @@
 }
 
 .note {
-    width: minmax(100px, 250px);
+    /* width: minmax(100px, 250px); */
     break-inside: avoid;
     border-radius: 5px;
     overflow: hidden;
