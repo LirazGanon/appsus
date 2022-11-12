@@ -181,6 +181,7 @@ export default {
             )
         },
         notesToShowNonPinned() {
+            console.log(this.filterBy.type);
             const regex = new RegExp(this.filterBy.title, 'i')
             return this.notes.filter(note =>
                 regex.test(note.info.title)

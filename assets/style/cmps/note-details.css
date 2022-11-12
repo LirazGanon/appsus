@@ -37,6 +37,23 @@
     font-size: 1.4em;
 }
 
+.note-editor form textarea {
+    width: 100%;
+    height: 59px;
+    padding: 15px;
+    outline: none;
+    resize: none;
+    font-family: 'Edu VIC WA NT Beginner', cursive;
+    font-size: 1em;
+    border: none;
+    background: transparent;
+
+}
+
+.note-editor form textarea::-webkit-scrollbar {
+    width: 0;
+}
+
 .note-editor form>button {
     border: none;
     background: transparent;
@@ -91,7 +108,7 @@
 }
 
 
-.edit-actions:last-child{
+.edit-actions:last-child {
     margin-inline-end: 36px;
 }
 

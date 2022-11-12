@@ -15,8 +15,12 @@ export default {
     v-if="noteToEdit.type === 'note-txt'"
     class="flex flex-column">
     
-        <input type="search" v-model="noteToEdit.info.title" />
-        <input type="search" v-model="noteToEdit.info.txt" />
+    
+    
+    
+    <input type="search" v-model="noteToEdit.info.title" />
+    <textarea v-model="noteToEdit.info.txt" @keyup="resize" ref="textarea"></textarea>
+        <!-- <input type="search" v-model="noteToEdit.info.txt" /> -->
         <button><i class="fa-solid fa-check"></i></i></button>
         
 
@@ -34,13 +38,13 @@ export default {
         
         <input 
             v-model="note.info.url" 
-            @change="onFileChange" 
+            @change="onImgInp" 
             type="file" 
             ref="image" 
             hidden
             />
             <div class="img-upload">
-                <button @click="setRef">
+                <button @click.prevent="setRef">
                     <i class="fa-regular fa-image"></i>
                 </button>
             </div>
@@ -100,7 +104,7 @@ export default {
         setRef() {
             this.$refs.image.click()
         },
-        onFileChange(e) {
+        onImgInp(e) {
             const file = e.target.files[0]
             this.noteToEdit.info.url = URL.createObjectURL(file)
         },
@@ -119,6 +123,12 @@ export default {
         setColor(theme){
             this.noteToEdit.style = theme
             this.pickColor = false
+        },
+        resize(e){
+            const textarea = this.$refs.textarea
+            textarea.style.height = `55px`
+            let scrollH = e.target.scrollHeight
+            textarea.style.height = `${scrollH}px`
         }
     },
     computed: {

@@ -8,15 +8,16 @@ export default {
      
         <ul class="note-filters clean-list">
             <li>
-                <label>
+                <label @cl>
                 <i class="fa-regular fa-lightbulb"></i>
                     <span>Notes</span>
                     <input
-                    type="radio"
                     v-model="filterBy.type"
-                    @input="filter"
+                    type="radio"
+                    @input="filter('note')"
+                    value="note"
                     checked
-                    value=""/>
+                    />
                 </label>
             </li>
             <li>
@@ -24,9 +25,10 @@ export default {
                 <i class="fa-solid fa-font"></i>
                     <span>Text</span>
                     <input
-                    type="radio"
                     v-model="filterBy.type"
-                    @input="filter"
+
+                    type="radio"
+                    @input="filter('note-txt')"
                     value="note-txt"/>
                 </label>
             </li>
@@ -35,9 +37,10 @@ export default {
                 <i class="fa-solid fa-list"></i>
                     <span>Todos</span>
                     <input
-                    type="radio"
                     v-model="filterBy.type"
-                    @input="filter"
+
+                    type="radio"
+                    @input="filter('note-todos')"
                     value="note-todos"/>
                 </label>
             </li>
@@ -47,10 +50,11 @@ export default {
                 <i class="fa-solid fa-camera"></i>
                         <span>Images</span>
                         <input
+                    v-model="filterBy.type"
+
                         type="radio"
-                        v-model="filterBy.type"
-                        @input="filter"
-                    value="note-img"/>
+                        @input="filter('note-img')"
+                        value="note-img"/>
                 </label>
             
             </li>
@@ -60,9 +64,10 @@ export default {
                 <i class="fa-brands fa-youtube"></i>
                     <span>Videos</span>
                     <input
-                    type="radio"
                     v-model="filterBy.type"
-                    @input="filter"
+
+                    type="radio"
+                    @input="filter('note-video')"
                     value="note-video"/>
                 </label>
             </li>
@@ -76,8 +81,7 @@ export default {
     data() {
         return {
             filterBy: {
-                title: '',
-                type: null
+                type: ''
             },
             expanded: false
         }
@@ -87,16 +91,16 @@ export default {
     }
     ,
     methods: {
-        filter() {
-            this.$emit('filter', this.filterBy)
+        filter(filter) {
+            this.$emit('filter', { type: filter })
         },
         expandNav() {
             this.expanded = !this.expanded
         }
     },
     computed: {
-        navState(){
-            return {active:this.expanded}
+        navState() {
+            return { active: this.expanded }
         }
     },
     components: {
