@@ -110,11 +110,26 @@ export default {
     },
     created() {
         this.loadNotes()
-
+        eventBus.on('addMail',this.addMail)
         eventBus.on('updated', this.updateNote)
         eventBus.on('addNote', this.add)
     },
     methods: {
+        addMail(mail) {
+            const { subject, body } = mail
+            const note = {
+                id: '',
+                type: 'note-txt',
+                isPinned: false,
+                info: {
+                    title: subject,
+                    txt: body,
+                },
+                style: { backgroundColor: '#ebf1fa' }
+            }
+            this.add(note)
+
+        },
         dragOverPinned(e) {
             const drag = document.querySelector('.drag')
             const el = this.getDragAfterEl(e.target, e.clientY)

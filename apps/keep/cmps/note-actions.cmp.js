@@ -16,8 +16,8 @@ export default {
                 />
             </router-link>
         </div>
-        <div class="action send-note" title="email">
-            <img src="assets/img/envelope.png" alt="" />
+        <div class="action send-note" title="email" hidden>
+            <img src="assets/img/envelope.png" alt=""  />
         </div>
         <div class="action color-note" title="color">
             <img src="assets/img/paint.png" @click="pickColor = !pickColor"/>
