@@ -65,7 +65,6 @@ export default {
                 })
             },
             save(){
-                console.log(this.mail)
                 this.mailToEdit.isDraft = true
                 this.mailToEdit.isRead = true
                 mailService.save(this.mailToEdit)

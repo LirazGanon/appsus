@@ -148,7 +148,25 @@ export default {
         noteToMail(note){
             const mail = mailService.getEmptyMail()
             mail.subject = note.info.title
-            mail.body = note.info.txt
+            if(note.info.txt){
+                mail.body = note.info.txt
+            }else if(note.info.url){
+                mail.body = note.info.url
+            }else if(note.info.todos){
+                let todos = note.info.todos
+                mail.body = todos.map(todo =>{
+                    const options = {
+                        year: 'numeric', month: 'numeric', day: 'numeric',
+                        hour: 'numeric', minute: 'numeric', 
+                        hour12: false,
+                      };
+                      const time = new Intl.DateTimeFormat('en-US', options).format(todo.doneAt)
+
+                   return `✔ ${todo.txt} at ${time} `
+                }).join('\n')
+            }else {
+                mail.body = ''
+            }
             
             this.setDraftCompose(mail)
         },
