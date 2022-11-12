@@ -16,11 +16,11 @@ export default {
 
                 <section class="team-members flex">
                 <article>
-                <img src="/assets/img/lirazi.jfif" alt="" />
+                <img src="./assets/img/lirazi.jfif" alt="" />
                 <p>Liraz Ganon</p>
                 </article>
                 <article>
-                <img src="/assets/img/nadav.png" alt="" />
+                <img src="./assets/img/nadav.png" alt="" />
                 <p>Nadav Shambi</p>
                 </article>
                 </section>
