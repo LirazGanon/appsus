@@ -4,13 +4,13 @@ export default {
     template: `
 <section>
   
-      <section class="app-nav" :class="navState">
+      <section class="app-nav note-nav" :class="navState">
      
         <ul class="note-filters clean-list">
             <li>
                 <label>
-                <i class="fa-solid fa-inbox"></i>
-                    <span>inbox</span>
+                <i class="fa-regular fa-lightbulb"></i>
+                    <span>Notes</span>
                     <input
                     type="radio"
                     v-model="filterBy.type"
@@ -22,26 +22,13 @@ export default {
             <li>
                 <label>
                 <i class="fa-solid fa-font"></i>
-                    <span>text</span>
+                    <span>Text</span>
                     <input
                     type="radio"
                     v-model="filterBy.type"
                     @input="filter"
                     value="note-txt"/>
                 </label>
-            </li>
-            <li>
-
-                <label>
-                <i class="fa-solid fa-camera"></i>
-                        <span>images</span>
-                        <input
-                        type="radio"
-                        v-model="filterBy.type"
-                        @input="filter"
-                    value="note-img"/>
-                </label>
-            
             </li>
             <li>
                 <label>
@@ -55,9 +42,23 @@ export default {
                 </label>
             </li>
             <li>
+
+                <label>
+                <i class="fa-solid fa-camera"></i>
+                        <span>Images</span>
+                        <input
+                        type="radio"
+                        v-model="filterBy.type"
+                        @input="filter"
+                    value="note-img"/>
+                </label>
+            
+            </li>
+         
+            <li>
                 <label>
                 <i class="fa-brands fa-youtube"></i>
-                    <span>videos</span>
+                    <span>Videos</span>
                     <input
                     type="radio"
                     v-model="filterBy.type"
@@ -65,6 +66,7 @@ export default {
                     value="note-video"/>
                 </label>
             </li>
+           
         </ul>
      
       

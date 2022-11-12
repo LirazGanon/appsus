@@ -1,4 +1,6 @@
-
+/* .note-nav{
+    margin-block-start: 110px;
+} */
 
 .app-nav .note-filters li {
     padding: 0;
@@ -18,8 +20,15 @@
 
 .app-nav li label span{
     /* display: none; */
-    padding-inline-start: 20px;
+    margin-inline-start: 22px;
 
+}
+
+.app-nav li:has(label input:checked) i{
+    border-radius: 50%;
+    box-shadow: inset 0 0 100px rgba(255, 255, 255, 0.603),
+    0 0 20px 5px rgb(255, 255, 255),
+    0 0 40px  #555;
 }
 
 .app-nav.app-nav.active li label span{

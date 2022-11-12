@@ -51,8 +51,7 @@ export default {
 
         },
         copyNote() {
-            const copy = this.deepCopy()
-            console.log('copy:', copy)
+            let copy = this.deepCopy()
             copy.id = null
             console.log('copy:', copy)
             eventBus.emit('addNote', copy)
