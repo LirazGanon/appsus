@@ -110,7 +110,7 @@ export default {
     },
     created() {
         this.loadNotes()
-        eventBus.on('addMail',this.addMail)
+        eventBus.on('addMail', this.addMail)
         eventBus.on('updated', this.updateNote)
         eventBus.on('addNote', this.add)
     },
@@ -120,7 +120,7 @@ export default {
             const note = {
                 id: '',
                 type: 'note-txt',
-                isPinned: false,
+                isPinned: true,
                 info: {
                     title: subject,
                     txt: body,
