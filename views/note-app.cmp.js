@@ -110,11 +110,26 @@ export default {
     },
     created() {
         this.loadNotes()
-
+        eventBus.on('addMail',this.addMail)
         eventBus.on('updated', this.updateNote)
         eventBus.on('addNote', this.add)
     },
     methods: {
+        addMail(mail) {
+            const { subject, body } = mail
+            const note = {
+                id: '',
+                type: 'note-txt',
+                isPinned: false,
+                info: {
+                    title: subject,
+                    txt: body,
+                },
+                style: { backgroundColor: '#ebf1fa' }
+            }
+            this.add(note)
+
+        },
         dragOverPinned(e) {
             const drag = document.querySelector('.drag')
             const el = this.getDragAfterEl(e.target, e.clientY)
@@ -143,7 +158,7 @@ export default {
         add(note) {
             noteService.save(note)
                 .then(note => {
-                    this.notes.push(note)
+                    this.notes.unshift(note)
                     showSuccessMsg('note added!')
                     this.addType = null
                     this.state = true
@@ -158,7 +173,6 @@ export default {
                     const idx = this.notes.findIndex(note => note.id === noteId)
                     if (idx === -1) return
                     this.notes.splice(idx, 1)
-                    console.log('this.note:', noteId)
                     showSuccessMsg(`Note deleted`)
                 }).catch(err => {
                     console.log(err);
@@ -204,7 +218,6 @@ export default {
             const regex = new RegExp(this.filterBy.title, 'i')
             return this.notes.filter(note => {
                 if (!note) return false
-                console.log('note:', note)
                 return regex.test(note.info.title)
                     && note.type.includes(this.filterBy.type)
                     && note.isPinned
@@ -212,7 +225,6 @@ export default {
             )
         },
         notesToShowNonPinned() {
-            console.log(this.filterBy.type);
             const regex = new RegExp(this.filterBy.title, 'i')
             return this.notes.filter(note => {
                 if (!note) return false
