@@ -35,7 +35,11 @@ export default {
         
         <input type="search" v-model="noteToEdit.info.title" />
         <img :src="noteToEdit.info.url" alt="" />
-        
+
+        <input 
+                v-model="noteToEdit.info.url"
+                type="text" 
+                placeholder="Image URL..."/>
         <input 
             v-model="note.info.url" 
             @change="onImgInp" 

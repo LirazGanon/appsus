@@ -1,0 +1,76 @@
+.about-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: roberto;
+
+    border-top: 1px solid #3332;
+    padding-block-start: 5px;
+}
+
+
+.meet {
+    max-width: 600px;
+    background: linear-gradient(-135deg, #333, #4660ad, #a28cdf);
+    font-family: roberto;
+    padding: 45px 50px 0 50px;
+    color: #eee;
+    border-radius: 14px 14px 0 0;
+    transition: .5s;
+    height: 100px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.meet:hover {
+    height: 360px;
+}
+
+.meet h2 {
+    font-family: roberto;
+    letter-spacing: 0.05em;
+}
+
+.meet>*:nth-child(2) {
+    color: rgb(111, 145, 247);
+}
+
+.bg {
+    background-image: url('/assets/img/bg-cd.jpg');
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex: 1;
+    background-size: 400%;
+    border-top: 2px solid #3331;
+    /* margin-top: 5px; */
+}
+
+
+.team>h1 {
+    font-size: 6em;
+    font-family: poppins-b-i;
+    color: rgb(111, 145, 247);
+    margin-block: 10px 20px;
+}
+
+
+.team-members {
+    max-width: 800px;
+    box-shadow: 3px 3px 5px #3335,
+        inset 3px 3px 10px rgb(209, 208, 208);
+}
+
+.team-members>* {
+    width: 50%;
+    padding: 20px;
+}
+
+.team-members>*>img {
+    height: 250px;
+    width: 250px;
+    object-fit: cover;
+    border-radius: 8px;
+
+}
+

@@ -10,22 +10,22 @@ export default {
         <div class="action delete-note" title="delete" @click="deleteNote(note.id)">
             <img src="assets/img/trash.png" alt=""  />
         </div>
-        <div class="action edit-note" v-if="note.type !== 'note-todos'">
+        <div class="action edit-note" v-if="note.type !== 'note-todos'" title="edit">
             <router-link :to="'/note/edit/' + note.id">
                 <img src="assets/img/editing.png" 
                 />
             </router-link>
         </div>
-        <div class="action send-note">
+        <div class="action send-note" title="email">
             <img src="assets/img/envelope.png" alt="" />
         </div>
-        <div class="action color-note">
+        <div class="action color-note" title="color">
             <img src="assets/img/paint.png" @click="pickColor = !pickColor"/>
         </div>
-        <div class="action pin-note" @click="pinNote">
+        <div class="action pin-note" @click="pinNote" title="pin">
             <img :src="pinImg" alt="" />
         </div>
-        <div class="action pin-note" @click="copyNote">
+        <div class="action pin-note" @click="copyNote" title="copy">
         <img src="assets/img/copy.png" alt="" />
         </div>
         <choose-color v-if="pickColor" @setColor="setColor">

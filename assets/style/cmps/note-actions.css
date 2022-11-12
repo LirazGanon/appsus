@@ -12,6 +12,7 @@
 .note:hover>section>.actions>div {
     transition: opacity .3s;
     opacity: 1;
+    scale: .8;
 }
 
 

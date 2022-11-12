@@ -22,10 +22,13 @@ export default {
             v-model="note.info.url" 
             @change="onFileChange" 
             type="file" 
-            required 
             ref="image" 
             hidden
             />
+            <input 
+                v-model="note.info.url"
+                type="text" 
+                placeholder="Image URL..."/>
             <div class="action color-note">
             <img src="assets/img/paint.png" @click="pickColor = !pickColor"/>
         </div>

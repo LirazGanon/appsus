@@ -21,3 +21,7 @@
     font-family: Orbitron;
     src: url('../fonts/Orbitron-Regular.ttf');
 }
+@font-face {
+    font-family: poppins-b-i;
+    src: url('../fonts/Poppins-BoldItalic.ttf');
+}
