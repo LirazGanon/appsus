@@ -55,6 +55,8 @@ export default {
         },
         sendMail(){
             eventBus.emit('noteToMail',this.note)
+            this.$router.push('/mail')
+            
         }
 
     },
