@@ -1,0 +1,52 @@
+.pallette-picker {
+    position: fixed;
+    top: 70px;
+    right: 20px;
+    width: 160px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    background: var(--inp-bg);
+    border-radius: 10px;
+    box-shadow: 1px 1px 3px #3335,
+        inset 1px 1px 5px #aaa5;
+        z-index: 2000;
+}
+
+.pallette-picker::before {
+    content: '';
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    background: linear-gradient(135deg, var(--inp-bg) 60%, transparent 60%);
+    top: -15px;
+    left: 26%;
+    transform: rotate(45deg);
+    box-shadow: -1px -1px #aaa5;
+}
+
+.pallette-picker>* {
+    height: 48px;
+    width: 48px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.dark {
+    --txt: #eee !important;
+}
+
+.light {
+    --txt: #333 !important;
+}
+
+.warm {
+    --txt: red !important;
+}
+
+.chill {
+    --txt: pink !important;
+}

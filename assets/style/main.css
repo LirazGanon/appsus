@@ -17,6 +17,7 @@
 @import 'cmps/app-header.css';
 @import 'cmps/app-footer.css';
 @import 'cmps/user-msg.css';
+@import 'cmps/about.css';
 
 /* Apps */
 @import 'apps/mail/mail-app.css';
@@ -37,4 +38,4 @@
 @import 'cmps/note-actions.css';
 @import 'cmps/note-details.css';
 
-@import 'cmps/about.css';
+@import 'cmps/pallette-picker.css';
