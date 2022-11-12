@@ -37,7 +37,15 @@ export default {
 	  <pre> {{ mail.body }}</pre>
 	  <hr />
 	</section>
-	<h3 v-else>Loading...</h3>
+    <section v-else  class="skeleton-wrapper flex" >
+    <div v-for="n in 10" class="card-preview is-loading">
+    <div class="image"></div>
+    <div class="content">
+      <h2></h2>
+      <p></p>
+    </div>
+  </div>
+  </section>
 	`,
     data() {
         return {
