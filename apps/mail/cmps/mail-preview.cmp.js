@@ -16,7 +16,8 @@ export default {
         <h3 class="clean-space sentAt" :class="{'un-bold':mail.isRead}" >{{ formattedTime}} </h3>
 
             <section class="actions" :class="{read:mail.isRead}">
-            <button @click.stop="removeMail(mail.id)" title="Delete"><i class="fa-regular fa-trash-can"></i></button>
+            <button @click.stop="toggleTrash(mail)" title="Send to trash"><i class="fa-regular fa-trash-can"></i></button>
+            <!--<button @click.stop="removeMail(mail.id)" title="Send to draft"><i class="fa-regular fa-trash-can"></i></button>--></i>
             <button v-if="mail.isRead" @click.stop="toggleRead(mail)" title="Mark as unread"><i class="fa-regular fa-envelope"></i></button>
             <button v-else @click.stop="toggleRead(mail)" title="Mark as read"><i class="fa-regular fa-envelope-open"></i></button>
             <button @click.stop="" title="Don't Know what this button do"><i class="fa-regular fa-clock"></i></button>
@@ -34,6 +35,9 @@ export default {
         },
         toggleRead(mail){
             this.$emit('read', mail)
+        },
+        toggleTrash(mail){
+            this.$emit('trash', mail)
         },
         setStarred(mail){
             this.$emit('starred', mail)

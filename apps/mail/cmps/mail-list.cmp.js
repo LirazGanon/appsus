@@ -7,7 +7,7 @@ export default {
             <ul class="flex flex-column clean-list">
                 <li v-for="mail in mails" :key="mail.id">
                     <mail-preview :mail="mail"  @viewMail="view" @remove="removeMail"
-                     @check="checked" @read="toggleRead" @starred="setStar"/>
+                     @check="checked" @read="toggleRead" @trash="toggleTrash" @starred="setStar"/>
                 </li>
             </ul>
         </section>
@@ -21,6 +21,8 @@ export default {
             this.$emit('check', mail)
         }, toggleRead(mail){
             this.$emit('read', mail)
+        }, toggleTrash(mail){
+            this.$emit('trash', mail)
         }, setStar(mail){
             this.$emit('starred', mail)
         }
