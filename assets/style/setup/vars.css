@@ -20,17 +20,17 @@
   --bg-light-white: #fdfdfd;
   
   /* homepagebackground and about header */
-  --bg-light-white: #8d0000; 
+  /* --bg-light-white: #8d0000;  */
   /* Nav and side Nav */
-  --nav-bg:#44ff00;
+  /* --nav-bg:#44ff00; */
   /* footer and email action background */
-  --btn-hover-bg: #0080ff;
+  /* --btn-hover-bg: #0080ff; */
   /* body background */
-  --main-background:rgb(255, 0, 136);
+  /* --main-background:rgb(255, 0, 136); */
   /* mail unread */
-  --mail-unread-bg:#d40019;
+  /* --mail-unread-bg:#d40019; */
   /* inputs */
-  --inp-bg:#d4ff00;
+  /* --inp-bg:#d4ff00; */
 /* Active item */
-  --active-nav-background:#2accc7;
+  /* --active-nav-background:#2accc7; */
 } 
