@@ -2,6 +2,7 @@ import { mailService } from "../services/mail.service.js"
 import { showErrorMsg, showSuccessMsg } from '../../../services/event-bus.service.js'
 
 export default {
+    props:['mail'],
     name: 'mail-compose',
     template:/*html*/ `
     <section class="mail-compose-wrapper">
@@ -36,10 +37,22 @@ export default {
     data() {
         return { 
             mailToEdit: mailService.getEmptyMail(),
+            interval: null
         }
+    },
+    mounted(){
+        if(this.mail){
+            this.mailToEdit = this.mail
+        }
+        this.save()
+    },
+    unmounted(){
+
     },
     methods: {
         send(){
+            this.mailToEdit.isDraft = false
+            this.mailToEdit.isRead = false
             mailService.save(this.mailToEdit)
                 .then(mail => {
                     this.mailToEdit = mailService.getEmptyMail()
@@ -51,6 +64,22 @@ export default {
                     showErrorMsg(`Cannot send mail`)
                 })
             },
+            save(){
+                console.log(this.mail)
+                this.mailToEdit.isDraft = true
+                this.mailToEdit.isRead = true
+                mailService.save(this.mailToEdit)
+                    .then(mail => {
+                        this.mailToEdit = mail
+                        showSuccessMsg(`Mail saved as draft (Mail id: ${mail.id})`)
+                        this.$emit('mailSaved', mail)
+                    })
+                    .catch(err => {
+                        console.log('OOps:', err)
+                        showErrorMsg(`Cannot save mail`)
+                    })
+                },
+            
             composeClose(){
                 this.$emit('composeClose')
             }

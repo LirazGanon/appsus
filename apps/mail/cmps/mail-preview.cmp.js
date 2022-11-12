@@ -16,8 +16,8 @@ export default {
         <h3 class="clean-space sentAt" :class="{'un-bold':mail.isRead}" >{{ formattedTime}} </h3>
 
             <section class="actions" :class="{read:mail.isRead}">
-            <button @click.stop="toggleTrash(mail)" title="Send to trash"><i class="fa-regular fa-trash-can"></i></button>
-            <!--<button @click.stop="removeMail(mail.id)" title="Send to draft"><i class="fa-regular fa-trash-can"></i></button>--></i>
+            <button v-if="mail.isTrash || mail.isDraft" @click.stop="removeMail(mail.id)" title="Permanently delete"><i class="fa-solid fa-trash-can red-trash"></i></button>
+            <button v-else @click.stop="toggleTrash(mail)" title="Send to trash"><i class="fa-regular fa-trash-can"></i></button>
             <button v-if="mail.isRead" @click.stop="toggleRead(mail)" title="Mark as unread"><i class="fa-regular fa-envelope"></i></button>
             <button v-else @click.stop="toggleRead(mail)" title="Mark as read"><i class="fa-regular fa-envelope-open"></i></button>
             <button @click.stop="" title="Don't Know what this button do"><i class="fa-regular fa-clock"></i></button>
@@ -25,6 +25,11 @@ export default {
         </article>
     `,methods: {
         view(mailId){
+            if(this.mail.isDraft) {
+                console.log(this.mail)
+                this.$emit('compose', this.mail)
+                return
+            }
             this.$emit('viewMail', mailId)
         },
         removeMail(mailId){
@@ -46,12 +51,22 @@ export default {
     computed: {
         formattedTime() {
             const timeStamp = this.mail.sentAt
-            if ((Date.now() - timeStamp) > 24*60*60*1000){
-                let options = { day: "numeric", month: "short" }
+            var today = new Date()
+            var sent = new Date(timeStamp)
+            let options = { day: "numeric", month: "short" }
+            if(today.setHours(0,0,0,0) === sent.setHours(0,0,0,0)){ 
+                const date = new Date(timeStamp);
+                return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false }) 
+            }
+            else{
                 return new Date(timeStamp).toLocaleDateString("en-US", options);
             }
-            const date = new Date(timeStamp);
-            return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false })
+            // if ((Date.now() - timeStamp) > 24*60*60*1000){
+            //     let options = { day: "numeric", month: "short" }
+            //     return new Date(timeStamp).toLocaleDateString("en-US", options);
+            // }
+            // const date = new Date(timeStamp);
+            // return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false })
         },
         shortedSubject() {
             const str = this.mail.subject
