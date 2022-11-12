@@ -93,7 +93,7 @@
     "type": "note-img",
     "isPinned": false,
     "info": {
-      "url": "../../../assets/img/cat.jpg",
+      "url": "assets/img/cat.jpg",
       "title": "😎מחכה לך כאן"
     },
     "style": {
@@ -158,7 +158,7 @@
     "type": "note-img",
     "isPinned": false,
     "info": {
-      "url": "../../../assets/img/ninja.png",
+      "url": "assets/img/ninja.png",
       "title": "Victorious"
     },
     "style": {
