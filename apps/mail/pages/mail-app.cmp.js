@@ -1,5 +1,5 @@
 import { mailService } from "../services/mail.service.js"
-import { showErrorMsg, showSuccessMsg } from '../../../services/event-bus.service.js'
+import { showErrorMsg, showSuccessMsg, eventBus } from '../../../services/event-bus.service.js'
 
 
 import mailList from '../cmps/mail-list.cmp.js'
@@ -112,7 +112,7 @@ export default {
             this.updateReadCount(mail)
         },
         addDraftMail(mail) {
-            if(mail.id === this.mails[0].id) return
+            if (mail.id === this.mails[0].id) return
             this.mails.unshift(mail)
         },
         updateReadCount(mail) {
@@ -142,6 +142,16 @@ export default {
                     showErrorMsg('Cannot check mail')
                 })
         },
+        getNote(){
+            eventBus.on('noteToMail',noteToMail)
+        },
+        // noteToMail(note){
+        //     note.info.title
+        //     note.info.txt
+     
+        //       },
+        // },
+
         starred(mail) {
 
             mail.IsStarred = !mail.IsStarred

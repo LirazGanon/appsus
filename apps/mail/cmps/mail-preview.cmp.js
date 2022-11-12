@@ -22,7 +22,7 @@ export default {
             <button v-else @click.stop="toggleTrash(mail)" title="Send to trash"><i class="fa-regular fa-trash-can"></i></button>
             <button v-if="mail.isRead" @click.stop="toggleRead(mail)" title="Mark as unread"><i class="fa-regular fa-envelope"></i></button>
             <button v-else @click.stop="toggleRead(mail)" title="Mark as read"><i class="fa-regular fa-envelope-open"></i></button>
-            <button @click.stop="createNote" title="Don't Know what this button do"><i class="fa-regular fa-clock"></i></button>
+            <button @click.stop="createNote" title="Send mail to note"><i class="fa-regular fa-paper-plane"></i></button>
         </section>
         </article>
     `,methods: {
@@ -50,11 +50,10 @@ export default {
             this.$emit('starred', mail)
         },
         createNote(){
-            this.$router.push('/note')
-            console.log(this.mail)
+            eventBus.emit('addMail', this.mail)
             setTimeout(() => {
-                eventBus.emit('addMail', this.mail)
-            }, 1000);
+                this.$router.push('/note')
+            }, 500);
         }
     },
     computed: {
