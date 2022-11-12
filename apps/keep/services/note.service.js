@@ -33,7 +33,7 @@ function save(note) {
     return note.id ?
         storageService.put(NOTE_KEY, note)
         :
-        storageService.post(NOTE_KEY, note)
+        storageService.post(NOTE_KEY, note, false)
 }
 
 function getEmptyNote(type = 'note-txt') {
@@ -43,7 +43,7 @@ function getEmptyNote(type = 'note-txt') {
         isPinned: false,
         info: {
             txt: '',
-            
+
         }
     }
 }
