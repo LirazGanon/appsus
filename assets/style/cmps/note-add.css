@@ -92,13 +92,13 @@
 .above-notes .choose-color {
   height: 80%;
   min-height: 60px;
-  top: 200%;
+  top: calc(100% - 40px);
+  max-height: 80px;
 }
 
 .above-notes .choose-color::after {
   left: 55px;
-  top: -8px;
-  transform: rotate(225deg);
+  bottom: -8px;
   height: 15px;
   width: 15px;
   background: #eee;
