@@ -18,6 +18,7 @@ export default {
         <component
         :note="note"
         :is="note.type"
+        
        />  
           
         <note-actions 
@@ -26,6 +27,7 @@ export default {
               @setColor="setColor"
               @pinNote="pinNote"
               @copyNote="copyNote"
+              
               />
     </section>
    
@@ -53,7 +55,6 @@ export default {
         copyNote() {
             let copy = this.deepCopy()
             copy.id = null
-            console.log('copy:', copy)
             eventBus.emit('addNote', copy)
         },
         deepCopy() {

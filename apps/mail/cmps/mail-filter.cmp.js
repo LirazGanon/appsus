@@ -22,12 +22,5 @@ export default {
             this.$emit('filter', this.filterBy)
         }
     },
-    watch: {
-        filterBy:{
-            handler(){
-                console.log('Something changed')
-            },
-            deep: true
-        }
-    }
+   
 }

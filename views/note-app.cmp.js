@@ -64,24 +64,32 @@ export default {
             
         </section> 
 
-        <section class="note-content">
-        
+        <section class="note-content" v-if="notes" >
             <section>
                 <div class="notes-pin">Pinned</div>
                 <note-list
-                    v-if="notes" 
                     :notes="notesToShow"
-                    @delete="deleteNote" />
+                    @delete="deleteNote" 
+                    />
                 </section>
 
                 <section>
                 <div class="notes-pin">unPinned</div>
                 <note-list
-                    v-if="notes" 
                     :notes="notesToShowNonPinned"
                     @delete="deleteNote" />
                 </section>
         </section>
+        <section v-else class="skeleton-wrapper grid-auto-fit">
+	  <div v-for="n in 50" class="card-preview is-loading">
+	    <div class="image"></div>
+	    <div class="content" >
+	      <h2></h2>
+	      <p></p>
+	    </div>
+	  </div>
+	</section>
+        
     </section>
 
     <router-view/>
@@ -102,14 +110,34 @@ export default {
     },
     created() {
         this.loadNotes()
-      
+
         eventBus.on('updated', this.updateNote)
         eventBus.on('addNote', this.add)
     },
     methods: {
-        loadNotes(){
+        dragOverPinned(e) {
+            const drag = document.querySelector('.drag')
+            const el = this.getDragAfterEl(e.target, e.clientY)
+            el ? e.target.insertBefore(drag, el) : e.target.appendChild(drag)
+
+        },
+        getDragAfterEl(container, y) {
+            const draggableEl = [...container.querySelectorAll('.draggable:not(.drag)')]
+
+            return draggableEl.reduce((closest, child) => {
+                const box = child.getBoundingClientRect()
+                const offset = y - box.top - box.height / 2
+                if (offset < 0 && offset > closest.offset) {
+                    return { offset, child }
+                } else {
+                    return closest
+                }
+            }, { offset: Number.NEGATIVE_INFINITY }).child
+        }
+        ,
+        loadNotes() {
             noteService.query()
-            .then(notes => this.notes = notes)
+                .then(notes => this.notes = notes)
         }
         ,
         add(note) {
@@ -161,7 +189,7 @@ export default {
             this.addType = type
             if (this.state) {
                 setTimeout(() => {
-                if (type === 'img') return
+                    if (type === 'img') return
                     this.state = false
                 }, 300)
             }
@@ -174,25 +202,32 @@ export default {
     computed: {
         notesToShow() {
             const regex = new RegExp(this.filterBy.title, 'i')
-            return this.notes.filter(note =>
-                regex.test(note.info.title)
-                && note.type.includes(this.filterBy.type)
-                && note.isPinned
+            return this.notes.filter(note => {
+                if (!note) return false
+                console.log('note:', note)
+                return regex.test(note.info.title)
+                    && note.type.includes(this.filterBy.type)
+                    && note.isPinned
+            }
             )
         },
         notesToShowNonPinned() {
             console.log(this.filterBy.type);
             const regex = new RegExp(this.filterBy.title, 'i')
-            return this.notes.filter(note =>
-                regex.test(note.info.title)
-                && note.type.includes(this.filterBy.type)
-                && !note.isPinned
+            return this.notes.filter(note => {
+                if (!note) return false
+
+                return regex.test(note.info.title)
+                    && note.type.includes(this.filterBy.type)
+                    && !note.isPinned
+            }
+
             )
         },
         animateOut() {
             return { 'animate__animated': this.addType }
         },
-        checkParams(){
+        checkParams() {
             return this.$route.params.id
 
         }
@@ -207,8 +242,8 @@ export default {
         noteDetails,
         noteHeader
     },
-    watch:{
-        checkParams(){
+    watch: {
+        checkParams() {
             this.loadNotes()
         }
     }

@@ -47,6 +47,13 @@
     flex: 3;
 }
 
+
+.grid-auto-fit{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-auto-rows: 200px;
+    gap: 10px;
+}
 /* text helpers */
 
 .colored-text {

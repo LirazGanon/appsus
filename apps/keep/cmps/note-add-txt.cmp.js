@@ -12,7 +12,10 @@ export default {
     
     <form @submit.prevent="addNote" class="add-note " :style="note.style">
         <input v-model="note.info.title" :type="search" placeholder="title.."/>
-        <input v-model="note.info.txt" :type="search" placeholder="text..." ref="txt" required :class="animate"/>
+
+        <!-- <input v-model="note.info.txt" :type="search" placeholder="text..." ref="txt" required :class="animate"/> -->
+        <textarea v-model="note.info.txt" @keyup="resize" ref="txt" placeholder="text..." :class="animate"></textarea>
+
         <div class="action color-note">
             <img src="assets/img/paint.png" @click="pickColor = !pickColor"/>
         </div>
@@ -66,6 +69,12 @@ export default {
         setColor(theme) {
             this.pickColor = false
             this.note.style = theme
+        },
+        resize(e){
+            const textarea = this.$refs.txt
+            textarea.style.height = `40px`
+            let scrollH = e.target.scrollHeight
+            textarea.style.height = `${scrollH}px`
         }
 
 

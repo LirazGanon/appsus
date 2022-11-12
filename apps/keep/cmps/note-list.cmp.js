@@ -27,9 +27,7 @@ export default {
         deleteNote(noteId) {
             this.$emit('delete', noteId)
         },
-        saveNote(noteId){
-            console.log('noteId:', noteId)
-        }
+      
     },
     computed: {
     },

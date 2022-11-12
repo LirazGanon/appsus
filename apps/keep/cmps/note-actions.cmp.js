@@ -47,7 +47,6 @@ export default {
             this.$emit('setColor', theme)
         },
         pinNote() {
-            console.log('hi');
             this.$emit('pinNote')
         },
         copyNote(){

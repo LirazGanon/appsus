@@ -12,6 +12,18 @@
     }
   },
   {
+    "id": "n15csd",
+    "type": "note-txt",
+    "isPinned": true,
+    "info": {
+      "title": "🎶 Dada lala 🎵",
+      "txt": "Only got 1 thing in the back of my mind"
+    },
+    "style": {
+      "backgroundColor":"#fff475"
+    }
+  },
+  {
     "id": "n10x5",
     "type": "note-img",
     "isPinned": false,
@@ -20,7 +32,7 @@
       "title": "Chad 4Life"
     },
     "style": {
-      "backgroundColor": "#aecbfa"
+      "backgroundColor": "#fff475"
     }
   },
   {
@@ -28,11 +40,11 @@
     "type": "note-img",
     "isPinned": true,
     "info": {
-      "url": "../../../assets/img/mymeme.jpg",
+      "url": "assets/img/mymeme.jpg",
       "title": "#memeit"
     },
     "style": {
-      "backgroundColor": "#aecbfa"
+      "backgroundColor": "#d7aefb"
     }
   },
   {
@@ -52,7 +64,7 @@
     "type": "note-img",
     "isPinned": true,
     "info": {
-      "url": "../../../assets/img/water-bottle.png",
+      "url": "assets/img/water-bottle.png",
       "title": "Stay Hydrated!"
     },
     "style": {
@@ -62,7 +74,7 @@
   {
     "id": "n106",
     "type": "note-todos",
-    "isPinned": false,
+    "isPinned": true,
     "info": {
       "title": "Self Growth ",
       "todos": [
@@ -82,7 +94,7 @@
     "isPinned": false,
     "info": {
       "url": "../../../assets/img/cat.jpg",
-      "title": "מחכה לך כאן 😎"
+      "title": "😎מחכה לך כאן"
     },
     "style": {
       "backgroundColor": "#aecbfa"
@@ -106,7 +118,31 @@
     }
   },
   {
+    "id": "n70s4",
+    "type": "note-txt",
+    "isPinned": false,
+    "info": {
+      "title": "Wooooohooooo",
+      "txt": ""
+    },
+    "style": {
+      "backgroundColor":"#d7aefb"
+    }
+  },
+  {
     "id": "n163",
+    "type": "note-video",
+    "isPinned": false,
+    "info": {
+      "title": ":)",
+      "url": "https://www.youtube.com/embed/B0PuYGU0m8Q"
+    },
+    "style" :{
+      "backgroundColor":"#d7aefb"
+    }
+  },
+  {
+    "id": "n1673",
     "type": "note-video",
     "isPinned": true,
     "info": {
@@ -150,7 +186,7 @@
       "txt": "jQuery is a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers. With a combination of versatility and extensibility, jQuery has changed the way that millions of people write JavaScript."
     },
     "style": {
-      "backgroundColor":"#fff475"
+      "backgroundColor":"#d7aefb"
     }
   },
   {
@@ -162,7 +198,7 @@
       "txt": "When something is important enough, you do it even if the odds are not in your favor"
     },
     "style": {
-      "backgroundColor":"#fff475"
+      "backgroundColor":"##d7aefb"
     }
   },
   {
@@ -174,7 +210,23 @@
       "url": "https://www.youtube.com/embed/jfKfPfyJRdk"
     },
     "style" :{
-      "backgroundColor":"#f28b82"
+      "backgroundColor":"#fff475"
+    }
+  },
+  {
+    "id": "n18sx6",
+    "type": "note-todos",
+    "isPinned": false,
+    "info": {
+      "title": "Take a Pill! 💊",
+      "todos": [
+        { "txt": "08:00", "doneAt": 187111111,"id":99},
+        { "txt": "14:00", "doneAt": null,"id":100},
+        { "txt": "20:00", "doneAt": null,"id":102}
+      ]
+    },
+    "style": {
+      "backgroundColor":"#aecbfa"
     }
   }
 ]

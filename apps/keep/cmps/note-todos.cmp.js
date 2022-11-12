@@ -81,7 +81,6 @@ export default {
             }
         },
         deleteTodo(todoId) {
-            console.log(todoId);
             const idx = this.newNote.info.todos.findIndex(todo => todo.id === todoId)
             this.newNote.info.todos.splice(idx, 1)
             this.updateEmit(this.clone(this.newNote))
@@ -117,12 +116,5 @@ export default {
 
 
     },
-    components: {
-
-    },
-    watch: {
-        currNote() {
-            console.log(this.newNote);
-        }
-    }
+    
 }

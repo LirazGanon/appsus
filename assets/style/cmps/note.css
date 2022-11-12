@@ -26,6 +26,7 @@
     margin-inline-start: 10px;
     line-break: anywhere;
 
+
 }
 
 .note ul,
@@ -38,6 +39,8 @@
     font-size: 1.2em;
     padding: 10px 10px 0 10px;
     line-break: anywhere;
+    white-space: pre-line;
+
 }
 
 .note>iframe {

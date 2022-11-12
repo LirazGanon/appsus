@@ -18,6 +18,25 @@
   margin-block: 10px;
 }
 
+
+.add-note textarea {
+  width: 100%;
+  height: 40px;
+  padding: 15px;
+  outline: none;
+  resize: none;
+  font-family: roberto;
+  font-size: 1em;
+  border: none;
+  background: transparent;
+
+}
+
+.add-note textarea::-webkit-scrollbar {
+  width: 0;
+}
+
+
 .fake-note {
   display: flex;
   flex-direction: column;

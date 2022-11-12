@@ -61,7 +61,6 @@ export default {
         addNote() {
             const note = JSON.parse(JSON.stringify(this.note))
             this.$emit('addNote', note)
-            console.log('this.note:', this.note)
         },
         onFileChange(e) {
             const file = e.target.files[0]

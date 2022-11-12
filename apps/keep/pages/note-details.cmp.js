@@ -93,9 +93,7 @@ export default {
         loadNote() {
             noteService.get(this.noteId)
                 .then(note => {
-                    console.log(note);
                     this.noteToEdit = note
-                    console.log(note);
                 })
         },
         saveNote() {
@@ -121,14 +119,14 @@ export default {
             const newURL = 'https://www.youtube.com/embed/' + id
             this.noteToEdit.info.url = newURL
         },
-        close(){
-            this.$router.push({path:'/note'})
+        close() {
+            this.$router.push({ path: '/note' })
         },
-        setColor(theme){
+        setColor(theme) {
             this.noteToEdit.style = theme
             this.pickColor = false
         },
-        resize(e){
+        resize(e) {
             const textarea = this.$refs.textarea
             textarea.style.height = `55px`
             let scrollH = e.target.scrollHeight
