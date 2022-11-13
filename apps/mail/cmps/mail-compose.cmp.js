@@ -2,7 +2,7 @@ import { mailService } from "../services/mail.service.js"
 import { showErrorMsg, showSuccessMsg } from '../../../services/event-bus.service.js'
 
 export default {
-    props:['mail'],
+    props:['mail','userMail'],
     name: 'mail-compose',
     template:/*html*/ `
     <section class="mail-compose-wrapper">
@@ -44,6 +44,7 @@ export default {
         if(this.mail){
             this.mailToEdit = this.mail
         }
+        this.mailToEdit.from = this.userMail
         this.save()
     },
     unmounted(){

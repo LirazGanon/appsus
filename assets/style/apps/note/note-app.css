@@ -16,6 +16,7 @@
 }
 
 .note-content{
-    overflow: auto;
-    height: 82vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 81vh;
 }

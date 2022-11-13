@@ -1,14 +1,24 @@
+.top-checkbox{
+    padding-inline-start: 5px;
+    margin-top: 15px;
+}
+.top-checkbox i{
+    position: relative;
+    bottom: 1px;
+    margin-inline-start: 10px;
+}
 .mail-tab-filter button{
 height: 55px;
 width: 248px;
 background-color: var(--main-background);
 border: none;
-margin-top: 10px;
+margin-inline-start: 7px;
 text-align: start;
 padding: 10px;
 font-family: OpenSans, sans-serif;
 font-size: 1em;
 position: relative;
+padding-top: 0;
 }
 
 .mail-tab-filter > :first-child{

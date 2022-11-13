@@ -9,7 +9,7 @@
     justify-content: center;
     gap: 20px;
     padding: 20px;
-    background: var(--inp-bg);
+    background: var(--main-background);
     border-radius: 10px;
     box-shadow: 1px 1px 3px #3335,
         inset 1px 1px 5px #aaa5;
@@ -21,11 +21,14 @@
     position: absolute;
     height: 30px;
     width: 30px;
-    background: linear-gradient(135deg, var(--inp-bg) 60%, transparent 60%);
+    background: linear-gradient(135deg, var(--main-background) 60%, transparent 60%);
     top: -15px;
     left: 26%;
     transform: rotate(45deg);
     box-shadow: -1px -1px #aaa5;
+}
+.red{
+    background-color: red;
 }
 
 .pallette-picker>* {

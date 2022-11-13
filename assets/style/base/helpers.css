@@ -50,8 +50,8 @@
 
 .grid-auto-fit{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    grid-auto-rows: 200px;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-auto-rows: 400x;
     gap: 10px;
 }
 /* text helpers */

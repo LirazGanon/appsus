@@ -25,7 +25,6 @@
 }
 
 .note-header .logo-container>.note-logo~p {
-    align-self: flex-end;
     font-size: 1.7em;
     position: relative;
     top: 5px;
@@ -43,6 +42,8 @@
 
 .end-icons .user-wrapper {
     position: relative;
+    display: flex;
+    align-items: center;
 }
 
 .end-icons .user-wrapper img {
@@ -51,10 +52,24 @@
     object-fit: cover;
 }
 
+.user-wrapper .in{
+    transform: translateY(0);
+    transition: 0.6s;
+}
+
+.user-wrapper .out{
+transform: translateY(-50px);
+}
+
 .end-icons .user-img {
     position: absolute;
     padding: 4px;
     border-radius: 50%;
+    top: 0px;
+}
+
+.user-wrapper.home .user-img{
+    top: 4px
 }
 
 .note-header{

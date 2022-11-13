@@ -11,12 +11,13 @@ import mailHeader from '../cmps/mail-header.cmp.js'
 export default {
     name: 'mail-app',
     template:/*html*/ `
-    <mail-header  @filter="setFilter"/> 
+    <mail-header  @filter="setFilter" @userMail="setUserMail"/> 
     <section class="mail-app">
     <mail-nav @setCompose="isComposing = !isComposing" @filterBy='setTabFilter' :unread="unreadCount.Primary"/>
     <section class="main-content" v-if="!getParamsId">
      
-        <tab-filter @tabFilter="setTabFilter" :unread="unreadCount" />
+        <tab-filter @tabFilter="setTabFilter" :unread="unreadCount" :checked="checkMails"
+        @deleteChecked='deleteChecked' @checkedAll='checkedAll' />
         <!--<router-link to="/mail/edit">Send a new mail</router-link>-->
         <mail-list
         v-if="mails"
@@ -29,7 +30,8 @@ export default {
         @starred="starred"
         @compose="setDraftCompose"
         />
-        <mail-compose v-if="isComposing" @mailSent="addMail" @mailSaved="addDraftMail" @composeClose="isComposing=false" :mail="draftMail"/>
+        <mail-compose v-if="isComposing" @mailSent="addMail" @mailSaved="addDraftMail" 
+        @composeClose="isComposing=false" :mail="draftMail" :userMail="userMail"/>
         </section>
     <router-view v-else/>
 
@@ -49,7 +51,9 @@ export default {
                 Promotion: 0,
                 Social: 0
             },
-            isComposing: false
+            isComposing: false,
+            checkMails: [],
+            userMail: 'nadav@gmail.com',
         }
     },
     created() {
@@ -63,10 +67,11 @@ export default {
                     }
                 })
             })
-            
-            eventBus.on('noteToMail',this.noteToMail)
+
+        eventBus.on('noteToMail', this.noteToMail)
+        // this.unreadCount = this.countUnread()
     },
-    
+
     methods: {
         removeMail(mailId) {
             mailService.remove(mailId)
@@ -109,6 +114,9 @@ export default {
                     showErrorMsg('Cannot trash mail')
                 })
         },
+        setUserMail(userMail) {
+            this.userMail = userMail
+        },
         addMail(mail) {
             // this.mails.unshift(mail)
             this.isComposing = false
@@ -136,43 +144,76 @@ export default {
         },
         checkMail(mail) {
             mail.isChecked = !mail.isChecked
-            mailService.save(mail)
-                .then(() => {
-                    showSuccessMsg(`Mail ${mail.id} checked`)
-                })
-                .catch(err => {
-                    console.log('OOPS', err)
-                    showErrorMsg('Cannot check mail')
-                })
+            if (mail.isChecked) {
+                this.checkMails.push(mail)
+            } else {
+                this.checkMails.splice(mail, 1)
+            }
+
+            // mailService.save(mail)
+            //     .then(() => {
+            //         showSuccessMsg(`Mail ${mail.id} checked`)
+            //     })
+            //     .catch(err => {
+            //         console.log('OOPS', err)
+            //         showErrorMsg('Cannot check mail')
+            //     })
         },
-        noteToMail(note){
+        checkedAll(val) {
+            this.mailsToShow.forEach(mail => {
+                if (val) mail.isChecked = false
+                else mail.isChecked = true
+                this.checkMail(mail)
+            })
+        },
+        deleteChecked() {
+            this.mails.forEach(mail => {
+                if (mail.isChecked) {
+                    this.checkMail(mail)
+                    if (mail.isTrash) {
+                        this.removeMail(mail.id)
+                    } else {
+                        mail.isTrash = true
+                        mailService.save(mail)
+                            .then(() => {
+                                console.log('succeed')
+
+                            })
+                            .catch(err => {
+                                console.log('OOPS', err)
+                                showErrorMsg('Cannot save mail')
+                            })
+                    }
+                }
+            })
+        },
+        noteToMail(note) {
             const mail = mailService.getEmptyMail()
             mail.subject = note.info.title
-            if(note.info.txt){
+            if (note.info.txt) {
                 mail.body = note.info.txt
-            }else if(note.info.url){
+            } else if (note.info.url) {
                 mail.body = note.info.url
-            }else if(note.info.todos){
+            } else if (note.info.todos) {
                 let todos = note.info.todos
-                mail.body = todos.map(todo =>{
+                mail.body = todos.map(todo => {
                     const options = {
                         year: 'numeric', month: 'numeric', day: 'numeric',
-                        hour: 'numeric', minute: 'numeric', 
+                        hour: 'numeric', minute: 'numeric',
                         hour12: false,
-                      };
-                      const time = new Intl.DateTimeFormat('en-US', options).format(todo.doneAt)
+                    };
+                    const time = new Intl.DateTimeFormat('en-US', options).format(todo.doneAt)
 
-                   return `✔ ${todo.txt} at ${time} `
+                    return `✔ ${todo.txt} at ${time} `
                 }).join('\n')
-            }else {
+            } else {
                 mail.body = ''
             }
-            
+
             this.setDraftCompose(mail)
         },
 
         starred(mail) {
-
             mail.IsStarred = !mail.IsStarred
             mailService.save(mail)
                 .then(() => {
@@ -198,16 +239,26 @@ export default {
                     regex.test(mail.from)
             })
 
+
+            if (this.filterBy.type === 'draft') {
+                mails = mails.filter(mail =>mail.from === this.userMail)
+                mails = mails.filter(mail => mail.isDraft && !mail.isTrash)
+                return mails
+            }
+
+            if (this.filterBy.type === 'sent'){
+                mails = mails.filter(mail => mail.from === this.userMail)
+                return mails
+            } 
+
+            mails = mails.filter(mail =>mail.to === this.userMail)
             if (this.filterBy.type === 'trash') {
                 mails = mails.filter(mail => mail.isTrash)
                 return mails
             }
             if (this.filterBy.type === 'unread') mails = mails.filter(mail => !mail.isRead)
-            else if (this.filterBy.type === 'sent') mails = mails.filter(mail => mail.from === 'your-mail@someting.com')
-            else if (this.filterBy.type === 'draft') {
-                mails = mails.filter(mail => mail.isDraft && !mail.isTrash)
-                return mails
-            }
+         
+          
             else if (this.filterBy.type === 'starred') mails = mails.filter(mail => mail.IsStarred)
             else mails = mails.filter(mail => mail.type.includes(this.filterBy.type))
 
@@ -217,6 +268,24 @@ export default {
         },
         getParamsId() {
             return this.$route.params.id
+        },
+        countUnread() {
+            const mails = this.mailsToShow()
+            console.log(mails)
+            const unreadCount = {
+                Primary: 0,
+                Promotion: 0,
+                Social: 0
+            }
+
+            mails.forEach(mail => {
+                if (!mail.isRead) {
+                    unreadCount.Primary++
+                    if (mail.type === 'Promotion') unreadCount.Promotion++
+                    else unreadCount.Social++
+                }
+            })
+            return unreadCount
         }
     },
     components: {
