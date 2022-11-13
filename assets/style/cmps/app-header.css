@@ -102,6 +102,13 @@
   z-index: 5;
 }
 
+.theme-screen {
+  position: fixed;
+  inset: 0;
+  background-color: transparent;
+  z-index: 1;
+}
+
 .opacity-1 {
   opacity: 1;
   pointer-events: all;

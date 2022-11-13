@@ -8,7 +8,7 @@ template: `
     <div className="img-placeholder">
         <!-- <h2>{{note.info.url}}</h2> -->
         <img :src="note.info.url" alt="" />
-        <!-- <img src="../../../assets/img/cat.jpg" alt="" /> -->
+        <!-- <img src="assets/img/cat.jpg" alt="" /> -->
     </div>
     <!-- <pre>{{note}}</pre> -->
 

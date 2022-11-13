@@ -1,5 +1,5 @@
 .app-footer{
-    height: 40px;
+    height: 50px;
     background-color: var(--btn-hover-bg);
     color: var(--txt-light);
 }

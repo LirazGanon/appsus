@@ -81,7 +81,7 @@ export default {
                 </section>
         </section>
         <section v-else class="skeleton-wrapper grid-auto-fit">
-	  <div v-for="n in 50" class="card-preview is-loading">
+	  <div v-for="n in 10" class="card-preview is-loading">
 	    <div class="image"></div>
 	    <div class="content" >
 	      <h2></h2>

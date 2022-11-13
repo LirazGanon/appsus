@@ -18,9 +18,11 @@
   --main-background:#fdfdfd;
   --active-nav-background:#d3e3fd;
   --bg-light-white: #fdfdfd;
+  --composed-bg:#c2e7ff;
+  --nav-hover:rgb(237, 235, 235);
   
   /* homepagebackground and about header */
-  /* --bg-light-white: #8d0000;  */
+  /* --bg-light-white: #acffbe;  */
   /* Nav and side Nav */
   /* --nav-bg:#44ff00; */
   /* footer and email action background */

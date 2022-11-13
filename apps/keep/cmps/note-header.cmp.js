@@ -9,12 +9,12 @@ export default {
         <section class="app-header note-header flex justify-between align-center">
 
         <section class="logo-search flex align-center">
-        <section class="logo-container flex">
+        <section class="logo-container flex align-center justify-center">
         <button @click="expandNav">
         <img src="assets/img/svg/menu-bar.svg" />
         </button>
             <img src="assets/img/note-logo.png" class="note-logo"alt="" />
-            <p>ote</p>
+            <p>jQeep</p>
         </section>
             <label>
             <span><i class="fa-solid fa-magnifying-glass"></i></span>
@@ -27,20 +27,24 @@ export default {
             </section>
 
                 <span class=end-icons>
-                <img src="assets/img/svg/help.svg" alt="" @click="goAbout">
-                <img src="assets/img/svg/setting.svg" alt="" @click="themePicker=!themePicker"/>
+                    <img src="assets/img/svg/help.svg" alt="" @click="goAbout">
+                    <img src="assets/img/svg/setting.svg" alt="" @click="themePicker=!themePicker"/>
 
-                <span class="apps-wrapper flex align-center" @click.stop="toggleShowApps">
-                <img src="assets/img/svg/apps.svg" alt="" />
-                <apps-picker :class="{'opacity-1':appsIsShowing}">
-                </span>
-                <span class="user-wrapper">
-                <img src="assets/img/nadav.png" class="user-img" alt="">
-                  <img src="assets/img/svg/ring.svg" class="user-img-ring" alt="" />
-                  <section  class="apps-screen" @click="toggleShowApps" :class="{'opacity-1':appsIsShowing}">
-                </span>
+                        <span class="apps-wrapper flex align-center" @click.stop="toggleShowApps">
+                        <img src="assets/img/svg/apps.svg" alt="" />
+                        <apps-picker :class="{'opacity-1':appsIsShowing}">
+                        </span>
+                <span class="user-wrapper" @click="toggleUsers">
+                    <span>
+                    <img src="assets/img/liraz.jpg" class="user-img liraz" :class="{in:currUser==='liraz',out:currUser==='nadav'}" alt="">
+                    <img src="assets/img/nadav.png" class="user-img nadav" :class="{out:currUser==='liraz',in:currUser==='nadav'}" alt="">
+                    </span>
+                     <img src="assets/img/svg/ring.svg" class="user-img-ring" alt="" />
+                     </span>
+                     <section  class="apps-screen" @click="toggleShowApps" :class="{'opacity-1':appsIsShowing}">
         </section>
-    <pallette-picker v-if="themePicker" @click="themePicker=!themePicker">
+        <section v-if="themePicker" class="theme-screen" @click="themePicker=!themePicker"></section>
+        <pallette-picker v-if="themePicker" @click="themePicker=!themePicker" />
 
         </section>
     `,
@@ -50,8 +54,8 @@ export default {
             filterBy: {
                 title: ''
             },
-            themePicker: false
-
+            themePicker: false,
+            currUser:'liraz'
         }
     },
     methods: {
@@ -70,7 +74,11 @@ export default {
         },
         toggleShowApps() {
             this.appsIsShowing = !this.appsIsShowing
-        }
+        },
+        toggleUsers(){
+            console.log( this.currUser)
+           this.currUser = this.currUser ==='liraz'? 'nadav': 'liraz'
+          }
     },
     components: {
         appsPicker,
