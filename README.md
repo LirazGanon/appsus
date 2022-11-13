@@ -24,7 +24,7 @@ Please adhere to this project's `code of conduct`.
 
 ## Demo
 
-Insert gif or link to demo
+https://lirazganon.github.io/appsus/
 
 
 ## Authors
