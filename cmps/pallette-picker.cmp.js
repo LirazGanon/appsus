@@ -33,7 +33,7 @@ export default {
                 {
                     var: '--nav-bg',
                     color: '#333'
-                }
+                },
                 ],
 
                 [{
